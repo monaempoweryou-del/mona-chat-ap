@@ -95,26 +95,47 @@ def is_production_request(message: str) -> bool:
     return any(kw in msg_lower for kw in keywords)
 
 def run_coo(message: str, history: list) -> dict:
-    """Run the COO agent to produce an execution plan + deliverable."""
+    """Run the Agency Manager: first get routing plan, then generate content separately."""
     context = ""
     if history:
         recent = history[-4:] if len(history) > 4 else history
         context = "\n".join([f"{h['role'].upper()}: {h['content']}" for h in recent])
         context = f"Recent conversation:\n{context}\n\n"
 
-    response = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=4096,
-        system=COO_PROMPT,
-        messages=[{"role": "user", "content": f"{context}New request: {message}"}]
-    )
+    # Step 1: Get routing plan (small JSON, no content yet)
+    routing_prompt = """You are the Agency Manager of Mona Digital Marketing. Given a request, respond ONLY with this JSON (no content field yet):
+{
+  "agent": "blog-writer|social-content|monthly-report|invoice|proposal|seo-audit|email-draft|web-change|graphic-design",
+  "client": "client name or mona",
+  "task_summary": "one sentence",
+  "deliverable": "what this is",
+  "needs_approval": false
+}
+Set needs_approval true ONLY for image/video/graphic-design requests."""
 
-    raw = response.content[0].text.strip()
-    # Extract JSON if wrapped in code block
+    plan_resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=300,
+        system=routing_prompt,
+        messages=[{"role": "user", "content": f"{context}Request: {message}"}]
+    )
+    raw = plan_resp.content[0].text.strip()
     match = re.search(r'\{.*\}', raw, re.DOTALL)
-    if match:
-        return json.loads(match.group())
-    return json.loads(raw)
+    plan = json.loads(match.group() if match else raw)
+
+    # Step 2: Generate the actual content separately (clean text, not inside JSON)
+    if not plan.get("needs_approval", False):
+        content_resp = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=3000,
+            system=COO_PROMPT,
+            messages=[{"role": "user", "content": f"Write the complete {plan.get('deliverable','deliverable')} for this request: {message}\nClient: {plan.get('client','')}\nOutput the full deliverable as HTML, ready to email. No JSON wrapper."}]
+        )
+        plan["content"] = content_resp.content[0].text.strip()
+    else:
+        plan["content"] = f"<p><strong>Request:</strong> {message}</p><p>This requires visual/content production. Awaiting approval to proceed.</p>"
+
+    return plan
 
 def send_to_email(subject: str, body_html: str):
     """Send execution result to monaempoweryou@gmail.com via Gmail SMTP."""

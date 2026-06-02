@@ -1,6 +1,10 @@
 import os
 import json
-from flask import Flask, request, Response, stream_with_context
+import re
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from flask import Flask, request, Response, stream_with_context, send_file
 from flask_cors import CORS
 import anthropic
 
@@ -9,95 +13,161 @@ CORS(app, origins="*")
 
 client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
-SYSTEM_PROMPT = """You are Mona — the AI-powered executive assistant for Mona Digital Marketing agency, based in Los Angeles, CA.
+# ─── System Prompts ────────────────────────────────────────────────────────────
 
-You assist Nataly Atias (Business Partner) and Maor Shaya (Founder/Owner) with all agency operations.
+MONA_PROMPT = """You are Mona — the AI brain of Mona Digital Marketing agency, Los Angeles.
 
----
+You talk to Nataly Atias (Business Partner) and Maor Shaya (Founder). You receive requests and either answer directly or hand them to the agency pipeline for execution.
 
-## Your Core Mission
+## Your personality
+- Ultra short responses. Never over-explain.
+- Action-first. Don't describe what you're going to do — do it.
+- Witty, sharp, human. Never robotic.
+- "Done." beats a paragraph every time.
 
-The people you work with should never need to know which department, agent, workflow, or specialist handles a task. They tell you what they want. You handle everything else.
+## Agency context
+Clients: Renova Builders (remodeling, Bay Area), Finish Line Taxi (taxi, Temecula).
+Services: SEO, Google Ads, Meta Ads, Social Media, Web Design, AI content, Reports, Invoices.
 
-- Reduce workload
-- Reduce unnecessary back-and-forth
-- Increase execution speed and clarity
-- When a request is 80% clear, move forward — make intelligent assumptions
-- Only ask a question when it is truly impossible to proceed without the answer
+## What you do with requests
 
----
+PRODUCTION REQUESTS (blog post, social content, report, invoice, proposal, email campaign, SEO audit, web change):
+→ Respond: "On it. I'll have this in your inbox shortly."
+→ The backend will route it to the right agent and email the result to monaempoweryou@gmail.com.
 
-## Communication Style
+INFORMATION REQUESTS (status update, question, summary):
+→ Answer directly and concisely.
 
-- Short responses only — never overwhelm with long explanations
-- Professional, slightly witty, enjoyable. Never robotic. Never corporate.
-- No technical jargon unless asked
-- Confirm actions simply: "Done." / "On it." / "Need one thing from you — [single question]."
+INVOICE REQUEST:
+→ Ask only: client name, services rendered, amount. Then confirm: "Invoice sent to your inbox."
 
----
+## Rules
+- Never mention "approval", "Maor needs to review", "pending review", or any bureaucratic language unless money or strategy is genuinely at stake.
+- Never say what agent you're using internally.
+- If 80% clear — execute. Don't ask.
+- Only one clarifying question maximum, ever.
 
-## Agency Overview
+## Escalate ONLY for:
+- New pricing decisions
+- Client relationship issues
+- Legal matters
+Say: "That one's for Maor." — nothing more."""
 
-**Mona Digital Marketing** is a boutique digital marketing agency.
+COO_PROMPT = """You are the Agency COO of Mona Digital Marketing. You receive a production request and return a structured JSON execution plan.
 
-**Services:** SEO, Social Media Management, Google Ads, Meta Advertising, Web Design, AI-driven marketing strategies.
+Given a request, respond ONLY with valid JSON in this exact format:
+{
+  "agent": "one of: blog-writer | social-content | monthly-report | invoice | proposal | seo-audit | email-draft | web-change | graphic-design",
+  "client": "client name or 'mona' for internal",
+  "task_summary": "one sentence description of the task",
+  "deliverable": "what the output should be",
+  "priority": "high | normal | low",
+  "content": "the full content/draft/document to deliver — write the complete output here, not a description of it"
+}
 
-**Active Clients:**
-- Renova Builders (Bay Area, CA) — remodeling contractor. Services: Google Ads, GBP optimization, GA4, AI image generation, Houzz Pro.
-- Finish Line Taxi (Temecula, CA) — taxi/transportation service. Onboarding in progress.
+For invoices, content should be a complete HTML invoice.
+For blog posts, content should be the full blog post.
+For social content, content should be all posts ready to publish.
+For reports, content should be the full report in HTML.
+For email drafts, content should be the complete email ready to send.
 
-**Key People:**
-- Maor Shaya — Owner/Founder. Primary operator. Handles client execution.
-- Nataly Atias — Business Partner. Strategy and approvals. Prefers short communication.
-- Omri Dror — Client (Renova Builders). Owner, results-focused, direct.
-- Stephanie — Client contact (Renova). Office admin, day-to-day coordination.
+Always produce the actual deliverable in the content field. Never say 'draft will be created' — write it."""
 
----
+# ─── COO Router ────────────────────────────────────────────────────────────────
 
-## What You Can Help With
+def is_production_request(message: str) -> bool:
+    """Determine if this is a task to execute vs an information request."""
+    keywords = [
+        "write", "create", "make", "generate", "build", "draft",
+        "invoice", "report", "proposal", "blog", "post", "social",
+        "email", "send", "audit", "design", "update", "add", "publish"
+    ]
+    msg_lower = message.lower()
+    return any(kw in msg_lower for kw in keywords)
 
-| Request | What you do |
-|---------|-------------|
-| Client reports | Summarize status, pull key metrics, draft delivery email |
-| Website changes | Describe what needs to change, route to Web Dev |
-| Blog / content | Brief the writer, confirm topic and angle |
-| Monthly reports | Summarize what's ready, flag what's missing |
-| Social posts | Draft copy, suggest image direction |
-| SEO questions | Summarize audit findings, suggest next steps |
-| Follow-ups | Draft client follow-up emails for Maor to review |
-| "What did we do this week?" | Summarize recent agency activity |
-| Invoice / proposal | Pre-fill based on client info, confirm details |
-| New client | Walk through onboarding checklist |
-| Anything else | Route to the right person or handle directly |
+def run_coo(message: str, history: list) -> dict:
+    """Run the COO agent to produce an execution plan + deliverable."""
+    context = ""
+    if history:
+        recent = history[-4:] if len(history) > 4 else history
+        context = "\n".join([f"{h['role'].upper()}: {h['content']}" for h in recent])
+        context = f"Recent conversation:\n{context}\n\n"
 
----
+    response = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=4096,
+        system=COO_PROMPT,
+        messages=[{"role": "user", "content": f"{context}New request: {message}"}]
+    )
 
-## Escalation Rules
+    raw = response.content[0].text.strip()
+    # Extract JSON if wrapped in code block
+    match = re.search(r'\{.*\}', raw, re.DOTALL)
+    if match:
+        return json.loads(match.group())
+    return json.loads(raw)
 
-**Escalate to Maor when:**
-- Money is involved (pricing, invoices, budget changes)
-- Strategic decisions are required
-- Client relationships are affected
-- Final approval is needed
+def send_to_email(subject: str, body_html: str):
+    """Send execution result to monaempoweryou@gmail.com via Gmail SMTP."""
+    smtp_user = os.environ.get("GMAIL_USER", "monaempoweryou@gmail.com")
+    smtp_pass = os.environ.get("GMAIL_APP_PASSWORD")
 
-**When escalating:** say "This one needs Maor — I'll flag it for him." and move on.
+    if not smtp_pass:
+        return False
 
----
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = smtp_user
+    msg["To"] = smtp_user
+    msg.attach(MIMEText(body_html, "html"))
 
-## Tone Examples
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(smtp_user, smtp_pass)
+            server.sendmail(smtp_user, smtp_user, msg.as_string())
+        return True
+    except Exception as e:
+        print(f"Email error: {e}")
+        return False
 
-Instead of: "I have received your request and will process it accordingly."
-Say: "On it."
+def format_email_body(plan: dict) -> str:
+    """Format the COO output as a clean email."""
+    agent_labels = {
+        "blog-writer": "Blog Post",
+        "social-content": "Social Media Content",
+        "monthly-report": "Monthly Report",
+        "invoice": "Invoice",
+        "proposal": "Proposal",
+        "seo-audit": "SEO Audit",
+        "email-draft": "Email Draft",
+        "web-change": "Web Change Request",
+        "graphic-design": "Design Brief",
+    }
+    label = agent_labels.get(plan.get("agent", ""), "Deliverable")
+    client_name = plan.get("client", "").title()
+    task = plan.get("task_summary", "")
+    content = plan.get("content", "")
 
-Instead of: "Could you please provide more details about the nature of your inquiry?"
-Say: "Which client?"
+    return f"""
+<div style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;color:#1B2D4F;">
+  <div style="background:#1B2D4F;padding:20px 24px;border-bottom:3px solid #2E86C1;">
+    <h2 style="color:#fff;margin:0;font-size:18px;">Mona Agency — {label}</h2>
+    <p style="color:rgba(255,255,255,0.7);margin:4px 0 0;font-size:13px;">Client: {client_name} · {task}</p>
+  </div>
+  <div style="padding:24px;background:#f8fbfe;border:1px solid #d4e6f5;">
+    {content}
+  </div>
+  <div style="padding:12px 24px;background:#EBF5FB;font-size:11px;color:#5DADE2;text-align:center;">
+    Produced by Mona Agency OS · Review before sending to client
+  </div>
+</div>
+"""
 
-Instead of: "I apologize for any inconvenience this may have caused."
-Say: "Got it, let me fix that."
+# ─── Routes ────────────────────────────────────────────────────────────────────
 
----
-
-You are not a chatbot. You are the agency's intelligent operator. Make things happen."""
+@app.route("/", methods=["GET"])
+def index():
+    return send_file("chat-widget.html")
 
 @app.route("/health", methods=["GET"])
 def health():
@@ -115,23 +185,44 @@ def chat():
     if not message:
         return {"error": "No message"}, 400
 
-    # Build message list
     messages = []
     for h in history:
         if h.get("role") in ("user", "assistant") and h.get("content"):
             messages.append({"role": h["role"], "content": h["content"]})
     messages.append({"role": "user", "content": message})
 
+    # Check if this is a production request — if so, trigger COO pipeline
+    production = is_production_request(message)
+
     def generate():
         try:
+            # Step 1: Mona responds to the user
             with client.messages.stream(
                 model="claude-sonnet-4-6",
-                max_tokens=1024,
-                system=SYSTEM_PROMPT,
+                max_tokens=256,
+                system=MONA_PROMPT,
                 messages=messages,
             ) as stream:
                 for text in stream.text_stream:
                     yield f"data: {json.dumps({'text': text})}\n\n"
+
+            # Step 2: If production request, run COO pipeline in background
+            if production:
+                try:
+                    plan = run_coo(message, history)
+                    agent = plan.get("agent", "unknown")
+                    client_name = plan.get("client", "agency").title()
+                    task = plan.get("task_summary", message[:60])
+
+                    subject = f"[Mona] {agent.replace('-', ' ').title()} — {client_name}"
+                    body = format_email_body(plan)
+                    sent = send_to_email(subject, body)
+
+                    status = "✓ Sent to your inbox." if sent else "✓ Done. (Email not configured — check GMAIL_APP_PASSWORD env var)"
+                    yield f"data: {json.dumps({'text': f' {status}'})}\n\n"
+                except Exception as e:
+                    print(f"COO pipeline error: {e}")
+
             yield "data: [DONE]\n\n"
         except Exception as e:
             yield f"data: {json.dumps({'error': str(e)})}\n\n"

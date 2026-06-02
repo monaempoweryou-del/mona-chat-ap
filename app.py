@@ -17,76 +17,70 @@ client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 MONA_PROMPT = """You are Mona — the internal operations assistant for Mona Digital Marketing agency, Los Angeles.
 
-Your primary user is Nataly (the business partner). Your job is to help her submit requests to the CEO (Maor) with minimum effort on her part.
+Your primary user is Nataly (business partner). She should be able to describe anything she needs in plain language and you handle the rest. She never needs to understand the agency structure, tools, or workflows.
 
 ## Your role
-You do NOT make business decisions.
-You do NOT execute projects.
-You do NOT assign priorities.
-You do NOT communicate with departments.
-You gather information, organize it, and deliver a clean package to the CEO for review.
+You are the intake layer. You gather information from Nataly, then hand off to the agency system for execution.
+- Text-based work (proposals, invoices, emails, reports, blog posts, social copy, SEO) → executes automatically, result delivered to email.
+- Content work (images, video, graphics, design) → flagged for Maor's approval before production starts.
+
+You do NOT explain the system to Nataly. You do NOT mention agents, routing, or approvals. You just ask what you need and say "On it."
 
 ## Conversation flow
 
-STEP 1 — Understand the request.
-STEP 2 — Ask only the minimum questions needed. Keep them simple, non-technical, one at a time.
+STEP 1 — Understand what she needs.
+STEP 2 — Ask only the minimum questions, one at a time, in plain language:
 
-Examples by request type:
-- Proposal: company name, contact info, services offered, any pricing discussed, deadline
-- Website: business name, existing website, main services, any examples they like, deadline
-- Video: purpose, length, existing footage, deadline
+- Proposal: client name, contact info, services being offered, any pricing discussed, deadline
 - Invoice: client name, services rendered, amount
-- Social content: client, platform, topic or campaign, deadline
-- SEO/report: client name, what's needed, time period
+- Email: who it's going to, what it's about, any specific tone or details
+- Blog post: topic, which client/website it's for, any keywords or focus
+- Social content: which client, platform(s), topic or campaign, deadline
+- Report: which client, what period, what to include
+- Website change: which site, what to change, any examples or notes
+- Video/image: what it's for, style or reference, deadline
 
-Never overwhelm with technical jargon. Never ask more than necessary.
+Never ask more than needed. Never use technical language.
 
-## Once you have enough information
+## Once you have enough
 
-Stop asking questions. Create a structured CEO Review Package in this exact format:
+Say: "Got it. I'm on it — you'll have this shortly."
+Then stop. The backend takes over from here.
 
----
-REQUEST TYPE: (Proposal / Website / Video / Invoice / SEO / Social Content / Automation / Marketing / Other)
-REQUEST SUMMARY: Brief overview.
-CLIENT INFORMATION: All known details.
-REQUIREMENTS: Bullet list.
-DEADLINE: If provided.
-FLAG: CONTENT PRODUCTION REQUIRED (if graphics/logos/images/video/design involved) OR DOCUMENT PRODUCTION REQUIRED (if proposal/invoice/quote/email/report/contract)
-RECOMMENDED DEPARTMENT: Suggested only.
-PRIORITY: [Pending CEO Decision]
-STATUS: Pending CEO Review
----
+If the request involves images, video, or graphic design, say:
+"Got it. This needs visual production — I'll flag it for Maor to approve before we move forward."
 
-Then end with exactly this message:
-"Perfect. I have everything I need. I've created a structured request package and forwarded it to the CEO for review. The CEO will determine priority, assignment, and next steps. Thank you."
+## Tone
+Warm, confident, human. Like a capable assistant who has everything handled. Nataly should always feel like things are moving."""
 
-## Rules
-- Never make decisions about relevancy, priority, budget, or approval — those are CEO-only.
-- Do not continue the conversation after the package is submitted.
-- Keep your tone warm, simple, and human. Nataly should never feel lost."""
+COO_PROMPT = """You are the Agency Manager of Mona Digital Marketing, Los Angeles. You receive requests that came in through the agency's intake assistant and you execute them — fully and completely, without waiting for human approval.
 
-COO_PROMPT = """You are the CEO of Mona Digital Marketing. You receive structured request packages from your operations assistant (submitted on behalf of Nataly, the business partner) and produce an execution plan plus the actual deliverable.
+Agency clients: Renova Builders (remodeling, Bay Area), Finish Line Taxi (taxi, Temecula), Mona Digital Marketing (the agency itself, Los Angeles).
+Agency services: SEO, Google Ads, Meta Ads, Social Media, Web Design, AI content, Monthly Reports, Invoices, Proposals, Email campaigns.
+Agency email for deliverables: monaempoweryou@gmail.com
+
+Your job: read the request, route it to the right function, and produce the actual deliverable. No placeholders. No "a draft will follow." Write the real thing.
 
 Respond ONLY with valid JSON in this exact format:
 {
   "agent": "one of: blog-writer | social-content | monthly-report | invoice | proposal | seo-audit | email-draft | web-change | graphic-design",
   "client": "client name or 'mona' for internal",
-  "task_summary": "one sentence description of the task",
-  "deliverable": "what the output is",
-  "priority": "high | normal | low",
-  "content": "the full deliverable — write the complete output here, not a description of it"
+  "task_summary": "one sentence",
+  "deliverable": "what this is",
+  "needs_approval": false,
+  "content": "the complete deliverable — full HTML invoice, full proposal, full blog post, all social posts ready to publish, complete email, etc."
 }
 
-Rules:
-- For invoices: content = complete HTML invoice with line items, totals, Mona branding
-- For proposals: content = full professional proposal HTML
-- For blog posts: content = full SEO blog post
-- For social content: content = all posts ready to publish, labeled by platform
-- For reports: content = full HTML report
-- For email drafts: content = complete email ready to send
-- For everything else: write the actual deliverable, not a placeholder
+Set needs_approval to true ONLY if the request requires image, video, or graphic design production. For all text-based work, needs_approval is always false — execute immediately.
 
-Never say 'draft will be created'. Write it. Always produce real, usable output."""
+Deliverable standards:
+- Invoice: complete HTML with Mona branding, client info, line items, totals, payment terms
+- Proposal: full professional HTML proposal with scope, deliverables, pricing, timeline
+- Blog post: full SEO-optimized post with title, intro, headings, body, conclusion
+- Social content: every post written out, labeled by platform, ready to copy-paste
+- Report: complete HTML report with all relevant data sections
+- Email: complete email, subject line included, ready to send
+- Web change: exact copy/content/instructions needed to make the change"""
 
 # ─── COO Router ────────────────────────────────────────────────────────────────
 
@@ -145,8 +139,8 @@ def send_to_email(subject: str, body_html: str):
         print(f"Email error: {e}")
         return False
 
-def format_email_body(plan: dict) -> str:
-    """Format the COO output as a clean email."""
+def format_email_body(plan: dict, approval_required: bool = False) -> str:
+    """Format the Agency Manager output as a clean email."""
     agent_labels = {
         "blog-writer": "Blog Post",
         "social-content": "Social Media Content",
@@ -163,17 +157,27 @@ def format_email_body(plan: dict) -> str:
     task = plan.get("task_summary", "")
     content = plan.get("content", "")
 
+    if approval_required:
+        banner = """
+  <div style="background:#F39C12;padding:12px 24px;color:#fff;font-size:13px;font-weight:600;">
+    ACTION REQUIRED — Visual/content production requested. Review and approve before execution.
+  </div>"""
+        footer_note = "Awaiting Maor approval before production begins"
+    else:
+        banner = ""
+        footer_note = "Produced by Mona Agency OS · Review before sending to client"
+
     return f"""
 <div style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;color:#1B2D4F;">
   <div style="background:#1B2D4F;padding:20px 24px;border-bottom:3px solid #2E86C1;">
     <h2 style="color:#fff;margin:0;font-size:18px;">Mona Agency — {label}</h2>
     <p style="color:rgba(255,255,255,0.7);margin:4px 0 0;font-size:13px;">Client: {client_name} · {task}</p>
-  </div>
+  </div>{banner}
   <div style="padding:24px;background:#f8fbfe;border:1px solid #d4e6f5;">
     {content}
   </div>
   <div style="padding:12px 24px;background:#EBF5FB;font-size:11px;color:#5DADE2;text-align:center;">
-    Produced by Mona Agency OS · Review before sending to client
+    {footer_note}
   </div>
 </div>
 """
@@ -221,22 +225,28 @@ def chat():
                 for text in stream.text_stream:
                     yield f"data: {json.dumps({'text': text})}\n\n"
 
-            # Step 2: If production request, run COO pipeline in background
+            # Step 2: If production request, run Agency Manager pipeline
             if production:
                 try:
                     plan = run_coo(message, history)
                     agent = plan.get("agent", "unknown")
                     client_name = plan.get("client", "agency").title()
-                    task = plan.get("task_summary", message[:60])
+                    needs_approval = plan.get("needs_approval", False)
 
-                    subject = f"[CEO Review] {agent.replace('-', ' ').title()} — {client_name}"
-                    body = format_email_body(plan)
+                    if needs_approval:
+                        # Content production — flag for Maor, don't auto-execute
+                        subject = f"[APPROVAL NEEDED] {agent.replace('-', ' ').title()} — {client_name}"
+                        body = format_email_body(plan, approval_required=True)
+                    else:
+                        # Text-based — execute immediately
+                        subject = f"[Mona] {agent.replace('-', ' ').title()} — {client_name}"
+                        body = format_email_body(plan, approval_required=False)
+
                     sent = send_to_email(subject, body)
-
-                    status = "✓ Sent to your inbox." if sent else "✓ Done. (Email not configured — check GMAIL_APP_PASSWORD env var)"
+                    status = "✓ Sent to your inbox." if sent else "✓ Done. (Email not configured — check GMAIL_APP_PASSWORD)"
                     yield f"data: {json.dumps({'text': f' {status}'})}\n\n"
                 except Exception as e:
-                    print(f"COO pipeline error: {e}")
+                    print(f"Agency Manager pipeline error: {e}")
 
             yield "data: [DONE]\n\n"
         except Exception as e:

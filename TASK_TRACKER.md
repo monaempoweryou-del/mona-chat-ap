@@ -63,6 +63,29 @@ Audit all available skills, MCPs, connectors, and capabilities. Identify highest
 
 ---
 
+### TASK-007 — Deliverable Storage Reorganization + Connector Deployment
+**Completed:** June 3, 2026
+**Branch:** `claude/monet-ai-power-studio-scope-3wmwA`
+
+Establish STORAGE-001 standard, reorganize all deliverables, separate connectors into Ready/Requires Maor.
+
+**Outcome:**
+- STORAGE-001 rule encoded in MONA_AGENCY_RULES.md
+- All 17 deliverables reorganized into `MONA Deliverables/` with correct subfolders
+- Old folders (`MONA Digital Marketing Reports/`, `MONA Logo Project/`) removed
+- REPORT_INDEX.md updated with new paths, now lives at `MONA Deliverables/REPORT_INDEX.md`
+- Connector deployment guide created: `MONA Deliverables/Internal/Strategy/CONNECTOR_DEPLOYMENT.md`
+- 4 connectors ready to deploy (Canva, GA4, GSC, Slack) — exact commands provided
+- 5 connectors require Maor action (GBP API, Meta, n8n, HeyGen Voice, Zernio)
+- Desktop limitation documented: run `git pull` on Mac to sync all files locally
+
+**Pending Maor Action (connector deployment):**
+- PMA-009: Run `claude mcp add canva` on Mac (5 min)
+- PMA-010: Run GA4 + GSC MCP install commands on Mac (15 min)
+- PMA-011: Submit Google Business Profile API application (time-sensitive — weeks to approve)
+
+---
+
 ### TASK-006 — Priority 6: USER-001 Maor Operating Profile
 **Completed:** June 3, 2026
 **Branch:** `claude/monet-ai-power-studio-scope-3wmwA`
@@ -118,8 +141,8 @@ Research free connectors, MCPs, automation, design, marketing, and research tool
 
 ## 🔄 Active Tasks
 
-**Priority 7 — Content Machine** (next in queue)
-Using Priority 5 findings. Create: Content Calendar, Distribution Strategy, Organic Growth Strategy, Video Strategy. Integrate with AI Power Studio.
+**Priority 7 — Content Machine** (next in queue — resuming after storage + connector work)
+Using Priority 5 findings. Create: Content Calendar, Distribution Strategy, Video Strategy. Integrate with AI Power Studio.
 
 ---
 
@@ -137,6 +160,9 @@ Items blocked on human input, local machine access, or a decision from Maor.
 | PMA-006 | **MONA Logo — Direction Approval** | Maor decision required | Review Gmail draft (ID: r-1197090852885943416) → reply A / B / C / GPT or request revisions → commission vector files |
 | PMA-007 | **HeyGen Voice Clone — Audio Sample** | Maor must provide recording | Record 30 seconds of clean speech → upload so Claude can activate voice cloning pipeline |
 | PMA-008 | **HeyGen Digital Twin — Consent Video** | Maor must record consent | One-time consent recording to enable digital twin creation for AI Power Studio scale content |
+| PMA-009 | **Canva MCP — Deploy** | Run on Mac | `claude mcp add canva` → authenticate with Canva account |
+| PMA-010 | **GA4 + GSC MCP — Deploy** | Run on Mac | See exact commands in `CONNECTOR_DEPLOYMENT.md` (15 min) |
+| PMA-011 | **Google Business Profile API — Apply** | Submit application now | console.cloud.google.com → approval takes weeks; start today |
 
 ---
 

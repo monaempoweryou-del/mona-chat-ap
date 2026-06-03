@@ -5,6 +5,41 @@
 
 ---
 
+## STORAGE-001 — Deliverable Storage Standard
+
+**Effective:** June 3, 2026
+
+All MONA and MONA client deliverables must be saved to the `MONA Deliverables/` folder in the repository. This excludes AI Power Studio deliverables (separate structure).
+
+### Folder Structure
+
+| Folder | Contents |
+|--------|---------|
+| `MONA Deliverables/Clients/<Client Name>/` | Reports, audits, proposals, presentations, PDFs, marketing plans |
+| `MONA Deliverables/Internal/Strategy/` | Growth strategies, connector research, market research |
+| `MONA Deliverables/Internal/Audits/` | Capability audits, website audits, internal reviews |
+| `MONA Deliverables/Internal/Systems/` | Operating profiles, agency rules, playbooks |
+| `MONA Deliverables/Internal/Brand/` | Logo files, brand assets, presentations |
+| `MONA Deliverables/Archive/` | Delivered documents retained for reference only |
+
+### Deliverable Types That Must Use This Folder
+Reports, Audits, Proposals, Presentations, PDFs, Logo packages, Growth plans, Strategy documents, Website roadmaps, Marketing plans.
+
+### Desktop Sync Note
+Remote Claude Code sessions cannot write to Maor's local Desktop. To sync deliverables locally:
+```bash
+git pull origin claude/monet-ai-power-studio-scope-3wmwA
+```
+All files in `MONA Deliverables/` will appear at the local repo path. To place the folder on the Desktop directly:
+```bash
+git clone https://github.com/monaempoweryou-del/mona-chat-ap ~/Desktop/MONA\ Workspace
+```
+
+### Index
+All deliverables must be logged in `MONA Deliverables/REPORT_INDEX.md` per REPORT-001.
+
+---
+
 ## REPORT-001 — Report Archive Standard
 
 **Effective:** June 3, 2026

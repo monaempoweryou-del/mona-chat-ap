@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MONA Digital Marketing — Logo Design Presentation</title>
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, Helvetica, sans-serif; background: #0d1117; color: #1a1a2e; }
+.cover { background: linear-gradient(135deg, #1B2D4F 0%, #0d1b2e 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 40px; text-align: center; }
+.cover-logo { color: white; font-size: 64px; font-weight: 900; letter-spacing: 8px; margin-bottom: 8px; }
+.cover-logo span { color: #5DADE2; }
+.cover-sub { color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 60px; }
+.cover-title { color: white; font-size: 34px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+.cover-title span { color: #5DADE2; }
+.cover-meta { color: rgba(255,255,255,0.4); font-size: 13px; letter-spacing: 1px; }
+.toc { background: #f7f9fc; padding: 60px 80px; }
+.toc h2 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #6B7280; margin-bottom: 28px; }
+.toc-item { display: flex; align-items: center; padding: 14px 0; border-bottom: 1px solid #e5e9ef; font-size: 15px; color: #1B2D4F; font-weight: 600; }
+.toc-num { width: 36px; height: 36px; border-radius: 50%; background: #1B2D4F; color: white; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-right: 16px; flex-shrink: 0; }
+.toc-num.blue { background: #2E86C1; }
+.toc-num.teal { background: #1ABC9C; }
+.toc-num.gold { background: #F39C12; }
+.toc-num.rec { background: #8E44AD; }
+.section { background: white; padding: 60px 80px; }
+.section.dark { background: #1B2D4F; }
+.section.grey { background: #f7f9fc; }
+.section-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #2E86C1; background: #EBF5FB; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
+.section h2 { font-size: 28px; font-weight: 800; color: #1B2D4F; margin-bottom: 8px; }
+.section h2 span { color: #2E86C1; }
+.section p { font-size: 14px; color: #6B7280; line-height: 1.7; margin-bottom: 32px; }
+.concept-card { border-radius: 16px; overflow: hidden; margin-bottom: 48px; box-shadow: 0 4px 32px rgba(0,0,0,0.08); }
+.concept-header { padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; }
+.concept-header.navy { background: #1B2D4F; }
+.concept-header.blue { background: #2E86C1; }
+.concept-header.teal { background: #1ABC9C; }
+.concept-header.purple { background: #5B2C6F; }
+.concept-label { color: white; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
+.concept-name { color: white; font-size: 18px; font-weight: 800; }
+.concept-model { color: white; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.5; }
+.concept-image { background: #f0f2f5; text-align: center; padding: 0; }
+.concept-image img { width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto; }
+.concept-image .placeholder { width: 100%; height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f0f4f8; }
+.concept-image .placeholder-label { font-size: 13px; color: #9CA3AF; font-weight: 600; margin-bottom: 8px; }
+.concept-image .placeholder-url { font-size: 10px; color: #C4C9D4; word-break: break-all; max-width: 400px; text-align: center; padding: 0 20px; }
+.concept-body { padding: 28px; background: white; }
+.concept-tagline { font-size: 16px; font-weight: 700; color: #1B2D4F; margin-bottom: 12px; }
+.concept-desc { font-size: 14px; color: #6B7280; line-height: 1.7; margin-bottom: 20px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.tag { font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+.tag.navy { background: #EBF0F7; color: #1B2D4F; }
+.tag.blue { background: #EBF5FB; color: #2E86C1; }
+.tag.teal { background: #E8F8F5; color: #1ABC9C; }
+.tag.gold { background: #FEF9E7; color: #F39C12; }
+.tag.red { background: #FDEDEC; color: #E74C3C; }
+.tag.purple { background: #F5EEF8; color: #8E44AD; }
+.review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.review-box { border-radius: 10px; padding: 16px 18px; }
+.review-box.strength { background: #E8F8F5; border-left: 4px solid #1ABC9C; }
+.review-box.weakness { background: #FEF9E7; border-left: 4px solid #F39C12; }
+.review-box-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.strength .review-box-title { color: #1ABC9C; }
+.weakness .review-box-title { color: #F39C12; }
+.review-box ul { padding-left: 14px; }
+.review-box li { font-size: 12px; color: #374151; line-height: 1.7; }
+.score-row { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+.score-label { font-size: 12px; color: #6B7280; width: 130px; flex-shrink: 0; }
+.score-bar { flex: 1; height: 6px; background: #E5E9EF; border-radius: 3px; }
+.score-fill { height: 6px; border-radius: 3px; }
+.score-fill.navy { background: #1B2D4F; }
+.score-fill.blue { background: #2E86C1; }
+.score-fill.teal { background: #1ABC9C; }
+.score-fill.gold { background: #F39C12; }
+.score-num { font-size: 12px; font-weight: 700; color: #1B2D4F; width: 28px; text-align: right; }
+.divider { height: 1px; background: #E5E9EF; margin: 32px 0; }
+.recommendation { background: linear-gradient(135deg, #1B2D4F 0%, #223a6e 100%); border-radius: 16px; padding: 40px; color: white; margin-top: 48px; }
+.rec-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #5DADE2; margin-bottom: 16px; }
+.rec-title { font-size: 26px; font-weight: 800; color: white; margin-bottom: 8px; }
+.rec-title span { color: #5DADE2; }
+.rec-sub { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; }
+.rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+.rec-card { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 18px; }
+.rec-card-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+.rec-card-value { font-size: 14px; font-weight: 700; color: white; line-height: 1.5; }
+.applications { background: white; padding: 60px 80px; }
+.app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.app-item { border-radius: 10px; padding: 20px; text-align: center; background: #f7f9fc; border: 1px solid #e5e9ef; }
+.app-icon { font-size: 28px; margin-bottom: 10px; }
+.app-name { font-size: 13px; font-weight: 700; color: #1B2D4F; margin-bottom: 4px; }
+.app-desc { font-size: 11px; color: #6B7280; }
+.qc-section { background: #f7f9fc; padding: 60px 80px; }
+.qc-table { width: 100%; border-collapse: collapse; }
+.qc-table th { background: #1B2D4F; color: white; padding: 12px 16px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+.qc-table td { padding: 12px 16px; border-bottom: 1px solid #E5E9EF; font-size: 13px; color: #374151; }
+.qc-pass { color: #1ABC9C; font-weight: 700; }
+.qc-note { color: #6B7280; font-size: 12px; }
+.footer-section { background: #1B2D4F; padding: 32px 80px; display: flex; justify-content: space-between; align-items: center; }
+.footer-left { color: rgba(255,255,255,0.5); font-size: 11px; }
+.footer-left strong { color: #5DADE2; }
+.footer-right { color: rgba(255,255,255,0.3); font-size: 10px; text-align: right; }
+
+/* HTML-only additions */
+.cover { min-height: 100vh; }
+.review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.app-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">MONA<span>.</span></div>
+  <div class="cover-sub">Digital Marketing · Los Angeles</div>
+  <div class="cover-title">Logo Design <span>Presentation</span><br>Four Concept Directions</div>
+  <div class="cover-meta">Prepared by Mona AI · June 3, 2026 · Confidential</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-item"><div class="toc-num">A</div>Concept A — Pure Wordmark</div>
+  <div class="toc-item"><div class="toc-num blue">B</div>Concept B — Geometric M + Wordmark</div>
+  <div class="toc-item"><div class="toc-num teal">C</div>Concept C — Signal &amp; Reach</div>
+  <div class="toc-item"><div class="toc-num gold">GPT</div>GPT Image Concept — Bold Confidence (OpenAI)</div>
+  <div class="toc-item"><div class="toc-num rec">★</div>Creative Director Recommendation</div>
+</div>
+
+<!-- CONCEPT A -->
+<div class="section">
+  <div class="section-badge">Concept A · GPT Image 1.5 (OpenAI)</div>
+  <h2>Pure <span>Wordmark</span></h2>
+  <p>Clean typographic identity. The name carries the brand alone — no icon required. Confident, corporate, timeless.</p>
+  <div class="concept-card">
+    <div class="concept-header navy">
+      <div><div class="concept-label">Concept A</div><div class="concept-name">Pure Wordmark</div></div>
+      <div class="concept-model">GPT Image 1.5 · OpenAI</div>
+    </div>
+    <div class="concept-image">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214415_3a8cecb5-422e-489d-8e31-ed40dc0614fa.png" alt="Concept A — Pure Wordmark" onerror="this.parentElement.innerHTML='<div class=placeholder><div class=placeholder-label>Concept A — Pure Wordmark</div><div class=placeholder-url>https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214415_3a8cecb5-422e-489d-8e31-ed40dc0614fa.png</div></div>'">
+    </div>
+    <div class="concept-body">
+      <div class="concept-tagline">The name is the brand.</div>
+      <div class="concept-desc">MONA rendered in strong geometric sans-serif capitals in deep navy blue. "DIGITAL MARKETING" below in lighter weight uppercase with generous tracking. No icon. No decoration. Pure confidence.</div>
+      <div class="tags">
+        <span class="tag navy">Minimal</span>
+        <span class="tag navy">Corporate</span>
+        <span class="tag blue">Timeless</span>
+        <span class="tag blue">Versatile</span>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-box strength">
+          <div class="review-box-title">Strengths</div>
+          <ul>
+            <li>Scales perfectly from favicon to billboard</li>
+            <li>Works in any color on any background</li>
+            <li>Easy to reproduce in any medium</li>
+            <li>Professional at first glance</li>
+          </ul>
+        </div>
+        <div class="review-box weakness">
+          <div class="review-box-title">Considerations</div>
+          <ul>
+            <li>Less differentiated — many agencies use wordmarks</li>
+            <li>No icon = no standalone symbol for profile photos</li>
+            <li>Relies entirely on font choice for personality</li>
+            <li>May need iconmark companion for social media</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <div class="score-row"><span class="score-label">Memorability</span><div class="score-bar"><div class="score-fill navy" style="width:72%"></div></div><span class="score-num">72</span></div>
+        <div class="score-row"><span class="score-label">Versatility</span><div class="score-bar"><div class="score-fill navy" style="width:92%"></div></div><span class="score-num">92</span></div>
+        <div class="score-row"><span class="score-label">Differentiation</span><div class="score-bar"><div class="score-fill navy" style="width:58%"></div></div><span class="score-num">58</span></div>
+        <div class="score-row"><span class="score-label">Brand Personality</span><div class="score-bar"><div class="score-fill navy" style="width:65%"></div></div><span class="score-num">65</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT B -->
+<div class="section grey">
+  <div class="section-badge">Concept B · Nano Banana Pro (Google)</div>
+  <h2>Geometric M <span>+ Wordmark</span></h2>
+  <p>A bold geometric M lettermark paired with the wordmark. The dual-peak M suggests growth, ascent, and forward momentum.</p>
+  <div class="concept-card">
+    <div class="concept-header blue">
+      <div><div class="concept-label">Concept B</div><div class="concept-name">Geometric M + Wordmark</div></div>
+      <div class="concept-model">Nano Banana Pro · Google</div>
+    </div>
+    <div class="concept-image">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214422_37550793-1f6b-42a1-885c-4c6844a9b98f.png" alt="Concept B — Geometric M Wordmark" onerror="this.parentElement.innerHTML='<div class=placeholder><div class=placeholder-label>Concept B — Geometric M + Wordmark</div><div class=placeholder-url>https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214422_37550793-1f6b-42a1-885c-4c6844a9b98f.png</div></div>'">
+    </div>
+    <div class="concept-body">
+      <div class="concept-tagline">Growth made visible.</div>
+      <div class="concept-desc">A stylized M formed by two sharp upward triangular peaks — evoking mountains, growth charts, and upward trajectory. Paired with "MONA" in bold modern sans-serif and "DIGITAL MARKETING" in light weight. System approach: icon standalone for social, full lockup for print.</div>
+      <div class="tags">
+        <span class="tag blue">Growth</span>
+        <span class="tag blue">Geometric</span>
+        <span class="tag navy">Premium</span>
+        <span class="tag teal">Memorable</span>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-box strength">
+          <div class="review-box-title">Strengths</div>
+          <ul>
+            <li>M icon works as standalone profile photo</li>
+            <li>Growth narrative built into the mark</li>
+            <li>Strong at all sizes</li>
+            <li>Premium, agency-caliber feel</li>
+          </ul>
+        </div>
+        <div class="review-box weakness">
+          <div class="review-box-title">Considerations</div>
+          <ul>
+            <li>Geometric M is common in tech/marketing</li>
+            <li>Peaks concept shares territory with other brands</li>
+            <li>Needs color lockup guide for variations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <div class="score-row"><span class="score-label">Memorability</span><div class="score-bar"><div class="score-fill blue" style="width:82%"></div></div><span class="score-num">82</span></div>
+        <div class="score-row"><span class="score-label">Versatility</span><div class="score-bar"><div class="score-fill blue" style="width:88%"></div></div><span class="score-num">88</span></div>
+        <div class="score-row"><span class="score-label">Differentiation</span><div class="score-bar"><div class="score-fill blue" style="width:70%"></div></div><span class="score-num">70</span></div>
+        <div class="score-row"><span class="score-label">Brand Personality</span><div class="score-bar"><div class="score-fill blue" style="width:80%"></div></div><span class="score-num">80</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCEPT C -->
+<div class="section">
+  <div class="section-badge">Concept C · Nano Banana Pro (Google)</div>
+  <h2>Signal <span>&amp; Reach</span></h2>
+  <p>The M constructed from digital signal arcs. Tech-forward, dynamic, and directly communicates the digital marketing mission.</p>
+  <div class="concept-card">
+    <div class="concept-header teal">
+      <div><div class="concept-label">Concept C</div><div class="concept-name">Signal &amp; Reach</div></div>
+      <div class="concept-model">Nano Banana Pro · Google</div>
+    </div>
+    <div class="concept-image">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214450_3a99e630-8f89-49b8-8c7a-7411e8b404fa.png" alt="Concept C — Signal and Reach" onerror="this.parentElement.innerHTML='<div class=placeholder><div class=placeholder-label>Concept C — Signal &amp; Reach</div><div class=placeholder-url>https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214450_3a99e630-8f89-49b8-8c7a-7411e8b404fa.png</div></div>'">
+    </div>
+    <div class="concept-body">
+      <div class="concept-tagline">Digital by design.</div>
+      <div class="concept-desc">Three upward-rising signal bars or Wi-Fi arcs forming the letter M. Navy blue to electric blue gradient. Immediately communicates digital, reach, and connectivity. The most "digital marketing" of all four concepts. Paired with clean geometric wordmark.</div>
+      <div class="tags">
+        <span class="tag teal">Dynamic</span>
+        <span class="tag blue">Tech-Forward</span>
+        <span class="tag blue">Digital</span>
+        <span class="tag gold">Energetic</span>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-box strength">
+          <div class="review-box-title">Strengths</div>
+          <ul>
+            <li>Instantly communicates digital marketing</li>
+            <li>Most distinctive of the four directions</li>
+            <li>Gradient adds energy and modernity</li>
+            <li>Great for social media / video</li>
+          </ul>
+        </div>
+        <div class="review-box weakness">
+          <div class="review-box-title">Considerations</div>
+          <ul>
+            <li>Gradient complicates single-color print</li>
+            <li>Wi-Fi arc metaphor may date over time</li>
+            <li>Higher complexity = harder at very small sizes</li>
+            <li>More competitive, less ownable over time</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <div class="score-row"><span class="score-label">Memorability</span><div class="score-bar"><div class="score-fill teal" style="width:78%"></div></div><span class="score-num">78</span></div>
+        <div class="score-row"><span class="score-label">Versatility</span><div class="score-bar"><div class="score-fill teal" style="width:68%"></div></div><span class="score-num">68</span></div>
+        <div class="score-row"><span class="score-label">Differentiation</span><div class="score-bar"><div class="score-fill teal" style="width:83%"></div></div><span class="score-num">83</span></div>
+        <div class="score-row"><span class="score-label">Brand Personality</span><div class="score-bar"><div class="score-fill teal" style="width:76%"></div></div><span class="score-num">76</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GPT IMAGE CONCEPT -->
+<div class="section grey">
+  <div class="section-badge">GPT Image Concept · GPT Image 2 (OpenAI)</div>
+  <h2>Bold <span>Confidence</span></h2>
+  <p>OpenAI GPT Image 2 generated concept. A flowing continuous-line M that doubles as an upward growth arrow. The most creatively ambitious direction.</p>
+  <div class="concept-card">
+    <div class="concept-header purple">
+      <div><div class="concept-label">GPT Image Concept</div><div class="concept-name">Bold Confidence</div></div>
+      <div class="concept-model">GPT Image 2 · OpenAI</div>
+    </div>
+    <div class="concept-image">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214457_3dd7ddd1-0d79-48b6-998d-a1f2bff0a81d.png" alt="GPT Image Concept — Bold Confidence" onerror="this.parentElement.innerHTML='<div class=placeholder><div class=placeholder-label>GPT Image Concept — Bold Confidence</div><div class=placeholder-url>https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214457_3dd7ddd1-0d79-48b6-998d-a1f2bff0a81d.png</div></div>'">
+    </div>
+    <div class="concept-body">
+      <div class="concept-tagline">One mark. Infinite meaning.</div>
+      <div class="concept-desc">A continuous flowing line that forms both the letter M and an upward growth arrow — the most conceptually layered of all directions. Navy blue and sky blue two-tone. Paired with MONA in strong condensed uppercase and "Digital Marketing" in open tracking light weight.</div>
+      <div class="tags">
+        <span class="tag purple">Distinctive</span>
+        <span class="tag navy">Sophisticated</span>
+        <span class="tag blue">Conceptual</span>
+        <span class="tag gold">Premium</span>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-box strength">
+          <div class="review-box-title">Strengths</div>
+          <ul>
+            <li>Most original and ownable mark</li>
+            <li>Double meaning (M + growth arrow) is memorable</li>
+            <li>Sophisticated — signals premium agency</li>
+            <li>Strong brand storytelling foundation</li>
+          </ul>
+        </div>
+        <div class="review-box weakness">
+          <div class="review-box-title">Considerations</div>
+          <ul>
+            <li>Continuous line may lose clarity at very small sizes</li>
+            <li>Most complex — needs refinement by human designer</li>
+            <li>AI concept, not final production asset</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <div class="score-row"><span class="score-label">Memorability</span><div class="score-bar"><div class="score-fill gold" style="width:88%"></div></div><span class="score-num">88</span></div>
+        <div class="score-row"><span class="score-label">Versatility</span><div class="score-bar"><div class="score-fill gold" style="width:74%"></div></div><span class="score-num">74</span></div>
+        <div class="score-row"><span class="score-label">Differentiation</span><div class="score-bar"><div class="score-fill gold" style="width:91%"></div></div><span class="score-num">91</span></div>
+        <div class="score-row"><span class="score-label">Brand Personality</span><div class="score-bar"><div class="score-fill gold" style="width:90%"></div></div><span class="score-num">90</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREATIVE DIRECTOR RECOMMENDATION -->
+<div class="section">
+  <div class="section-badge">Creative Director Review</div>
+  <h2>Recommendation <span>&amp; Next Steps</span></h2>
+  <p>Assessment across all four directions — brand fit, long-term viability, and execution readiness.</p>
+
+  <div class="recommendation">
+    <div class="rec-label">★ Creative Director Recommendation</div>
+    <div class="rec-title">Primary: <span>Concept B — Geometric M</span></div>
+    <div class="rec-sub">The Geometric M + Wordmark delivers the strongest balance of memorability, versatility, and brand story. The dual-peak M directly visualizes growth and ascent — which IS the MONA promise to every client. It provides a standalone icon for social profiles, a full lockup for documents, and a flexible system that grows with the agency.<br><br>The GPT Image Concept (Bold Confidence) is recommended as the direction to develop into a refined professional version — it has the highest brand personality score but needs a human designer pass to reach production quality.</div>
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-card-label">Primary Direction</div>
+        <div class="rec-card-value">Concept B — Geometric M<br>Proceed to professional refinement</div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Development Direction</div>
+        <div class="rec-card-value">GPT Concept — Bold Confidence<br>Commission human designer to refine</div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Archive</div>
+        <div class="rec-card-value">Concept A — too common<br>Concept C — dating risk</div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-card-label">Next Step</div>
+        <div class="rec-card-value">Maor selects direction → commission vector files from designer → apply to brand system</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND APPLICATIONS -->
+<div class="applications">
+  <div class="section-badge">Brand Applications</div>
+  <h2 style="font-size:28px;font-weight:800;color:#1B2D4F;margin-bottom:8px;">Where the Logo <span style="color:#2E86C1;">Must Work</span></h2>
+  <p style="font-size:14px;color:#6B7280;line-height:1.7;margin-bottom:32px;">Every final logo direction must be tested across these 6 applications before approval.</p>
+  <div class="app-grid">
+    <div class="app-item"><div class="app-icon">📄</div><div class="app-name">Email Header</div><div class="app-desc">Dark background, white version</div></div>
+    <div class="app-item"><div class="app-icon">📱</div><div class="app-name">Social Profile</div><div class="app-desc">Square crop, icon only</div></div>
+    <div class="app-item"><div class="app-icon">🌐</div><div class="app-name">Website Header</div><div class="app-desc">Light background, full lockup</div></div>
+    <div class="app-item"><div class="app-icon">📊</div><div class="app-name">Client Reports</div><div class="app-desc">PDF headers, MONA green version</div></div>
+    <div class="app-item"><div class="app-icon">🎥</div><div class="app-name">Video Watermark</div><div class="app-desc">AI Power Studio content</div></div>
+    <div class="app-item"><div class="app-icon">🖨️</div><div class="app-name">Print / Black &amp; White</div><div class="app-desc">Single color reproduction test</div></div>
+  </div>
+</div>
+
+<!-- QC CHECKLIST -->
+<div class="qc-section">
+  <div class="section-badge">QC Review</div>
+  <h2 style="font-size:28px;font-weight:800;color:#1B2D4F;margin-bottom:8px;">Quality <span style="color:#2E86C1;">Checklist</span></h2>
+  <p style="font-size:14px;color:#6B7280;line-height:1.7;margin-bottom:28px;">MONA Delivery Standard verification.</p>
+  <table class="qc-table">
+    <tr><th>Check</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>4 concept directions explored</td><td class="qc-pass">✅ Pass</td><td>A, B, C, GPT Image</td></tr>
+    <tr><td>ChatGPT/OpenAI concept included</td><td class="qc-pass">✅ Pass</td><td>GPT Image 2 (OpenAI model)</td></tr>
+    <tr><td>Creative Director review complete</td><td class="qc-pass">✅ Pass</td><td>Scores + strengths/considerations per concept</td></tr>
+    <tr><td>Design critique complete</td><td class="qc-pass">✅ Pass</td><td>Memorability, versatility, differentiation, personality</td></tr>
+    <tr><td>Recommendation provided</td><td class="qc-pass">✅ Pass</td><td>Primary: B · Development: GPT Concept</td></tr>
+    <tr><td>Brand applications identified</td><td class="qc-pass">✅ Pass</td><td>6 applications documented</td></tr>
+    <tr><td>Next steps defined</td><td class="qc-pass">✅ Pass</td><td>Maor selects → vector refinement → brand system</td></tr>
+    <tr><td>Gmail Draft created</td><td class="qc-pass">✅ Pass</td><td>Delivered to monaempoweryou@gmail.com</td></tr>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-section">
+  <div class="footer-left"><strong>Mona Digital Marketing</strong> · monaempoweryou.com · Los Angeles, CA<br>© 2026 Mona Digital Marketing. Confidential — Internal Use.</div>
+  <div class="footer-right">Logo Design Presentation<br>June 3, 2026 · AI-assisted by Claude Code</div>
+</div>
+
+</body>
+</html>

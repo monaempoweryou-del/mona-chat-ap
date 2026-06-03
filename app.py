@@ -152,7 +152,7 @@ def send_to_email(subject: str, body_html: str):
     msg.attach(MIMEText(body_html, "html"))
 
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=15) as server:
             server.login(smtp_user, smtp_pass)
             server.sendmail(smtp_user, smtp_user, msg.as_string())
         return True

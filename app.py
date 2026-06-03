@@ -249,17 +249,18 @@ def chat():
             # Step 2: If production request, run Agency Manager pipeline
             if production:
                 try:
+                    # Keep-alive ping so Render proxy doesn't close idle SSE connection
+                    yield ": processing\n\n"
                     plan = run_coo(message, history)
+                    yield ": sending\n\n"
                     agent = plan.get("agent", "unknown")
                     client_name = plan.get("client", "agency").title()
                     needs_approval = plan.get("needs_approval", False)
 
                     if needs_approval:
-                        # Content production — flag for Maor, don't auto-execute
                         subject = f"[APPROVAL NEEDED] {agent.replace('-', ' ').title()} — {client_name}"
                         body = format_email_body(plan, approval_required=True)
                     else:
-                        # Text-based — execute immediately
                         subject = f"[Mona] {agent.replace('-', ' ').title()} — {client_name}"
                         body = format_email_body(plan, approval_required=False)
 
@@ -268,6 +269,7 @@ def chat():
                     yield f"data: {json.dumps({'text': f' {status}'})}\n\n"
                 except Exception as e:
                     print(f"Agency Manager pipeline error: {e}")
+                    yield f"data: {json.dumps({'text': ' (Pipeline error — check logs)'})}\n\n"
 
             yield "data: [DONE]\n\n"
         except Exception as e:

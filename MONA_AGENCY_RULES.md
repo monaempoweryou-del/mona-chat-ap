@@ -108,3 +108,8 @@ Lessons recorded during active execution:
 | 2026-06-03 | When a file is found but inaccessible, determine WHY before escalating. Document root cause, attempted solutions, and remaining blocker. Only escalate after exhausting alternate paths. |
 | 2026-06-03 | Gmail MCP (d1d24a0c) does not expose `messages.attachments.get`. PDF attachments can be seen and identified via `get_thread` but cannot be downloaded. Workaround: reconstruct from available email data if confidence is high. |
 | 2026-06-03 | Remote cloud environment has no access to local machine filesystem (`file:///Users/...`). Desktop files require manual upload or local export to become accessible. |
+| 2026-06-03 | Canva has an official MCP (Anthropic partnership). Free tier covers design generation, search, and export — no additional cost beyond existing Canva account. |
+| 2026-06-03 | Google's official GA4 MCP server (Apache 2.0, v0.4.0) is the correct path for analytics data. Free, open source — not a third-party connector. |
+| 2026-06-03 | GBP API approval requires: Google Cloud project + 60+ day verified business profile. Apply early — approval can take weeks. |
+| 2026-06-03 | n8n self-hosted = zero cost, unlimited automations, 400+ integrations, native AI nodes. Correct Zapier/Make alternative for agencies with client data security requirements. |
+| 2026-06-03 | Ahrefs + Semrush MCPs exist but require paid subscriptions ($99–$119+/mo). Google Search Console MCP covers 80% of the same SEO data at zero cost. |

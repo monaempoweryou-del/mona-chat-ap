@@ -63,10 +63,29 @@ Audit all available skills, MCPs, connectors, and capabilities. Identify highest
 
 ---
 
+### TASK-004 — Priority 4: Connector Research
+**Completed:** June 3, 2026
+**Branch:** `claude/monet-ai-power-studio-scope-3wmwA`
+
+Research free connectors, MCPs, automation, design, marketing, and research tools not currently connected.
+
+**Outcome:**
+- 9 connectors identified and ranked across 3 tiers
+- 4 free connectors flagged for immediate activation: Canva MCP, GA4 MCP, GSC MCP, Slack MCP
+- 1 time-sensitive action: GBP API approval application (takes days–weeks; start now)
+- n8n self-hosted identified as the correct zero-cost automation backbone for multi-step workflows
+- Ahrefs/Semrush MCPs documented as paid ($99–$119/mo) — GSC free alternative covers current needs
+- Full report saved: `MONA_Connector_Research_June2026.md`
+- 5 new lessons added to Learning Engine
+
+**Key Finding:** GA4 + GSC + GBP trio = fully automated, data-accurate client reporting at zero incremental cost. This is the foundation for Priority 5 and Priority 9.
+
+---
+
 ## 🔄 Active Tasks
 
-**Priority 4 — Connector Research** (next in queue)
-Research free connectors, MCPs, automation, design, marketing, and research tools not currently connected. Focus on outcome improvement for MONA and AI Power Studio.
+**Priority 5 — MONA 90-Day Organic Growth Strategy** (next in queue)
+Internal strategy session (COO, Marketing, SEO, Social, Creative Director, AI Power Studio roles). Deliver 90-Day Organic Growth Plan. Focus: SEO, GBP, Content, Social, Referrals, Partnerships, Educational content, AI Power Studio collaboration. No paid advertising.
 
 ---
 

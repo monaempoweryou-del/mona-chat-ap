@@ -126,8 +126,8 @@ Set needs_approval true ONLY for image/video/graphic-design requests."""
     # Step 2: Generate the actual content separately (clean text, not inside JSON)
     if not plan.get("needs_approval", False):
         content_resp = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=3000,
+            model="claude-haiku-4-5-20251001",
+            max_tokens=2000,
             system=COO_PROMPT,
             messages=[{"role": "user", "content": f"Write the complete {plan.get('deliverable','deliverable')} for this request: {message}\nClient: {plan.get('client','')}\nOutput the full deliverable as HTML, ready to email. No JSON wrapper."}]
         )

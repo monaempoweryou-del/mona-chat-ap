@@ -67,6 +67,7 @@ MONA Deliverables/
 | `Internal/Strategy/MONA_Content_Machine_June2026.md` | June 4, 2026 | 90-day content calendar, production workflow, video series, AI Power Studio integration. |
 | `Internal/Strategy/MONA_AIStudio_Opportunity_Report_June2026.md` | June 4, 2026 | 10 opportunities ranked by Revenue/Growth/Ease. $21.6K/mo target by Month 3. |
 | `Internal/Strategy/MONA_Website_Roadmap_June2026.md` | June 4, 2026 | Full Wix audit. 5 critical issues. 15-issue register. 90-day execution plan. 2 live changes applied. |
+| `Internal/Strategy/MONA_MacMiniPro_Analysis_June2026.md` | June 4, 2026 | Mac Mini M4 Pro 48GB assessment. Justified for Mission Zero + browser automation. ROI 6–12 months. |
 
 ### Audits
 
@@ -116,8 +117,8 @@ MONA Deliverables/
 | Category | Count |
 |----------|-------|
 | Client deliverables in folder | 5 (4 Renova + 1 Laguna) |
-| Internal documents | 8 |
+| Internal documents | 9 |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **21** |
+| **Total in MONA Deliverables** | **22** |
 | Desktop-only gaps | 2 |

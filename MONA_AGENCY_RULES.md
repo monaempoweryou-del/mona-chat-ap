@@ -236,6 +236,37 @@ Internal archive assets are exempt from the email/draft requirement but must sti
 
 ---
 
+## BROWSER-001 — Browser Profile Standard
+
+**Effective:** June 4, 2026
+
+### MONA "007" Profile — Permanently Excluded
+
+MONA "007" is an empty Chrome profile created accidentally during setup. It contains no agency accounts, no client accounts, no operational access, and no business value.
+
+**Rules:**
+
+1. Do NOT connect to MONA "007" under any circumstances.
+2. Do NOT use MONA "007" as a fallback, default, or backup profile.
+3. Do NOT attempt to repair, recover, reconnect, preserve, or prioritize MONA "007".
+4. Remove MONA "007" from all browser-selection logic, default assumptions, and profile preference systems.
+5. Ignore any saved browser pairing that references MONA "007".
+
+### Required Verification Before Any Browser Connection
+
+Before connecting to any browser profile, verify:
+- Does the profile contain real operational accounts?
+- Does the profile have agency or client business access?
+- Is this a named operational profile (not "007" or any unnamed/accidental profile)?
+
+If the answer to any of these is no or unknown — do not connect. Identify the correct operational profile first.
+
+### Operational Profile Principle
+
+Only profiles with confirmed agency or client access are valid connection targets. An empty or unverified profile has no operational value and should never be used as a connection target regardless of availability.
+
+---
+
 ## Learning Engine
 
 Lessons recorded during active execution:
@@ -260,3 +291,4 @@ Lessons recorded during active execution:
 | 2026-06-04 | monaempoweryou.com: phone number (916) 473-3131 is a Sacramento area code on an LA business — kills local SEO. Fix is Wix Dashboard → Settings → Business Info. Address also missing. |
 | 2026-06-04 | AI Power Studio highest-scored opportunities (June 2026): HeyGen Avatar Video Production (25) > AI Readiness Audit (24) > Video Translation (24). All three are executable with current tool stack. |
 | 2026-06-04 | Wix Blog category creation is fully autonomous (POST /blog/v3/categories). But assigning categories to existing published posts requires a draft cycle — not a single API call. |
+| 2026-06-04 | MONA "007" Chrome profile = empty accidental profile. No operational access. No business value. Never connect to it. Always verify a browser profile contains real operational accounts before connecting. |

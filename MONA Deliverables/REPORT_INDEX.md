@@ -1,7 +1,7 @@
 # MONA Deliverables — Master Index
 
-> Governed by STORAGE-001 and REPORT-001 (see MONA_AGENCY_RULES.md)
-> Last updated: June 3, 2026
+> Governed by STORAGE-001, REPORT-001, DELIVERABLES-001, DELIVERABLES-001A (see MONA_AGENCY_RULES.md)
+> Last updated: June 4, 2026
 
 ---
 
@@ -81,6 +81,8 @@ MONA Deliverables/
 |------|------|-------------|
 | `Internal/Systems/MONA_USER001_Maor_Operating_Profile.md` | June 3, 2026 | Approval patterns, revision prediction, format preferences. |
 | `Internal/Systems/MONA_LessonsLearned_Audit_June2026.md` | June 4, 2026 | Full system review. 7 new lessons. 0 rule conflicts. HIM-001 metrics updated. |
+| `Internal/Systems/HIM001_Metrics.md` | June 3, 2026 (ongoing) | HIM-001 session tracking. Updated each session. |
+| `Internal/Systems/MONA_Chat_Infrastructure_Report_June2026.md` | June 3, 2026 | App.py bug analysis, SMTP fix, GMAIL_APP_PASSWORD PMA. |
 
 ### Brand
 
@@ -122,3 +124,276 @@ MONA Deliverables/
 | Archive | 2 |
 | **Total in MONA Deliverables** | **22** |
 | Desktop-only gaps | 2 |
+
+---
+
+## Metadata Registry
+
+> Governed by DELIVERABLES-001A. Every deliverable must have a complete entry below.
+> Fields marked [REVIEW_X] require owner verification at next audit.
+
+---
+
+**Renova_Builders_Monthly_Performance_Report_March_2026.pdf**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Renova Builders
+Deliverable Type:  Monthly Performance Report
+Producing Agent:   Claude Code · Report Migration Agent
+Workflow:          MONA Agency Build Session 001 · TASK-001 Report Migration
+File:              Clients/Renova Builders/Renova_Builders_Monthly_Performance_Report_March_2026.pdf
+Status:            Complete — Delivered to Omri Dror, June 2 2026
+```
+
+---
+
+**Renova_Builders_Monthly_Performance_Report_April_2026.pdf**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Renova Builders
+Deliverable Type:  Monthly Performance Report
+Producing Agent:   Claude Code · Report Migration Agent
+Workflow:          MONA Agency Build Session 001 · TASK-001 Report Migration
+File:              Clients/Renova Builders/Renova_Builders_Monthly_Performance_Report_April_2026.pdf
+Status:            Complete — Delivered to Omri Dror, June 2 2026
+```
+
+---
+
+**Renova_Builders_Monthly_Performance_Report_May_2026.pdf**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Renova Builders
+Deliverable Type:  Monthly Performance Report
+Producing Agent:   Claude Code · Report Migration Agent
+Workflow:          MONA Agency Build Session 001 · TASK-001 Report Migration
+File:              Clients/Renova Builders/Renova_Builders_Monthly_Performance_Report_May_2026.pdf
+Status:            Complete — Delivered to Omri Dror, June 2 2026
+```
+
+---
+
+**Renova_Builders_Q2_2026_Review_Q3_Execution_Plan.pdf**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Renova Builders
+Deliverable Type:  Quarterly Review + Execution Plan
+Producing Agent:   Claude Code · Report Migration Agent
+Workflow:          MONA Agency Build Session 001 · TASK-001 Report Migration
+File:              Clients/Renova Builders/Renova_Builders_Q2_2026_Review_Q3_Execution_Plan.pdf
+Status:            Complete — Delivered to Omri Dror, June 2 2026
+```
+
+---
+
+**Laguna_Luxury_Pools_Spa_Digital_Presence_Audit_Growth_Strategy_May2026.pdf**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Laguna Luxury Pools
+Deliverable Type:  Digital Presence Audit + Growth Strategy
+Producing Agent:   Claude Code · Agency Analyst
+Workflow:          MONA Agency Build Session 001 · TASK-001 Report Migration
+File:              Clients/Laguna Luxury Pools/Laguna_Luxury_Pools_Spa_Digital_Presence_Audit_Growth_Strategy_May2026.pdf
+Status:            Pending Delivery — PMA-001 (awaiting Maor decision: Laguna — yes / archive)
+```
+
+---
+
+**MONA_Logo_Presentation_June2026.html**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Brand
+Deliverable Type:  Logo Concept Presentation
+Producing Agent:   Claude Code · Creative Director · Higgsfield Image Generator
+Workflow:          MONA Agency Build Session 001 · Priority 1 Logo Project
+File:              Internal/Brand/MONA_Logo_Presentation_June2026.html
+Status:            Complete — Gmail draft r-1197090852885943416 · PMA-006 logo direction pending
+```
+
+---
+
+**MONA_Logo_Presentation_June2026.pdf**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Brand
+Deliverable Type:  Logo Concept Presentation (PDF archive)
+Producing Agent:   Claude Code · WeasyPrint
+Workflow:          MONA Agency Build Session 001 · Priority 1 Logo Project
+File:              Internal/Brand/MONA_Logo_Presentation_June2026.pdf
+Status:            Complete — formal archive copy
+```
+
+---
+
+**MONA_Superpower_Audit_June2026.md**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal
+Deliverable Type:  Capability Audit
+Producing Agent:   Claude Code · Systems Auditor
+Workflow:          MONA Agency Build Session 001 · Priority 3 Superpower Audit
+File:              Internal/Audits/MONA_Superpower_Audit_June2026.md
+Status:            Complete
+```
+
+---
+
+**MONA_Connector_Research_June2026.md**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal
+Deliverable Type:  Connector Research Report
+Producing Agent:   Claude Code · Research Agent
+Workflow:          MONA Agency Build Session 001 · Priority 4 Connector Research
+File:              Internal/Strategy/MONA_Connector_Research_June2026.md
+Status:            Complete
+```
+
+---
+
+**MONA_90Day_Growth_Strategy_June2026.md**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal
+Deliverable Type:  90-Day Organic Growth Strategy
+Producing Agent:   Claude Code · Growth Strategist · CMO · SEO Lead · Content Lead · Social Lead · Partnership Lead
+Workflow:          MONA Agency Build Session 001 · Priority 5 Growth Strategy
+File:              Internal/Strategy/MONA_90Day_Growth_Strategy_June2026.md
+Status:            Complete
+```
+
+---
+
+**MONA_USER001_Maor_Operating_Profile.md**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Systems
+Deliverable Type:  Operator Profile
+Producing Agent:   Claude Code · Systems Analyst
+Workflow:          MONA Agency Build Session 001 · Priority 6 Operating Profile
+File:              Internal/Systems/MONA_USER001_Maor_Operating_Profile.md
+Status:            Complete — living document, updated each session
+```
+
+---
+
+**MONA_Content_Machine_June2026.md**
+```
+Timestamp:         2026-06-04 (session 002)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal
+Deliverable Type:  Content Production System + 90-Day Calendar
+Producing Agent:   Claude Code · Content Strategist · Distribution Lead
+Workflow:          MONA Agency Build Session 002 · Priority 7 Content Machine
+File:              Internal/Strategy/MONA_Content_Machine_June2026.md
+Status:            Complete
+```
+
+---
+
+**MONA_AIStudio_Opportunity_Report_June2026.md**
+```
+Timestamp:         2026-06-04 (session 002)
+Business Owner:    AI Power Studio
+Client / Project:  AI Power Studio · Internal
+Deliverable Type:  Opportunity Report
+Producing Agent:   Claude Code · Research Agent · Business Analyst
+Workflow:          MONA Agency Build Session 002 · Priority 8 AI Studio Opportunity Report
+File:              Internal/Strategy/MONA_AIStudio_Opportunity_Report_June2026.md
+Status:            Complete
+```
+
+---
+
+**MONA_Website_Roadmap_June2026.md**
+```
+Timestamp:         2026-06-04 (session 002)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · monaempoweryou.com
+Deliverable Type:  Website Audit + Improvement Roadmap
+Producing Agent:   Claude Code · Wix MCP · UX Analyst · SEO Analyst
+Workflow:          MONA Agency Build Session 002 · Priority 9 Website Roadmap
+File:              Internal/Strategy/MONA_Website_Roadmap_June2026.md
+Status:            Complete — 2 live changes applied (description + blog categories)
+```
+
+---
+
+**MONA_LessonsLearned_Audit_June2026.md**
+```
+Timestamp:         2026-06-04 (session 002)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Systems
+Deliverable Type:  Lessons Learned Audit
+Producing Agent:   Claude Code · Systems Analyst
+Workflow:          MONA Agency Build Session 002 · Priority 10 Lessons Learned Audit
+File:              Internal/Systems/MONA_LessonsLearned_Audit_June2026.md
+Status:            Complete
+```
+
+---
+
+**MONA_MacMiniPro_Analysis_June2026.md**
+```
+Timestamp:         2026-06-04 (session 002)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Infrastructure
+Deliverable Type:  Hardware Analysis Report
+Producing Agent:   Claude Code · Research Agent · Infrastructure Analyst
+Workflow:          MONA Agency Build Session 002 · Priority 11 Mac Mini Analysis
+File:              Internal/Strategy/MONA_MacMiniPro_Analysis_June2026.md
+Status:            Complete
+```
+
+---
+
+**HIM001_Metrics.md**
+```
+Timestamp:         2026-06-03 (created) · 2026-06-04 (updated)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Systems
+Deliverable Type:  Operational Metrics Tracker (living document)
+Producing Agent:   Claude Code · Systems Analyst
+Workflow:          Ongoing — updated every session per HIM-001 measurement standard
+File:              Internal/Systems/HIM001_Metrics.md
+Status:            Active — updated each session
+```
+
+---
+
+**Mona_Digital_Marketing_Strategy_Report_Implementation_Summary_May2026.pdf**
+```
+Timestamp:         2026-05-14
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal
+Deliverable Type:  Strategy Report (Archive)
+Producing Agent:   [REVIEW_AGENT] — pre-session document
+Workflow:          [REVIEW_WORKFLOW] — pre-session
+File:              Archive/Mona_Digital_Marketing_Strategy_Report_Implementation_Summary_May2026.pdf
+Status:            Archive — delivered to Nataly, May 15 2026
+```
+
+---
+
+**Mona_Digital_Marketing_Self_Audit_90Day_Growth_Plan_May2026.pdf**
+```
+Timestamp:         2026-05-18
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal
+Deliverable Type:  Self-Audit + Growth Plan (Archive)
+Producing Agent:   [REVIEW_AGENT] — pre-session document
+Workflow:          [REVIEW_WORKFLOW] — pre-session
+File:              Archive/Mona_Digital_Marketing_Self_Audit_90Day_Growth_Plan_May2026.pdf
+Status:            Archive — internal only
+```

@@ -80,6 +80,63 @@ This mirrors `MONA Deliverables/` in the repo exactly.
 
 ---
 
+## DELIVERABLES-001A — Ownership Metadata Standard
+
+**Effective:** June 4, 2026
+**Parent rule:** DELIVERABLES-001
+
+### Purpose
+
+Storage location alone is not sufficient for organizational memory. Every deliverable must carry ownership metadata so future audits, reporting, search, analytics, and workflow tracking can answer instantly:
+- Which agent created this?
+- Which workflow produced it?
+- Which business owns it?
+- Which project requested it?
+- Where is it stored?
+
+DELIVERABLES-001 is the file storage rule. DELIVERABLES-001A is the memory layer on top of it.
+
+### Trigger
+
+When REPORT_INDEX.md is updated — meaning any time DELIVERABLES-001 fires and a new entry is appended.
+
+### Timing
+
+Immediately after file creation and before task completion. Metadata entry is written in the same operation as the REPORT_INDEX table entry — not deferred.
+
+### Scope
+
+Every entry in REPORT_INDEX.md. Applies to all deliverable types: client, internal, brand, archive.
+
+### Action
+
+For every deliverable logged in REPORT_INDEX.md, append a metadata block to the **Metadata Registry** section using this exact format:
+
+```
+**[Filename]**
+Timestamp:         YYYY-MM-DD HH:MM (UTC)
+Business Owner:    [Mona Digital Marketing | AI Power Studio | Client Name]
+Client / Project:  [client name or internal project name]
+Deliverable Type:  [Report | Audit | Strategy | Invoice | Proposal | Logo | etc.]
+Producing Agent:   [agent role(s) that created this]
+Workflow:          [task or priority name that generated this]
+File:              [relative path in MONA Deliverables/]
+Status:            [Complete | Review Required | Pending Delivery | Archive]
+```
+
+### Failure Handling
+
+| Failure Condition | Action |
+|------------------|--------|
+| Business owner unknown | Mark as `[REVIEW_OWNER]` — do not silently guess |
+| Producing agent unknown | Mark as `[REVIEW_AGENT]` |
+| Workflow name unknown | Mark as `[REVIEW_WORKFLOW]` |
+| Status unclear | Default to `Review Required` |
+
+Never omit a field. Never leave it blank. Use the `[REVIEW_X]` prefix to flag uncertainty explicitly.
+
+---
+
 ## HIM-001 — Human Intervention Minimization
 
 **Effective:** June 3, 2026
@@ -437,3 +494,4 @@ Lessons recorded during active execution:
 | 2026-06-04 | BROWSER-001 refined: operational profile requires BOTH business access AND full Claude control via MCP/extension. A profile with the right account but no Claude control is not operational. Verify all 4 checklist items before any browser task: active profile, logged-in account, MCP connector status, end-to-end workflow control. |
 | 2026-06-04 | BROWSER-001 root cause: the failure was not merely selecting the wrong profile — it was failing to verify whether the selected profile was both useful AND controllable. Future browser selection is a 4-step sequence: (1) verify business value, (2) verify Claude control, (3) connect, (4) execute. If either (1) or (2) fails: stop, report the deficiency, request corrective action. The objective is autonomous execution, not mere browser connectivity. |
 | 2026-06-04 | MASTER-001: a rule without a trigger is incomplete. Every rule must define Trigger + Timing + Scope + Action + Failure Handling before it is operational. Documented rules without these 5 components are notes, not rules. |
+| 2026-06-04 | DELIVERABLES-001A: storage location alone is not organizational memory. Every REPORT_INDEX entry must include 8 metadata fields: Timestamp, Business Owner, Client/Project, Deliverable Type, Producing Agent, Workflow, File, Status. Unknown fields → [REVIEW_X] prefix, never silently omitted or guessed. |

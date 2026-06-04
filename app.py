@@ -2,6 +2,7 @@ import os
 import json
 import re
 import smtplib
+import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask import Flask, request, Response, stream_with_context, send_file
@@ -138,12 +139,15 @@ Set needs_approval true ONLY for image/video/graphic-design requests."""
     return plan
 
 def send_to_email(subject: str, body_html: str):
-    """Send execution result to monaempoweryou@gmail.com via Gmail SMTP."""
+    """Send execution result to monaempoweryou@gmail.com via Gmail SMTP.
+
+    Returns (success: bool, error_message: str | None).
+    """
     smtp_user = os.environ.get("GMAIL_USER", "monaempoweryou@gmail.com")
     smtp_pass = os.environ.get("GMAIL_APP_PASSWORD")
 
     if not smtp_pass:
-        return False
+        return False, "GMAIL_APP_PASSWORD env var not set — add it in Render dashboard"
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
@@ -155,10 +159,19 @@ def send_to_email(subject: str, body_html: str):
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=15) as server:
             server.login(smtp_user, smtp_pass)
             server.sendmail(smtp_user, smtp_user, msg.as_string())
-        return True
+        return True, None
+    except smtplib.SMTPAuthenticationError:
+        err = "Gmail authentication failed — verify GMAIL_APP_PASSWORD is a valid App Password (not your account password)"
+        print(f"Email auth error: {err}")
+        return False, err
+    except smtplib.SMTPException as e:
+        err = f"SMTP error: {e}"
+        print(f"Email SMTP error: {e}")
+        return False, err
     except Exception as e:
-        print(f"Email error: {e}")
-        return False
+        err = f"Email error: {type(e).__name__}: {e}"
+        print(err)
+        return False, err
 
 def format_email_body(plan: dict, approval_required: bool = False) -> str:
     """Format the Agency Manager output as a clean email."""
@@ -264,12 +277,24 @@ def chat():
                         subject = f"[Mona] {agent.replace('-', ' ').title()} — {client_name}"
                         body = format_email_body(plan, approval_required=False)
 
-                    sent = send_to_email(subject, body)
-                    status = "✓ Sent to your inbox." if sent else "✓ Done. (Email not configured — check GMAIL_APP_PASSWORD)"
+                    sent, send_err = send_to_email(subject, body)
+                    if sent:
+                        status = "✓ Delivered to your inbox."
+                    else:
+                        # Preserve the generated content to a fallback file so it isn't lost
+                        try:
+                            ts = datetime.datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+                            fallback_path = f"/tmp/mona_draft_{ts}.html"
+                            with open(fallback_path, "w") as f:
+                                f.write(f"<h2>{subject}</h2>\n{body}")
+                            print(f"Draft preserved to {fallback_path}")
+                        except Exception:
+                            pass
+                        status = f"⚠️ Email not sent — {send_err}"
                     yield f"data: {json.dumps({'text': f' {status}'})}\n\n"
                 except Exception as e:
-                    print(f"Agency Manager pipeline error: {e}")
-                    yield f"data: {json.dumps({'text': ' (Pipeline error — check logs)'})}\n\n"
+                    print(f"Agency Manager pipeline error: {type(e).__name__}: {e}")
+                    yield f"data: {json.dumps({'text': f' ⚠️ Pipeline error: {type(e).__name__} — check server logs'})}\n\n"
 
             yield "data: [DONE]\n\n"
         except Exception as e:

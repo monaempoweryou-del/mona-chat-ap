@@ -163,6 +163,7 @@ Items blocked on human input, local machine access, or a decision from Maor.
 | PMA-009 | **Canva MCP — Deploy** | Run on Mac | `claude mcp add canva` → authenticate with Canva account |
 | PMA-010 | **GA4 + GSC MCP — Deploy** | Run on Mac | See exact commands in `CONNECTOR_DEPLOYMENT.md` (15 min) |
 | PMA-011 | **Google Business Profile API — Apply** | Submit application now | console.cloud.google.com → approval takes weeks; start today |
+| PMA-012 | **GMAIL_APP_PASSWORD — Render config** | Maor sets env var | myaccount.google.com/apppasswords → generate token → Render Dashboard → Environment → add `GMAIL_APP_PASSWORD` → redeploy |
 
 ---
 

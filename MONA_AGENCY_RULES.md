@@ -5,6 +5,81 @@
 
 ---
 
+## MASTER-001 — Rule Completeness Standard
+
+**Effective:** June 4, 2026
+
+Every rule in this system — agent instructions, code behavior, automation workflows, folder organization, reporting, browser, deliverables, scheduling — must define all five components before it is considered complete:
+
+| Component | Definition |
+|-----------|-----------|
+| **Trigger** | What activates this rule? What event, condition, or action causes it to run? |
+| **Timing** | When exactly does it run? Before task completion? On file creation? On session start? |
+| **Scope** | Where does it apply? Which workflows, agents, file types, clients, or systems? |
+| **Action** | What exactly happens? Specific steps, destinations, outputs. |
+| **Failure Handling** | What happens if it cannot complete? Fallback behavior, labels, escalation path. |
+
+**A rule without a trigger is incomplete. An incomplete rule is not a rule — it is a note.**
+
+When creating or editing any rule, fill all five fields. If a field genuinely does not apply, state why explicitly — do not omit it silently.
+
+**Retroactive application:** Existing rules (HIM-001 through BROWSER-001) will have MASTER-001 components added during the next scheduled Lessons Learned Audit.
+
+---
+
+## DELIVERABLES-001 — Claude Deliverables Center
+
+**Effective:** June 4, 2026
+
+### Trigger
+Any time Claude creates, exports, downloads, edits, generates, or receives a deliverable file — including reports, proposals, invoices, PDFs, HTML files, images, video files, strategy documents, audits, or any other output intended for use, review, or delivery.
+
+### Timing
+Immediately before marking the task complete. File placement is a prerequisite for task closure, not an optional final step.
+
+### Scope
+All deliverable files across all MONA workflows:
+- Client deliverables (Renova, Laguna, Finish Line Taxi, any new client)
+- Internal strategy, audits, systems, and brand documents
+- AI Power Studio deliverables
+- Applies in all Claude Code sessions, local and remote
+
+### Action
+
+**In-session (remote environment):**
+Save to the repo under `MONA Deliverables/` using the correct STORAGE-001 subfolder. Log in `MONA Deliverables/REPORT_INDEX.md`. Push to branch. File becomes available locally via:
+```bash
+git pull origin claude/monet-ai-power-studio-scope-3wmwA
+```
+
+**Local Desktop target structure (synced via git pull):**
+```
+Desktop → 📦 CLAUDE DELIVERABLES
+├── Clients/
+│   ├── Renova Builders/
+│   ├── Laguna Luxury Pools/
+│   └── Finish Line Taxi/
+├── Internal/
+│   ├── Strategy/
+│   ├── Audits/
+│   ├── Systems/
+│   └── Brand/
+└── Archive/
+```
+
+This mirrors `MONA Deliverables/` in the repo exactly.
+
+### Failure Handling
+
+| Failure Condition | Action |
+|------------------|--------|
+| Correct subfolder is unclear | Place in closest matching division. Prefix filename with `[REVIEW_LOCATION]_`. Log in REPORT_INDEX.md with note: "Location flagged for review." |
+| Git push fails (network) | Retry up to 4× with exponential backoff (2s, 4s, 8s, 16s). If all fail, preserve to `/tmp/` and log the path in server output. |
+| REPORT_INDEX.md update fails | Complete the file save first. Add REPORT_INDEX entry at next available opportunity. Never skip the file save waiting for the index. |
+| File format unsupported | Save in the available format, note the intended format in the REPORT_INDEX entry. |
+
+---
+
 ## HIM-001 — Human Intervention Minimization
 
 **Effective:** June 3, 2026
@@ -361,3 +436,4 @@ Lessons recorded during active execution:
 | 2026-06-04 | MONA "007" Chrome profile = empty accidental profile. No operational access. No business value. Never connect to it. Always verify a browser profile contains real operational accounts before connecting. |
 | 2026-06-04 | BROWSER-001 refined: operational profile requires BOTH business access AND full Claude control via MCP/extension. A profile with the right account but no Claude control is not operational. Verify all 4 checklist items before any browser task: active profile, logged-in account, MCP connector status, end-to-end workflow control. |
 | 2026-06-04 | BROWSER-001 root cause: the failure was not merely selecting the wrong profile — it was failing to verify whether the selected profile was both useful AND controllable. Future browser selection is a 4-step sequence: (1) verify business value, (2) verify Claude control, (3) connect, (4) execute. If either (1) or (2) fails: stop, report the deficiency, request corrective action. The objective is autonomous execution, not mere browser connectivity. |
+| 2026-06-04 | MASTER-001: a rule without a trigger is incomplete. Every rule must define Trigger + Timing + Scope + Action + Failure Handling before it is operational. Documented rules without these 5 components are notes, not rules. |

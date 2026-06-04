@@ -148,22 +148,203 @@ Using Priority 5 findings. Create: Content Calendar, Distribution Strategy, Vide
 
 ## ⏳ Pending Maor Action
 
-Items blocked on human input, local machine access, or a decision from Maor.
+*Governed by HIM-001. Every item below has been pushed to the maximum autonomous point. Human action is at the final step only.*
 
-| ID | Task | Blocked By | Action Required |
-|----|------|------------|-----------------|
-| PMA-001 | **Laguna Luxury Pools — client delivery** | Decision needed | Confirm if prospect is active. If yes, deliver the audit report. Gmail draft ready to create on approval. |
-| PMA-002 | **Renova Builders Full Audit (June 2026)** | Desktop file: `Renova_Builders_Report_2026_06.html` | Open in browser → Print to PDF → Upload to `MONA Digital Marketing Reports/` |
-| PMA-003 | **Finish Line Taxi Audit (June 2026)** | Desktop file: `Finish_Line_Taxi_Report_2026_06.html` | Open in browser → Print to PDF → Upload to `MONA Digital Marketing Reports/` |
-| PMA-004 | **Mission Zero — Supabase credentials** | Not in environment | Provide Supabase URL + anon key + service role key to enable build phase |
-| PMA-005 | **Mission Zero — Local Worker** | Requires Maor's Mac | Run launchd + Claude worker setup locally or provide remote access method |
-| PMA-006 | **MONA Logo — Direction Approval** | Maor decision required | Review Gmail draft (ID: r-1197090852885943416) → reply A / B / C / GPT or request revisions → commission vector files |
-| PMA-007 | **HeyGen Voice Clone — Audio Sample** | Maor must provide recording | Record 30 seconds of clean speech → upload so Claude can activate voice cloning pipeline |
-| PMA-008 | **HeyGen Digital Twin — Consent Video** | Maor must record consent | One-time consent recording to enable digital twin creation for AI Power Studio scale content |
-| PMA-009 | **Canva MCP — Deploy** | Run on Mac | `claude mcp add canva` → authenticate with Canva account |
-| PMA-010 | **GA4 + GSC MCP — Deploy** | Run on Mac | See exact commands in `CONNECTOR_DEPLOYMENT.md` (15 min) |
-| PMA-011 | **Google Business Profile API — Apply** | Submit application now | console.cloud.google.com → approval takes weeks; start today |
-| PMA-012 | **GMAIL_APP_PASSWORD — Render config** | Maor sets env var | myaccount.google.com/apppasswords → generate token → Render Dashboard → Environment → add `GMAIL_APP_PASSWORD` → redeploy |
+---
+
+### PMA-001 — Laguna Luxury Pools Client Delivery
+**Autonomous work completed:** Email drafted, PDF exists in `MONA Deliverables/Clients/Laguna Luxury Pools/`, Gmail draft created (ID: `r1032685970670654459`).
+**What's needed:** One decision.
+
+**ACTION REQUIRED:**
+- Reply to this chat with: `"Laguna — yes"` (active prospect, approve delivery) or `"Laguna — archive"` (not active)
+
+**EXPECTED RESULT:**
+- If yes: Claude updates draft To: field with contact email, confirms PDF is attached, marks DELIVERY-001 complete.
+- If archive: Claude moves to Archive, closes PMA.
+
+**NEXT AUTOMATED STEP:** Draft updated and delivery confirmed within this session.
+
+---
+
+### PMA-002 — Renova Builders Full Audit PDF (June 2026)
+**Autonomous work completed:** Nothing retrievable — file is on your Desktop, inaccessible from remote environment.
+
+**ACTION REQUIRED:**
+- Open Finder → locate `Renova_Builders_Report_2026_06.html` on Desktop
+- Double-click to open in Chrome (MONA Chrome profile)
+- Press `⌘P` → Change destination to "Save as PDF" → Save as `Renova_Builders_Full_Audit_June2026.pdf`
+- Drag the saved PDF into this chat window to upload
+
+**EXPECTED RESULT:** File appears in chat as an uploaded attachment.
+
+**NEXT AUTOMATED STEP:** Claude saves it to `MONA Deliverables/Clients/Renova Builders/`, logs it in REPORT_INDEX.md, closes PMA-002.
+
+---
+
+### PMA-003 — Finish Line Taxi Audit PDF (June 2026)
+**Autonomous work completed:** Nothing retrievable — file is on your Desktop.
+
+**ACTION REQUIRED:**
+- Open Finder → locate `Finish_Line_Taxi_Report_2026_06.html` on Desktop
+- Open in Chrome → `⌘P` → Save as PDF → `Finish_Line_Taxi_Digital_Presence_Audit_June2026.pdf`
+- Drag the saved PDF into this chat window to upload
+
+**EXPECTED RESULT:** File appears in chat as an uploaded attachment.
+
+**NEXT AUTOMATED STEP:** Claude saves it to `MONA Deliverables/Clients/Finish Line Taxi/`, logs it, closes PMA-003.
+
+---
+
+### PMA-004 — Mission Zero: Supabase Credentials
+**Autonomous work completed:** Can build full Mission Zero code structure without credentials (file layout, schema, worker code, env var placeholders). Will do this when Priority 2 is activated.
+**What's needed:** Three values.
+
+**ACTION REQUIRED:**
+- Go to: **supabase.com/dashboard** → select your project → Settings → API
+- Copy: Project URL, anon/public key, service_role key
+- Paste all three into this chat
+
+**EXPECTED RESULT:** Three strings: a URL starting with `https://`, and two JWT tokens.
+
+**NEXT AUTOMATED STEP:** Claude writes them to `.env` scaffold, builds Mission Zero schema and worker code, returns full build status.
+
+---
+
+### PMA-005 — Mission Zero: Local Claude Worker
+**Autonomous work completed:** Can write the launchd plist and worker script now — files will be in repo ready to copy. Will do this when Priority 2 is activated.
+**What's needed:** Terminal access on your Mac.
+
+**ACTION REQUIRED (after PMA-004 is complete and Claude has built the scripts):**
+- Open Terminal on Mac
+- Run the three setup commands Claude will provide
+- Confirm process is running
+
+**EXPECTED RESULT:** Worker process running, confirmed via `launchctl list | grep mona`.
+
+**NEXT AUTOMATED STEP:** Claude runs first end-to-end Mission Zero test.
+
+---
+
+### PMA-006 — MONA Logo Direction Approval
+**Autonomous work completed:** All 4 concepts generated, presented, scored, and recommendation delivered. Gmail draft (ID: `r-1197090852885943416`) with all logo images is in your inbox.
+**What's needed:** One word.
+
+**ACTION REQUIRED:**
+- Open Gmail → Drafts → "MONA Logo Design Presentation"
+- Review the 4 concepts (or recall: A = Abstract Wave, B = Geometric M [recommended], C = Minimalist Crown, GPT = Bold Confidence)
+- Reply to this chat with: `"Logo: B"` (or A / C / GPT / revisions needed)
+
+**EXPECTED RESULT:** Direction confirmed.
+
+**NEXT AUTOMATED STEP:** Claude commissions vector refinement brief for chosen direction, updates brand folder, adds to REPORT_INDEX.md.
+
+---
+
+### PMA-007 — HeyGen Voice Clone: Audio Sample
+**Autonomous work completed:** HeyGen MCP `clone_voice` tool is loaded and ready to execute.
+**What's needed:** A 30-second audio file.
+
+**ACTION REQUIRED:**
+- Open Voice Memos on your iPhone (or QuickTime on Mac → File → New Audio Recording)
+- Record 30+ seconds of natural speech — read anything aloud clearly
+- Export/save as MP3 or WAV
+- Drag the file into this chat window
+
+**EXPECTED RESULT:** Audio file uploaded to chat.
+
+**NEXT AUTOMATED STEP:** Claude calls `clone_voice` MCP tool immediately, returns your voice model ID, activates it for all future HeyGen video generation.
+
+---
+
+### PMA-008 — HeyGen Digital Twin: Consent Video
+**Autonomous work completed:** HeyGen MCP `create_digital_twin` and `create_avatar_consent` tools ready.
+**What's needed:** A short consent recording (HeyGen requirement — cannot be bypassed).
+
+**ACTION REQUIRED:**
+- Record a short video on iPhone/Mac camera saying the consent phrase HeyGen requires
+- HeyGen consent phrase: *"I, [your full name], give HeyGen permission to create a digital avatar of my likeness for use in AI-generated video content."*
+- Upload the video file to this chat
+
+**EXPECTED RESULT:** Video file uploaded.
+
+**NEXT AUTOMATED STEP:** Claude submits consent via `create_avatar_consent`, then creates digital twin — returns avatar ID for immediate use.
+
+---
+
+### PMA-009 — Canva MCP Deployment
+**Autonomous work completed:** Config documented, command ready.
+**What's needed:** One terminal command on your Mac + Canva login.
+
+**ACTION REQUIRED:**
+- Open Terminal on Mac (Spotlight → Terminal)
+- Run: `claude mcp add canva`
+- When prompted, sign in with your Canva account credentials
+
+**EXPECTED RESULT:** Terminal shows "Canva MCP added successfully" or similar confirmation. Claude Code sessions will now have Canva tools available.
+
+**NEXT AUTOMATED STEP:** Claude verifies Canva MCP is active, runs first test (generate a MONA-branded social graphic), confirms capability.
+
+---
+
+### PMA-010 — GA4 + Google Search Console MCP Deployment
+**Autonomous work completed:** Install commands ready, configs staged in `CONNECTOR_DEPLOYMENT.md`.
+**What's needed:** Two terminal commands + Google OAuth login.
+
+**ACTION REQUIRED (GA4):**
+- Open Terminal on Mac
+- Run: `npm install -g @google/google-analytics-mcp`
+- Run: `claude mcp add google-analytics -- npx @google/google-analytics-mcp`
+- Sign in with Google when prompted
+- Find your GA4 Property ID at: **analytics.google.com → Admin → Property Settings → Property ID** (a number like `123456789`)
+- Paste the Property ID into this chat
+
+**ACTION REQUIRED (GSC):**
+- Run: `npm install -g @modelcontextprotocol/server-google-search-console`
+- Run: `claude mcp add google-search-console -- npx @modelcontextprotocol/server-google-search-console`
+- Sign in with Google when prompted → confirm `https://monaempoweryou.com` as the site property
+
+**EXPECTED RESULT:** Both MCPs active. Claude Code sessions show GA4 + GSC tools.
+
+**NEXT AUTOMATED STEP:** Claude pulls first GA4 report for monaempoweryou.com, pulls first GSC keyword data, confirms both are operational.
+
+---
+
+### PMA-011 — Google Business Profile API Application
+**Autonomous work completed:** Application steps fully documented. This is time-sensitive — approval takes weeks.
+**What's needed:** 15 minutes to submit the application.
+
+**ACTION REQUIRED:**
+- Go to: **console.cloud.google.com** → Create new project → Name it "MONA GBP Management"
+- In the project: APIs & Services → Library → Search "My Business Business Information API" → Enable it
+- Also enable: "My Business Account Management API" and "My Business Q&A API"
+- Go to: APIs & Services → Credentials → Create Credentials → OAuth 2.0 Client ID → Web application
+- Go to: **myaccount.google.com/apppasswords** → wait for Google to send you the API access form (check email after enabling)
+- Complete the access request form — provide: verified GBP listing URL, business website, use case description ("Automated review response and GBP post management for client accounts")
+
+**EXPECTED RESULT:** Google sends an email confirming the application is under review (typically 5–15 business days).
+
+**NEXT AUTOMATED STEP:** When approval arrives, Maor pastes the approved Client ID + Secret into chat → Claude configures GBP MCP automation for all client accounts.
+
+---
+
+### PMA-012 — GMAIL_APP_PASSWORD: Render Configuration
+**Autonomous work completed:** app.py bugs fixed, error handling upgraded, code deployed. One env var needed.
+**What's needed:** 3 minutes.
+
+**ACTION REQUIRED:**
+- Step 1: Go to **myaccount.google.com/apppasswords** (sign in if needed)
+- Step 2: Under "Select app" → choose "Mail" · Under "Select device" → choose "Other (custom name)" → type "MONA Chat Render" → click Generate
+- Step 3: Copy the 16-character password shown (it won't be shown again)
+- Step 4: Go to **dashboard.render.com** → select "mona-chat-ap" service → Environment → Add Environment Variable
+  - Key: `GMAIL_APP_PASSWORD`
+  - Value: paste the 16-character token
+  - Click Save
+- Step 5: Render auto-redeploys (takes ~2 min) — watch the deploy log turn green
+
+**EXPECTED RESULT:** Next time Nataly submits a request through the chat widget, MONA delivers the result directly to monaempoweryou@gmail.com. The chat shows "✓ Delivered to your inbox."
+
+**NEXT AUTOMATED STEP:** Claude sends a test request through the MONA Chat pipeline to confirm end-to-end delivery is working.
 
 ---
 
@@ -171,6 +352,8 @@ Items blocked on human input, local machine access, or a decision from Maor.
 
 | Rule | Summary |
 |------|---------|
+| HIM-001 | Complete all automatable work before involving Maor. When human action is required: exact URL + step-by-step + expected result + next automated step. |
+| STORAGE-001 | All deliverables go to `MONA Deliverables/` with correct subfolder. Log in REPORT_INDEX.md. |
 | REPORT-001 | Every report must be documented with source, location, delivery status, reconstruction status, and category |
 | CLIENT-001 | Original source documents preferred over reconstructed versions; label reconstructed assets clearly |
 | BLOCKER-001 | Investigate root cause before escalating; Pending Maor Action is last resort |

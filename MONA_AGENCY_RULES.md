@@ -5,6 +5,68 @@
 
 ---
 
+## HIM-001 — Human Intervention Minimization
+
+**Effective:** June 3, 2026
+**Refined:** June 3, 2026
+
+### Core Principle
+
+**Maor's time is the most expensive resource in the system.**
+
+The goal is not simply to delay human intervention. The goal is to minimize Maor's labor throughout the entire system.
+
+The operating assumption at all times: **"Maor is busy. How do I keep moving without him?"**
+
+Success is measured not only by task completion, but by how little human effort was required to achieve it.
+
+### Mandatory Thought Process Before Any Escalation
+
+Before presenting Maor with any request, question, blocker, approval, decision, or action item, run through this checklist in order:
+
+1. **Can I solve it myself?**
+2. **Can I gather the missing information myself?** (search connected systems, read files, call APIs, use MCP tools)
+3. **Can I use another tool, MCP, browser session, API, connector, agent, report, document, or workflow?**
+4. **Can I verify the answer myself?**
+5. **Can I execute another 10 steps before needing Maor?**
+6. **Can I reduce Maor's involvement from 10 minutes to 1 minute?**
+7. **Can I reduce Maor's involvement from 1 minute to a single click?**
+8. **Can I eliminate Maor's involvement entirely?**
+
+Only after exhausting all eight questions should human intervention be requested.
+
+### When Intervention Is Required — Mandatory Format
+
+Present only the minimum action needed. Present it at the latest possible point.
+
+**ACTION REQUIRED:**
+- Step 1 — exact action at exact URL/screen
+- Step 2 — exact action
+- Step 3 — exact action
+
+**EXPECTED RESULT:**
+- What Maor should see on completion
+
+**NEXT AUTOMATED STEP:**
+- What Claude executes immediately after
+
+### Navigation Standard
+
+- Exact URL — never "go to the dashboard"
+- Exact field, button, or form element identified
+- Instructions start from the current screen state
+- Zero context switching required
+
+### Application Scope
+
+Every task, every session: browser operations, infrastructure setup, account connections, integrations, connector deployment, client work, research, content production, reporting.
+
+### Relationship to BLOCKER-001
+
+HIM-001 extends BLOCKER-001. BLOCKER-001 requires investigation before escalation. HIM-001 requires that after investigation, Claude completes the maximum possible autonomous work before the escalation point — not the minimum.
+
+---
+
 ## STORAGE-001 — Deliverable Storage Standard
 
 **Effective:** June 3, 2026
@@ -148,3 +210,6 @@ Lessons recorded during active execution:
 | 2026-06-03 | GBP API approval requires: Google Cloud project + 60+ day verified business profile. Apply early — approval can take weeks. |
 | 2026-06-03 | n8n self-hosted = zero cost, unlimited automations, 400+ integrations, native AI nodes. Correct Zapier/Make alternative for agencies with client data security requirements. |
 | 2026-06-03 | Ahrefs + Semrush MCPs exist but require paid subscriptions ($99–$119+/mo). Google Search Console MCP covers 80% of the same SEO data at zero cost. |
+| 2026-06-03 | HIM-001 core operating principle: "Maor is busy. How do I keep moving without him?" Default assumption = Maor is unavailable. Solve it. Only escalate after exhausting all 8 self-resolution steps. |
+| 2026-06-03 | Gmail MCP create_draft does not support programmatic file attachments. Workaround: include attachment checklist in draft body; Maor attaches manually before sending. |
+| 2026-06-03 | Maor also goes by "Moe" (nickname). Same person. |

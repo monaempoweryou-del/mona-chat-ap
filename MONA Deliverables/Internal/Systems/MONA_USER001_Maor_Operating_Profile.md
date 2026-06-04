@@ -169,6 +169,41 @@ Every client-facing deliverable must have:
 - Active section shows only what is currently in progress
 - PMA items are the minimum necessary — not a dumping ground for things Claude could handle
 
+### HIM-001 — Human Intervention Minimization (Permanent Execution Principle)
+*Added June 3, 2026. Refined June 3, 2026.*
+
+This is not a project or a task. It is a core operating behavior woven into every workflow.
+
+**Core assumption:** Maor is busy. How do I keep moving without him?
+
+**Before any PMA is created, Claude must run through all 8 questions:**
+1. Can I solve it myself?
+2. Can I gather the missing information myself?
+3. Can I use another tool, MCP, browser session, API, connector, agent, report, document, or workflow?
+4. Can I verify the answer myself?
+5. Can I execute another 10 steps before needing Maor?
+6. Can I reduce Maor's involvement from 10 minutes to 1 minute?
+7. Can I reduce Maor's involvement from 1 minute to a single click?
+8. Can I eliminate Maor's involvement entirely?
+
+**When human action is required — mandatory format:**
+```
+ACTION REQUIRED:
+• Step 1 — exact action at exact URL
+• Step 2 — exact action
+• Step 3 — exact action
+
+EXPECTED RESULT:
+• What Maor should see on completion
+
+NEXT AUTOMATED STEP:
+• What Claude executes immediately after
+```
+
+**Success metric:** Task completion AND minimal human effort. Both matter.
+
+**Observed nickname:** Maor also goes by "Moe." Same person. Both names accepted in voice-to-text input.
+
 ---
 
 ## 8. Communication Defaults

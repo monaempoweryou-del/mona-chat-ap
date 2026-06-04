@@ -239,12 +239,13 @@ Internal archive assets are exempt from the email/draft requirement but must sti
 ## BROWSER-001 — Browser Profile Standard
 
 **Effective:** June 4, 2026
+**Refined:** June 4, 2026
 
 ### MONA "007" Profile — Permanently Excluded
 
 MONA "007" is an empty Chrome profile created accidentally during setup. It contains no agency accounts, no client accounts, no operational access, and no business value.
 
-**Rules:**
+**Exclusion rules:**
 
 1. Do NOT connect to MONA "007" under any circumstances.
 2. Do NOT use MONA "007" as a fallback, default, or backup profile.
@@ -252,18 +253,65 @@ MONA "007" is an empty Chrome profile created accidentally during setup. It cont
 4. Remove MONA "007" from all browser-selection logic, default assumptions, and profile preference systems.
 5. Ignore any saved browser pairing that references MONA "007".
 
-### Required Verification Before Any Browser Connection
+---
 
-Before connecting to any browser profile, verify:
-- Does the profile contain real operational accounts?
-- Does the profile have agency or client business access?
-- Is this a named operational profile (not "007" or any unnamed/accidental profile)?
+### Operational Profile Definition
 
-If the answer to any of these is no or unknown — do not connect. Identify the correct operational profile first.
+A profile is usable **only if it passes BOTH tests:**
 
-### Operational Profile Principle
+**Test 1 — Business Access**
+- The profile contains the correct agency or client account
+- It is logged into the needed services
+- It has real operational value for the task at hand
 
-Only profiles with confirmed agency or client access are valid connection targets. An empty or unverified profile has no operational value and should never be used as a connection target regardless of availability.
+**Test 2 — Full Claude Control**
+- Claude can access and control the browser through the MCP connector / browser extension
+- Claude can navigate pages, inspect the active account, take actions, and execute tasks
+- Claude does not need Maor to manually click every step (except where a genuine security checkpoint or sensitive approval is required)
+
+**Operational profile = Business Access ✅ + Full Claude Control ✅**
+
+A profile with the right account but no Claude control = not operational yet.
+A profile with Claude control but no useful account access = not operational.
+Both conditions must be true before proceeding.
+
+---
+
+### Browser Selection Sequence (Mandatory)
+
+Every browser task must follow this sequence in order:
+
+1. **Verify business value** — Does this profile contain the agency account or client account needed for this task?
+2. **Verify Claude control** — Does Claude have active MCP/browser control? Can Claude navigate, take actions, and execute the workflow without constant manual assistance?
+3. **Connect** — Only after both verifications pass.
+4. **Execute** — Proceed with the task autonomously.
+
+**If either verification fails:**
+- Do not proceed as if the browser is ready.
+- Report the specific deficiency (which test failed and why).
+- Request only the corrective action needed to resolve it.
+
+The objective is autonomous execution, not merely browser connectivity. A connected browser that requires Maor to click every step is not an operational browser — it is a partially working one.
+
+### Pre-Work Checklist (Applied Within Step 1 and Step 2)
+
+- Which Chrome profile is active — named, confirmed, not "007"
+- Which email/account is logged in — correct for the task
+- Whether Claude browser connector/MCP has full control — connected and responsive
+- Whether Claude can perform the required workflow end-to-end without repeated manual intervention
+
+---
+
+### Permitted Escalations (Genuine Human-Only Steps)
+
+Escalate to Maor only when manual input is genuinely required:
+- 2FA / security verification
+- Payment approval
+- Password entry
+- Legal / financial final approval
+- User-only business decision
+
+All other browser actions are Claude's responsibility. The goal is execution without involving Maor unnecessarily.
 
 ---
 
@@ -292,3 +340,5 @@ Lessons recorded during active execution:
 | 2026-06-04 | AI Power Studio highest-scored opportunities (June 2026): HeyGen Avatar Video Production (25) > AI Readiness Audit (24) > Video Translation (24). All three are executable with current tool stack. |
 | 2026-06-04 | Wix Blog category creation is fully autonomous (POST /blog/v3/categories). But assigning categories to existing published posts requires a draft cycle — not a single API call. |
 | 2026-06-04 | MONA "007" Chrome profile = empty accidental profile. No operational access. No business value. Never connect to it. Always verify a browser profile contains real operational accounts before connecting. |
+| 2026-06-04 | BROWSER-001 refined: operational profile requires BOTH business access AND full Claude control via MCP/extension. A profile with the right account but no Claude control is not operational. Verify all 4 checklist items before any browser task: active profile, logged-in account, MCP connector status, end-to-end workflow control. |
+| 2026-06-04 | BROWSER-001 root cause: the failure was not merely selecting the wrong profile — it was failing to verify whether the selected profile was both useful AND controllable. Future browser selection is a 4-step sequence: (1) verify business value, (2) verify Claude control, (3) connect, (4) execute. If either (1) or (2) fails: stop, report the deficiency, request corrective action. The objective is autonomous execution, not mere browser connectivity. |

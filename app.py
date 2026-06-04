@@ -95,6 +95,11 @@ def is_production_request(message: str) -> bool:
     msg_lower = message.lower()
     return any(kw in msg_lower for kw in keywords)
 
+def parse_cards(raw: str) -> list:
+    """Extract content blocks between ---CARD--- and ---END CARD--- delimiters."""
+    matches = re.findall(r'---CARD---(.*?)---END CARD---', raw, re.DOTALL)
+    return [m.strip() for m in matches if m.strip()]
+
 def run_coo(message: str, history: list) -> dict:
     """Run the Agency Manager: first get routing plan, then generate content separately."""
     context = ""
@@ -124,15 +129,23 @@ Set needs_approval true ONLY for image/video/graphic-design requests."""
     match = re.search(r'\{.*\}', raw, re.DOTALL)
     plan = json.loads(match.group() if match else raw)
 
-    # Step 2: Generate the actual content separately (clean text, not inside JSON)
+    # Step 2: Generate the actual content using cards-only output contract
     if not plan.get("needs_approval", False):
         content_resp = client.messages.create(
             model="claude-haiku-4-5-20251001",
-            max_tokens=2000,
+            max_tokens=16000,
             system=COO_PROMPT,
-            messages=[{"role": "user", "content": f"Write the complete {plan.get('deliverable','deliverable')} for this request: {message}\nClient: {plan.get('client','')}\nOutput the full deliverable as HTML, ready to email. No JSON wrapper."}]
+            messages=[{"role": "user", "content": (
+                f"Write the complete {plan.get('deliverable', 'deliverable')} for this request: {message}\n"
+                f"Client: {plan.get('client', '')}\n\n"
+                f"Output ONLY the full deliverable wrapped in these exact delimiters — "
+                f"nothing before ---CARD---, nothing after ---END CARD---:\n\n"
+                f"---CARD---\n[complete HTML deliverable here]\n---END CARD---"
+            )}]
         )
-        plan["content"] = content_resp.content[0].text.strip()
+        raw_content = content_resp.content[0].text.strip()
+        cards = parse_cards(raw_content)
+        plan["content"] = cards[0] if cards else None
     else:
         plan["content"] = f"<p><strong>Request:</strong> {message}</p><p>This requires visual/content production. Awaiting approval to proceed.</p>"
 
@@ -274,6 +287,12 @@ def chat():
                         subject = f"[APPROVAL NEEDED] {agent.replace('-', ' ').title()} — {client_name}"
                         body = format_email_body(plan, approval_required=True)
                     else:
+                        # Guard: only send if a valid card was parsed
+                        if plan.get("content") is None:
+                            print(f"No valid card parsed for request: {message}")
+                            yield f"data: {json.dumps({'text': ' ⚠️ Output produced no valid content — email not sent. Check server logs.'})}\n\n"
+                            yield "data: [DONE]\n\n"
+                            return
                         subject = f"[Mona] {agent.replace('-', ' ').title()} — {client_name}"
                         body = format_email_body(plan, approval_required=False)
 

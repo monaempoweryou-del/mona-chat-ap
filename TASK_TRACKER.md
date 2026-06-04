@@ -175,10 +175,36 @@ Research viral AI opportunities, trending topics, new niches, and monetization p
 
 ---
 
+### TASK-010 — Priority 9: MONA Website Roadmap
+**Completed:** June 4, 2026
+**Branch:** `claude/monet-ai-power-studio-scope-3wmwA`
+
+Full Wix API audit of monaempoweryou.com. Deliver UX, design, funnel, conversion, and SEO improvements roadmap.
+
+**Outcome:**
+- Full site audit completed via Wix API: site properties, all 7 blog posts, published URLs, SEO state
+- 5 critical issues identified: wrong area code (916=Sacramento on LA business), missing address/zip, 2 pages indexed, wrong year in 3 blog titles, messaging conflict (ads vs. organic)
+- 15 issues documented with exact fixes
+- New funnel architecture designed: broken dead-end → qualified booking funnel
+- 12 missing pages identified with SEO keywords
+- 90-day execution roadmap with week-by-week actions
+- **2 live changes made this session:**
+  - Site description updated (removed Google Ads/Meta references, added LA + AI video focus)
+  - 4 blog categories created live on site: AI Marketing, Local SEO, Social Media, Agency Resources
+- Full roadmap: `MONA Deliverables/Internal/Strategy/MONA_Website_Roadmap_June2026.md`
+
+**Critical PMA:**
+- Fix phone area code (916 → LA area code) — kills local SEO until resolved
+- Add full street address + zip code
+- Enable click analytics
+- Confirm LA address to use
+
+---
+
 ## 🔄 Active Tasks
 
-**Priority 9 — MONA Website Roadmap** (next)
-Review monaempoweryou.com via Wix MCP. Deliver UX, design, funnel, conversion, and SEO improvements roadmap.
+**Priority 10 — Lessons Learned Audit** (next)
+Review Learning Engine, rules, triggers, duplicates, conflicts. Evaluate HIM-001 against 5 review checkpoint questions. Recommend system improvements.
 
 ---
 

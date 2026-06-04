@@ -66,6 +66,7 @@ MONA Deliverables/
 | `Internal/Strategy/MONA_Connector_Research_June2026.md` | June 3, 2026 | 9 connectors ranked. 4 free, ready to deploy. |
 | `Internal/Strategy/MONA_Content_Machine_June2026.md` | June 4, 2026 | 90-day content calendar, production workflow, video series, AI Power Studio integration. |
 | `Internal/Strategy/MONA_AIStudio_Opportunity_Report_June2026.md` | June 4, 2026 | 10 opportunities ranked by Revenue/Growth/Ease. $21.6K/mo target by Month 3. |
+| `Internal/Strategy/MONA_Website_Roadmap_June2026.md` | June 4, 2026 | Full Wix audit. 5 critical issues. 15-issue register. 90-day execution plan. 2 live changes applied. |
 
 ### Audits
 
@@ -114,8 +115,8 @@ MONA Deliverables/
 | Category | Count |
 |----------|-------|
 | Client deliverables in folder | 5 (4 Renova + 1 Laguna) |
-| Internal documents | 6 |
+| Internal documents | 7 |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **19** |
+| **Total in MONA Deliverables** | **20** |
 | Desktop-only gaps | 2 |

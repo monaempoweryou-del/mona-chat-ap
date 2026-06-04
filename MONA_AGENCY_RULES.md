@@ -59,7 +59,47 @@ Present only the minimum action needed. Present it at the latest possible point.
 
 ### Application Scope
 
-Every task, every session: browser operations, infrastructure setup, account connections, integrations, connector deployment, client work, research, content production, reporting.
+HIM-001 applies by default to every workflow type without exception:
+
+| Workflow | HIM-001 Applies |
+|----------|----------------|
+| Browser operations | ✅ Always |
+| Client fulfillment (reports, audits, proposals) | ✅ Always |
+| Infrastructure work (Render, env vars, MCP setup) | ✅ Always |
+| Reporting (GA4, GSC, GBP, monthly reports) | ✅ Always |
+| Content production (video, graphics, social) | ✅ Always |
+| Website development (Wix, WordPress, monaempoweryou.com) | ✅ Always |
+| AI Power Studio projects | ✅ Always |
+| Connector deployment and integration | ✅ Always |
+| Research and competitive analysis | ✅ Always |
+| Mission Zero and infrastructure builds | ✅ Always |
+
+### Measurement and Reporting
+
+HIM-001 must be tracked and reported. Metrics are logged in `MONA Deliverables/Internal/Systems/HIM001_Metrics.md`.
+
+**Tracked per session:**
+
+| Metric | Definition |
+|--------|-----------|
+| Human interventions requested | Number of PMA items created or Maor actions requested |
+| Human interventions avoided | Tasks initially requiring Maor that Claude solved autonomously |
+| Tasks completed fully autonomously | Zero Maor input required start to finish |
+| Average Maor actions per session | Total PMAs created ÷ sessions |
+| PMA compressions | Multi-step PMAs reduced to a single reply or click |
+| Estimated hours saved | (Avoided interventions × 5 min) + (Compressions × 4 min) ÷ 60 |
+
+**Reporting cadence:** Updated at the end of every completed task block. Reviewed during every Lessons Learned Audit (Priority 10 template).
+
+### Review Checkpoints
+
+HIM-001 is evaluated during every Lessons Learned Audit with these specific questions:
+
+1. Which PMA items from this period could have been avoided entirely?
+2. Which PMA items were compressed well and which could be compressed further?
+3. Were any escalations premature — did Claude ask before exhausting the 8-step checklist?
+4. What new autonomous paths were discovered this period?
+5. What is the trend — is Maor's required input per task decreasing over time?
 
 ### Relationship to BLOCKER-001
 

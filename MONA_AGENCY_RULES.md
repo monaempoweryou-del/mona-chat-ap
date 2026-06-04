@@ -277,7 +277,26 @@ Both conditions must be true before proceeding.
 
 ---
 
-### Browser Selection Sequence (Mandatory)
+### Mandatory Validation Output
+
+Before any browser-based task begins, output this check visibly in chat:
+
+```
+BROWSER-001 CHECK
+
+Business Value:   PASS / FAIL
+Claude Control:   PASS / FAIL
+Profile:          [profile name]
+Execution Status: PROCEED / STOP
+Required Action:  [exact corrective action, only if STOP]
+```
+
+If status is PROCEED — execute immediately after the check. No further narration needed.
+If status is STOP — state only the missing component and the exact action required to resolve it. No broad troubleshooting. No speculative fixes.
+
+### Enforcement Principle
+
+BROWSER-001 is a behavior, not a documented rule. The check runs every time. The format is the proof it ran.
 
 Every browser task must follow this sequence in order:
 

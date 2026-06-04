@@ -1,7 +1,7 @@
 # MONA Deliverables — Master Index
 
 > Governed by STORAGE-001, REPORT-001, DELIVERABLES-001, DELIVERABLES-001A (see MONA_AGENCY_RULES.md)
-> Last updated: June 4, 2026
+> Last updated: June 4, 2026 (session 002 — Automation Audit added)
 
 ---
 
@@ -74,6 +74,7 @@ MONA Deliverables/
 | File | Date | Description |
 |------|------|-------------|
 | `Internal/Audits/MONA_Superpower_Audit_June2026.md` | June 3, 2026 | 10 systems, 200 tools, 12 high-ROI capabilities identified. |
+| `Internal/Audits/MONA_Automation_Operations_Audit_June2026.md` | June 4, 2026 | Full operational audit. 3 critical issues, 4 high-impact opportunities, 8 quick wins. DELIVERABLES-001 rule audit included. |
 
 ### Systems
 
@@ -119,10 +120,10 @@ MONA Deliverables/
 | Category | Count |
 |----------|-------|
 | Client deliverables in folder | 5 (4 Renova + 1 Laguna) |
-| Internal documents | 9 |
+| Internal documents | 10 |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **22** |
+| **Total in MONA Deliverables** | **23** |
 | Desktop-only gaps | 2 |
 
 ---
@@ -396,4 +397,18 @@ Producing Agent:   [REVIEW_AGENT] — pre-session document
 Workflow:          [REVIEW_WORKFLOW] — pre-session
 File:              Archive/Mona_Digital_Marketing_Self_Audit_90Day_Growth_Plan_May2026.pdf
 Status:            Archive — internal only
+```
+
+---
+
+**MONA_Automation_Operations_Audit_June2026.md**
+```
+Timestamp:         2026-06-04 (session 002)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Systems
+Deliverable Type:  Automation & Operations Audit Report
+Producing Agent:   Claude Code · Systems Auditor
+Workflow:          MONA Agency Build Session 002 · Full Operational Automation Audit
+File:              Internal/Audits/MONA_Automation_Operations_Audit_June2026.md
+Status:            Complete — PROPOSED CHANGES require Maor approval before implementation
 ```

@@ -253,3 +253,10 @@ Lessons recorded during active execution:
 | 2026-06-03 | HIM-001 core operating principle: "Maor is busy. How do I keep moving without him?" Default assumption = Maor is unavailable. Solve it. Only escalate after exhausting all 8 self-resolution steps. |
 | 2026-06-03 | Gmail MCP create_draft does not support programmatic file attachments. Workaround: include attachment checklist in draft body; Maor attaches manually before sending. |
 | 2026-06-03 | Maor also goes by "Moe" (nickname). Same person. |
+| 2026-06-04 | WebFetch returns 403 on monaempoweryou.com (Wix-hosted). Use Wix MCP `CallWixSiteAPI` for all site data access. |
+| 2026-06-04 | Wix Blog API: updating published post titles requires a draft cycle (create draft → update → publish). Category assignment to existing posts also requires this cycle. |
+| 2026-06-04 | Wix Site Properties `update-business-profile`: field mask uses root field names only (e.g., `"description"` not `"businessProfile.description"`). |
+| 2026-06-04 | Wix `list-published-site-urls` returns only the primary domain URL, not individual page paths. Use `blog/v3/posts` for blog content inventory. |
+| 2026-06-04 | monaempoweryou.com: phone number (916) 473-3131 is a Sacramento area code on an LA business — kills local SEO. Fix is Wix Dashboard → Settings → Business Info. Address also missing. |
+| 2026-06-04 | AI Power Studio highest-scored opportunities (June 2026): HeyGen Avatar Video Production (25) > AI Readiness Audit (24) > Video Translation (24). All three are executable with current tool stack. |
+| 2026-06-04 | Wix Blog category creation is fully autonomous (POST /blog/v3/categories). But assigning categories to existing published posts requires a draft cycle — not a single API call. |

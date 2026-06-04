@@ -79,6 +79,7 @@ MONA Deliverables/
 | File | Date | Description |
 |------|------|-------------|
 | `Internal/Systems/MONA_USER001_Maor_Operating_Profile.md` | June 3, 2026 | Approval patterns, revision prediction, format preferences. |
+| `Internal/Systems/MONA_LessonsLearned_Audit_June2026.md` | June 4, 2026 | Full system review. 7 new lessons. 0 rule conflicts. HIM-001 metrics updated. |
 
 ### Brand
 
@@ -115,8 +116,8 @@ MONA Deliverables/
 | Category | Count |
 |----------|-------|
 | Client deliverables in folder | 5 (4 Renova + 1 Laguna) |
-| Internal documents | 7 |
+| Internal documents | 8 |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **20** |
+| **Total in MONA Deliverables** | **21** |
 | Desktop-only gaps | 2 |

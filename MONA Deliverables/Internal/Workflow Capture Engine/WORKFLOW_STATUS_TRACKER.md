@@ -12,19 +12,20 @@
 |----|--------------|--------|-----------------|-------------|------|
 | WF-001 | Renova Visual Training Platform | Tested Once | Phase 1 | June 5, 2026 | `Workflows/WF-001_Renova_Visual_Training.md` |
 | WF-002 | MONA Business Intelligence Engine | Tested — Advanced | Phase 1 | June 5, 2026 | `Workflows/WF-002_Business_Intelligence_Engine.md` |
+| WF-003 | Renova Content Generation | Design Phase | Phase 0 | June 5, 2026 | `Workflows/WF-003_Renova_Content_Generation.md` |
 
 ---
 
 ## Workflow Pipeline
 
-### Phase 0 — Observed (not yet documented)
-*Add workflows here when a pattern is noticed but not yet captured formally.*
+### Phase 0 — Design / Observed (documented but not yet tested)
 
-| Workflow | Notes |
-|---------|-------|
-| Client Proposal Generation | Happens via COO pipeline — needs formal capture |
-| Monthly Client Reporting | Manual, no trigger — high automation candidate |
-| Gmail Draft → Client Delivery | Currently manual (Maor sends) — needs capture |
+| ID | Workflow | Notes |
+|----|---------|-------|
+| WF-003 | Renova Content Generation | Designed — first test requires content brief from Maor |
+| — | Client Proposal Generation | Happens via COO pipeline — needs formal capture |
+| — | Monthly Client Reporting | Manual, no trigger — high automation candidate |
+| — | Gmail Draft → Client Delivery | Currently manual (Maor sends) — needs capture |
 
 ---
 

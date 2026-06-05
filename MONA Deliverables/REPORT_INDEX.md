@@ -112,6 +112,7 @@ MONA Deliverables/
 | `Internal/Workflow Capture Engine/_Templates/AUTOMATION_CANDIDATE_TEMPLATE.md` | June 5, 2026 | Full automation evaluation with 5-dimension scoring matrix and phase roadmap. |
 | `Internal/Workflow Capture Engine/Workflows/WF-001_Renova_Visual_Training.md` | June 5, 2026 | First captured workflow. Score 15/25. Key lesson: review tool vs training framework. |
 | `Internal/Workflow Capture Engine/Workflows/WF-002_Business_Intelligence_Engine.md` | June 5, 2026 | Second captured workflow. Score 15/25. BIE framework captured from live Goldsmith test. |
+| `Internal/Workflow Capture Engine/Workflows/WF-003_Renova_Content_Generation.md` | June 5, 2026 | Third captured workflow. Design phase — not yet tested. Requires content brief to run first test. |
 
 ### Brand
 
@@ -149,10 +150,10 @@ MONA Deliverables/
 |----------|-------|
 | Client deliverables in folder | 7 (4 Renova + 1 Laguna + 2 Goldsmith) |
 | Internal documents | 14 (strategy 6 + audits 2 + systems 6) |
-| Workflow Capture Engine | 10 (README + tracker + routing map + 5 templates + 2 workflows) |
+| Workflow Capture Engine | 11 (README + tracker + routing map + 5 templates + 3 workflows) |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **39** |
+| **Total in MONA Deliverables** | **40** |
 | Desktop-only gaps | 2 |
 
 ---

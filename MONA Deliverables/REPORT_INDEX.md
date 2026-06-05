@@ -62,7 +62,8 @@ MONA Deliverables/
 
 | File | Date | Delivery Status | Type |
 |------|------|----------------|------|
-| `Clients/Goldsmith Financial/Goldsmith_Financial_BIE_Execution_June2026.md` | June 5, 2026 | 🔄 In Progress — Step 2 draft in Gmail (ID: r3365570789961105155) | BIE Execution Document |
+| `Clients/Goldsmith Financial/Goldsmith_Financial_BIE_Execution_June2026.md` | June 5, 2026 | 🔄 In Progress — BIE Report complete, Step 2 draft ready to send | BIE Execution Document |
+| `Clients/Goldsmith Financial/Goldsmith_Financial_Business_Intelligence_Report_June2026.html` | June 5, 2026 | ✅ Complete — Ready for Maor review and delivery to Joshua Goldsmith | Business Intelligence Report |
 
 ---
 
@@ -146,12 +147,12 @@ MONA Deliverables/
 
 | Category | Count |
 |----------|-------|
-| Client deliverables in folder | 6 (4 Renova + 1 Laguna + 1 Goldsmith) |
+| Client deliverables in folder | 7 (4 Renova + 1 Laguna + 2 Goldsmith) |
 | Internal documents | 14 (strategy 6 + audits 2 + systems 6) |
 | Workflow Capture Engine | 10 (README + tracker + routing map + 5 templates + 2 workflows) |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **38** |
+| **Total in MONA Deliverables** | **39** |
 | Desktop-only gaps | 2 |
 
 ---
@@ -635,4 +636,18 @@ Producing Agent:   Claude Code · WCE Capture Agent
 Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
 File:              Internal/Workflow Capture Engine/Workflows/WF-002_Business_Intelligence_Engine.md
 Status:            Tested Once — Phase 1 (score 15/25) · Goldsmith test in progress
+```
+
+---
+
+**Goldsmith_Financial_Business_Intelligence_Report_June2026.html**
+```
+Timestamp:         2026-06-05 (session 004)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Goldsmith Financial · New Client Acquisition
+Deliverable Type:  Business Intelligence Report (BIE)
+Producing Agent:   Claude Code · Business Intelligence Engine · Research Agent
+Workflow:          MONA BIE Session 001 · Goldsmith Financial Live Test
+File:              Clients/Goldsmith Financial/Goldsmith_Financial_Business_Intelligence_Report_June2026.html
+Status:            Complete — Ready for Maor review and delivery to Joshua Goldsmith
 ```

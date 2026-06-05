@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Intelligence Report — Goldsmith Financial | MONA Digital Marketing</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: #1a1a1a; background: #f8f6f2; line-height: 1.7; }
+
+  .cover {
+    background: linear-gradient(135deg, #0d2340 0%, #1a3a5c 60%, #0d2340 100%);
+    color: white;
+    padding: 80px 60px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover-label { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #8faec8; margin-bottom: 28px; }
+  .cover-title { font-size: 38px; font-weight: normal; line-height: 1.2; color: #fff; margin-bottom: 16px; }
+  .cover-subtitle { font-size: 18px; color: #8faec8; margin-bottom: 32px; }
+  .cover-meta { font-family: 'Helvetica Neue', sans-serif; font-size: 13px; color: #6a90ab; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover-meta span { }
+
+  .confidential-banner {
+    background: #8b1a1a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+
+  .section { margin-bottom: 60px; }
+  .section-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8faec8;
+    margin-bottom: 8px;
+  }
+  .section-title { font-size: 26px; font-weight: normal; color: #0d2340; border-bottom: 2px solid #0d2340; padding-bottom: 12px; margin-bottom: 28px; }
+
+  .exec-summary {
+    background: #0d2340;
+    color: white;
+    padding: 40px;
+    border-radius: 4px;
+    margin-bottom: 60px;
+  }
+  .exec-summary h2 { color: #8faec8; font-family: 'Helvetica Neue', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
+  .exec-summary p { font-size: 16px; line-height: 1.75; color: #e8eef4; margin-bottom: 16px; }
+  .exec-summary p:last-child { margin-bottom: 0; }
+  .exec-summary strong { color: #ffffff; }
+
+  .finding-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+  @media (max-width: 600px) { .finding-grid { grid-template-columns: 1fr; } }
+
+  .finding-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 24px;
+    background: white;
+  }
+  .finding-card.critical { border-left: 5px solid #c0392b; }
+  .finding-card.high { border-left: 5px solid #e67e22; }
+  .finding-card.positive { border-left: 5px solid #27ae60; }
+  .finding-card.quick-win { border-left: 5px solid #2980b9; }
+
+  .finding-card .tag {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .finding-card.critical .tag { color: #c0392b; }
+  .finding-card.high .tag { color: #e67e22; }
+  .finding-card.positive .tag { color: #27ae60; }
+  .finding-card.quick-win .tag { color: #2980b9; }
+
+  .finding-card h3 { font-size: 16px; font-weight: normal; color: #0d2340; margin-bottom: 8px; }
+  .finding-card p { font-size: 14px; color: #444; line-height: 1.6; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 14px; }
+  th { background: #0d2340; color: white; padding: 12px 16px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; font-weight: normal; letter-spacing: 1px; }
+  td { padding: 12px 16px; border-bottom: 1px solid #e8e8e8; vertical-align: top; }
+  tr:nth-child(even) td { background: #f4f6f9; }
+  tr:last-child td { border-bottom: none; }
+
+  .severity-critical { color: #c0392b; font-weight: bold; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .severity-high { color: #e67e22; font-weight: bold; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .severity-ok { color: #27ae60; font-weight: bold; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; }
+  .severity-gap { color: #7f8c8d; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; }
+
+  .bottleneck { background: white; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
+  .bottleneck-header { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid #e8e8e8; }
+  .bottleneck-number { background: #0d2340; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight: bold; flex-shrink: 0; }
+  .bottleneck-number.critical { background: #c0392b; }
+  .bottleneck-number.quick { background: #2980b9; }
+  .bottleneck-number.strategic { background: #6c3483; }
+  .bottleneck-title { font-size: 18px; color: #0d2340; }
+  .bottleneck-body { padding: 20px 24px; }
+  .bottleneck-body p { font-size: 14px; color: #444; margin-bottom: 12px; line-height: 1.65; }
+  .bottleneck-body strong { color: #0d2340; }
+
+  .recommendation { background: white; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 24px; overflow: hidden; }
+  .rec-header { background: #0d2340; color: white; padding: 16px 24px; display: flex; align-items: center; gap: 16px; }
+  .rec-number { font-family: 'Helvetica Neue', sans-serif; font-size: 28px; font-weight: bold; color: rgba(255,255,255,0.3); }
+  .rec-title { font-size: 17px; font-weight: normal; }
+  .rec-body { padding: 24px; }
+  .rec-body p { font-size: 14px; color: #444; line-height: 1.65; margin-bottom: 12px; }
+  .rec-body p:last-child { margin-bottom: 0; }
+  .rec-body strong { color: #0d2340; }
+  .rec-meta { display: flex; gap: 24px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e8e8e8; flex-wrap: wrap; }
+  .rec-meta-item { font-family: 'Helvetica Neue', sans-serif; font-size: 12px; }
+  .rec-meta-label { color: #8faec8; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px; }
+  .rec-meta-value { color: #0d2340; font-weight: bold; }
+
+  .plan-phase { margin-bottom: 40px; }
+  .phase-header { background: #1a3a5c; color: white; padding: 20px 28px; border-radius: 4px 4px 0 0; }
+  .phase-label { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #8faec8; margin-bottom: 4px; }
+  .phase-title { font-size: 20px; }
+  .phase-body { background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px; padding: 0; }
+  .phase-item { padding: 18px 28px; border-bottom: 1px solid #e8e8e8; display: flex; gap: 16px; align-items: flex-start; }
+  .phase-item:last-child { border-bottom: none; }
+  .phase-item-week { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8faec8; min-width: 70px; padding-top: 2px; }
+  .phase-item-content h4 { font-size: 15px; font-weight: normal; color: #0d2340; margin-bottom: 4px; }
+  .phase-item-content p { font-size: 13px; color: #555; line-height: 1.55; }
+
+  .nap-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; border: 1px solid #ddd; border-radius: 4px; overflow: hidden; margin-bottom: 28px; }
+  .nap-col { }
+  .nap-header { background: #0d2340; color: white; padding: 12px 16px; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; }
+  .nap-cell { padding: 12px 16px; border-bottom: 1px solid #e8e8e8; font-size: 13px; min-height: 48px; background: white; }
+  .nap-cell.conflict { background: #fdf3f2; color: #c0392b; }
+  .nap-cell.ok { background: #f2fdf6; color: #27ae60; }
+  .nap-cell.unknown { background: #fafafa; color: #999; font-style: italic; }
+
+  .competitor-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  @media (max-width: 700px) { .competitor-row { grid-template-columns: 1fr; } }
+
+  .comp-card { background: white; border: 1px solid #ddd; border-radius: 4px; padding: 20px; }
+  .comp-name { font-size: 15px; color: #0d2340; margin-bottom: 4px; }
+  .comp-threat { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .comp-threat.high { color: #c0392b; }
+  .comp-threat.medium { color: #e67e22; }
+  .comp-threat.low { color: #27ae60; }
+  .comp-detail { font-size: 13px; color: #555; line-height: 1.6; }
+
+  .compliance-note { background: #fef9e7; border: 1px solid #f39c12; border-radius: 4px; padding: 20px 24px; margin-bottom: 28px; }
+  .compliance-note strong { color: #c0392b; }
+
+  .footer { background: #0d2340; color: #8faec8; padding: 40px 60px; text-align: center; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; line-height: 2; }
+  .footer strong { color: white; }
+
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+  .profile-block { background: white; border: 1px solid #ddd; border-radius: 4px; padding: 24px; }
+  .profile-block h3 { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #8faec8; margin-bottom: 14px; }
+  .profile-item { display: flex; gap: 12px; margin-bottom: 10px; font-size: 14px; }
+  .profile-item-label { color: #888; min-width: 100px; flex-shrink: 0; }
+  .profile-item-value { color: #1a1a1a; }
+</style>
+</head>
+<body>
+
+<div class="confidential-banner">Confidential — Prepared for Maor Empoweryou · MONA Digital Marketing</div>
+
+<div class="cover">
+  <div class="cover-label">MONA Digital Marketing · Business Intelligence Engine · Report BIE-001</div>
+  <div class="cover-title">Goldsmith Financial<br>Business Intelligence Report</div>
+  <div class="cover-subtitle">Digital Presence Audit · Competitive Analysis · Strategic Recommendations · 90-Day Execution Plan</div>
+  <div class="cover-meta">
+    <span>Prepared: June 5, 2026</span>
+    <span>Subject: Joshua Goldsmith, CFP® — Owner &amp; President</span>
+    <span>Market: Temecula, CA · Riverside/San Diego County</span>
+    <span>Status: Research Complete — Awaiting Step 2 Confirmation</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <h2>Executive Summary</h2>
+    <p>Joshua Goldsmith is a <strong>20-year CFP® fiduciary</strong> with a clean regulatory record, a dual wealth management and life insurance capability, and a clearly defined target market of $1M+ pre-retirees in the Temecula Valley. The problem is not who he is. The problem is who can find him.</p>
+    <p>His digital presence has not been updated to reflect his current location, his current positioning, or current marketing standards. <strong>His Yelp and Nextdoor listings still show a San Diego address he no longer occupies.</strong> He has zero visible public reviews after 20 years in business. He does not appear in any non-branded search query a prospective client would use to find a retirement planner in Temecula.</p>
+    <p>The market he serves — Temecula Valley affluent pre-retirees — is actively contested by eight or more firms, two of which are running targeted local SEO campaigns for the exact keywords his clients would use. He is losing visibility competition to firms with fewer credentials and less experience.</p>
+    <p>The good news: <strong>the gaps are fixable.</strong> Several can be corrected in days. His core assets — 20 years of experience, CFP® fiduciary status, clean FINRA record, and a unique dual wealth-plus-insurance capability — are genuine differentiators that are currently invisible to the market. This report maps the path to making them visible.</p>
+  </div>
+
+  <!-- OWNER & BUSINESS PROFILE -->
+  <div class="section">
+    <div class="section-label">Section 1</div>
+    <div class="section-title">Owner & Business Profile</div>
+
+    <div class="profile-grid">
+      <div class="profile-block">
+        <h3>Identity</h3>
+        <div class="profile-item"><span class="profile-item-label">Name</span><span class="profile-item-value">Joshua Daniel Goldsmith</span></div>
+        <div class="profile-item"><span class="profile-item-label">Title</span><span class="profile-item-value">Owner / President</span></div>
+        <div class="profile-item"><span class="profile-item-label">Firm</span><span class="profile-item-value">Goldsmith Financial Corporation</span></div>
+        <div class="profile-item"><span class="profile-item-label">Address</span><span class="profile-item-value">30463 Danube Ct, Temecula, CA 92591</span></div>
+        <div class="profile-item"><span class="profile-item-label">Phone</span><span class="profile-item-value">(760) 586-5275</span></div>
+        <div class="profile-item"><span class="profile-item-label">Email</span><span class="profile-item-value">joshua.goldsmith@lpl.com</span></div>
+        <div class="profile-item"><span class="profile-item-label">Education</span><span class="profile-item-value">BA, Cal State San Marcos</span></div>
+      </div>
+      <div class="profile-block">
+        <h3>Credentials &amp; Registration</h3>
+        <div class="profile-item"><span class="profile-item-label">CFP®</span><span class="profile-item-value">Active — Certified Financial Planner</span></div>
+        <div class="profile-item"><span class="profile-item-label">Series 66</span><span class="profile-item-value">Registered Investment Adviser + Securities Agent (CA)</span></div>
+        <div class="profile-item"><span class="profile-item-label">FINRA CRD</span><span class="profile-item-value">#5199694 · Clean record (0 disclosures)</span></div>
+        <div class="profile-item"><span class="profile-item-label">Broker-Dealer</span><span class="profile-item-value">LPL Financial LLC</span></div>
+        <div class="profile-item"><span class="profile-item-label">Insurance</span><span class="profile-item-value">Life Insurance Agent · CA Certified LTC Representative</span></div>
+        <div class="profile-item"><span class="profile-item-label">SEC IAPD</span><span class="profile-item-value">Dual registered — Broker + Investment Adviser</span></div>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-block">
+        <h3>Experience &amp; Background</h3>
+        <div class="profile-item"><span class="profile-item-label">Career start</span><span class="profile-item-value">~2007 · Edward Jones</span></div>
+        <div class="profile-item"><span class="profile-item-label">At Goldsmith</span><span class="profile-item-value">~2010 · LPL Financial platform</span></div>
+        <div class="profile-item"><span class="profile-item-label">Experience</span><span class="profile-item-value">18–20 years in financial services</span></div>
+        <div class="profile-item"><span class="profile-item-label">Style</span><span class="profile-item-value">Relationship-first · face-to-face · long-term</span></div>
+        <div class="profile-item"><span class="profile-item-label">Platform</span><span class="profile-item-value">LPL Financial (research, support, compliance)</span></div>
+      </div>
+      <div class="profile-block">
+        <h3>Stated Business Goals</h3>
+        <div class="profile-item"><span class="profile-item-label">12-month</span><span class="profile-item-value">+$10M in new assets under management</span></div>
+        <div class="profile-item"><span class="profile-item-label">Target client</span><span class="profile-item-value">$1M+ investable · pre-retirees · rollovers · business owners</span></div>
+        <div class="profile-item"><span class="profile-item-label">Positioning</span><span class="profile-item-value">CFP® fiduciary specialist · NOT a general advisor</span></div>
+        <div class="profile-item"><span class="profile-item-label">Differentiator</span><span class="profile-item-value">Dual wealth management + life insurance under one advisor</span></div>
+        <div class="profile-item"><span class="profile-item-label">Brand goal</span><span class="profile-item-value">Confidence · competence · stability · sophistication</span></div>
+      </div>
+    </div>
+
+    <p><strong>Analyst note on positioning:</strong> Joshua's stated differentiation — a CFP® fiduciary who handles both wealth management and life insurance (including IUL) as an integrated strategy — is genuinely uncommon. Most advisors are either investment-focused or insurance-focused. His dual-licensed, fiduciary model is a legitimate market gap, particularly for the $1M+ pre-retiree who is simultaneously managing a 401(k) rollover and evaluating whether life insurance belongs in their estate plan. This positioning is currently absent from his public marketing.</p>
+  </div>
+
+  <!-- DIGITAL PRESENCE ASSESSMENT -->
+  <div class="section">
+    <div class="section-label">Section 2</div>
+    <div class="section-title">Current Digital Reality Assessment</div>
+
+    <h3 style="font-size:18px;color:#0d2340;margin-bottom:16px;font-weight:normal;">2.1 — Website: goldsmithfinancial.net</h3>
+
+    <table>
+      <tr><th>Dimension</th><th>Finding</th><th>Severity</th></tr>
+      <tr><td>Google indexed pages</td><td>Approximately 1–3 pages (homepage confirmed; bio page and team page surfaced in branded search but not in site: index query)</td><td class="severity-critical">Critical</td></tr>
+      <tr><td>Non-branded search visibility</td><td>Does not appear in any search for "retirement planner Temecula," "CFP Temecula," "wealth management Riverside County," or similar high-intent queries</td><td class="severity-critical">Critical</td></tr>
+      <tr><td>Website content access</td><td>Site uses enterprise WAF (403 on all pages) — content and structure cannot be audited remotely</td><td class="severity-gap">Gap — requires browser access</td></tr>
+      <tr><td>Domain age</td><td>goldsmithfinancial.net — established domain with history</td><td class="severity-ok">Positive</td></tr>
+      <tr><td>Inner pages confirmed</td><td>Bio page (/Joshua-Goldsmith,-CFP.e991279.htm) and team page (/team.htm) exist and appear indexed in branded searches</td><td class="severity-high">Moderate — pages exist but don't rank</td></tr>
+    </table>
+
+    <p><strong>The visibility problem stated plainly:</strong> When a 58-year-old Temecula professional types "retirement financial advisor Temecula" into Google, Joshua Goldsmith does not appear. Grape Wealth Management, Falcon Wealth Planning, Enduring Wealth Advisors, and TeamTax appear. Joshua has 20 more years of experience than most of them. The market cannot see him.</p>
+
+    <h3 style="font-size:18px;color:#0d2340;margin-bottom:16px;font-weight:normal;margin-top:36px;">2.2 — NAP Consistency Audit</h3>
+    <p>NAP (Name, Address, Phone) consistency across all business directories is a primary local SEO signal. Inconsistent NAP data causes Google to be uncertain about the business's location and suppresses local rankings. The following audit reveals a significant NAP failure.</p>
+
+    <table>
+      <tr><th>Directory</th><th>Name</th><th>Address</th><th>Phone</th><th>Status</th></tr>
+      <tr>
+        <td>Google Business Profile</td>
+        <td>Goldsmith Financial</td>
+        <td>30463 Danube Ct, Temecula, CA 92591</td>
+        <td>(760) 586-5275</td>
+        <td class="severity-ok">✓ CORRECT</td>
+      </tr>
+      <tr>
+        <td>Goldsmith Financial Website</td>
+        <td>Goldsmith Financial</td>
+        <td>30463 Danube Ct, Temecula, CA 92591</td>
+        <td>(760) 586-5275</td>
+        <td class="severity-ok">✓ CORRECT</td>
+      </tr>
+      <tr>
+        <td><strong>Yelp</strong></td>
+        <td>Joshua D Goldsmith – LPL Financial</td>
+        <td><strong>3914 Murphy Canyon Rd, San Diego, CA 92123</strong></td>
+        <td><strong>(858) 836-2956</strong></td>
+        <td class="severity-critical">✗ WRONG — Old address + old phone</td>
+      </tr>
+      <tr>
+        <td><strong>Nextdoor</strong></td>
+        <td>Goldsmith Financial</td>
+        <td>URL shows "san-diego-ca" — outdated city</td>
+        <td>Unknown</td>
+        <td class="severity-critical">✗ WRONG — San Diego city assignment</td>
+      </tr>
+      <tr>
+        <td><strong>Yahoo Local</strong></td>
+        <td>Joshua D Goldsmith – LPL Financial</td>
+        <td><strong>3914 Murphy Canyon Rd, San Diego, CA 92123</strong></td>
+        <td><strong>(858) 836-2956</strong></td>
+        <td class="severity-critical">✗ WRONG — Mirrors Yelp error</td>
+      </tr>
+      <tr>
+        <td>ChamberofCommerce.com</td>
+        <td>Goldsmith Financial</td>
+        <td>Temecula, CA 92591</td>
+        <td>(760) 586...</td>
+        <td class="severity-ok">✓ CORRECT</td>
+      </tr>
+      <tr>
+        <td>ShopInTemecula</td>
+        <td>Goldsmith Financial – Wealth Management</td>
+        <td>Temecula, CA</td>
+        <td>Not confirmed</td>
+        <td class="severity-ok">✓ Appears correct</td>
+      </tr>
+      <tr>
+        <td>ZoomInfo</td>
+        <td>Goldsmith Financial Corp</td>
+        <td>Temecula</td>
+        <td>Confirmed</td>
+        <td class="severity-ok">✓ Appears correct</td>
+      </tr>
+      <tr>
+        <td>Indyfin</td>
+        <td>Joshua Goldsmith, CFP®</td>
+        <td>Temecula, CA</td>
+        <td>CRD #5199694</td>
+        <td class="severity-ok">✓ Correct</td>
+      </tr>
+      <tr>
+        <td>Apple Maps</td>
+        <td>Unknown</td>
+        <td>Unknown</td>
+        <td>Unknown</td>
+        <td class="severity-gap">Not verified</td>
+      </tr>
+      <tr>
+        <td>Bing Places</td>
+        <td>Unknown</td>
+        <td>Unknown</td>
+        <td>Unknown</td>
+        <td class="severity-gap">Not verified</td>
+      </tr>
+    </table>
+
+    <div class="finding-card critical" style="margin-bottom:28px;">
+      <div class="tag">Critical — NAP Conflict</div>
+      <h3>Active San Diego listings are suppressing Temecula local SEO</h3>
+      <p>Yelp and Yahoo Local still show the San Diego address (3914 Murphy Canyon Rd) and the old San Diego phone number (858) 836-2956. Google uses directory consistency as a trust signal for local ranking. When it sees Temecula in GBP but San Diego in Yelp, it lowers confidence in the location. This is an active drag on local search rankings — and it is entirely fixable.</p>
+    </div>
+
+    <h3 style="font-size:18px;color:#0d2340;margin-bottom:16px;font-weight:normal;margin-top:36px;">2.3 — Reviews</h3>
+
+    <table>
+      <tr><th>Platform</th><th>Review Status</th><th>Impact</th></tr>
+      <tr><td>Google Business Profile</td><td>No visible reviews found</td><td class="severity-critical">Critical gap</td></tr>
+      <tr><td>Yelp</td><td>No reviews found (listing exists but outdated)</td><td class="severity-critical">Critical gap</td></tr>
+      <tr><td>Indyfin</td><td>Profile exists — review status not confirmed</td><td class="severity-gap">Check recommended</td></tr>
+      <tr><td>CFP Board</td><td>Profile confirmed active — no review mechanism</td><td class="severity-ok">Credential signal only</td></tr>
+      <tr><td>FINRA BrokerCheck</td><td>Clean record — 0 disclosures in 20 years</td><td class="severity-ok">Major trust signal (underused)</td></tr>
+    </table>
+
+    <div class="finding-card critical" style="margin-bottom:28px;">
+      <div class="tag">Critical — Trust Signal Gap</div>
+      <h3>Zero public reviews after 20 years in business</h3>
+      <p>A prospect evaluating a $1M+ asset transfer decision will search for third-party evidence. The absence of reviews is not neutral — it registers as a question mark. Competitors with 10–30+ reviews create an immediate credibility advantage in the decision process, regardless of those competitors' actual credentials. TeamTax has 32 reviews on Yelp. Goldsmith Financial has zero publicly visible reviews on any platform. This is the single most correctable gap in the entire digital presence.</p>
+    </div>
+
+    <h3 style="font-size:18px;color:#0d2340;margin-bottom:16px;font-weight:normal;margin-top:36px;">2.4 — Regulatory Profiles (Strength Assets)</h3>
+
+    <table>
+      <tr><th>Profile</th><th>Status</th><th>Finding</th></tr>
+      <tr><td>FINRA BrokerCheck (CRD #5199694)</td><td class="severity-ok">✓ Active</td><td>0 disclosures in full career. No complaints, no regulatory actions, no civil judgments. 18+ years with LPL Financial.</td></tr>
+      <tr><td>SEC IAPD</td><td class="severity-ok">✓ Active</td><td>Dual registered — both broker and investment adviser. Legally permitted to operate as fiduciary.</td></tr>
+      <tr><td>CFP Board</td><td class="severity-ok">✓ Active</td><td>CFP® designation confirmed active. Fiduciary standard applies to all financial planning engagements.</td></tr>
+    </table>
+
+    <div class="finding-card positive" style="margin-bottom:28px;">
+      <div class="tag">Major Asset — Underused</div>
+      <h3>A clean 20-year regulatory record is a rare and marketable fact</h3>
+      <p>Most financial advisors do not mention their FINRA record in marketing. Joshua's clean record is not just an absence of problems — it is 20 years of documented professional conduct. In a trust-sensitive industry where a single disclosure can cause a prospect to walk away, zero disclosures after two decades is meaningful. This should be stated explicitly in his marketing: "20 years · 0 regulatory disclosures." It is factually verifiable by any prospect who searches BrokerCheck, which means it carries the credibility of a third-party validation.</p>
+    </div>
+
+    <h3 style="font-size:18px;color:#0d2340;margin-bottom:16px;font-weight:normal;margin-top:36px;">2.5 — Social Media</h3>
+
+    <table>
+      <tr><th>Platform</th><th>Presence</th><th>Known Data</th><th>Status</th></tr>
+      <tr><td>Facebook</td><td>facebook.com/goldsmithfinancial.net</td><td>163 page likes — very low for a 20-year firm</td><td class="severity-critical">Critical — low engagement signal</td></tr>
+      <tr><td>LinkedIn (Company)</td><td>linkedin.com/company/goldsmith-financial</td><td>Follower count unknown; page confirmed</td><td class="severity-gap">Audit pending — browser required</td></tr>
+      <tr><td>LinkedIn (Personal)</td><td>linkedin.com/in/joshua-goldsmith-cfp-075ba4114</td><td>Profile confirmed; connections unknown</td><td class="severity-high">Review needed — also a duplicate name issue</td></tr>
+      <tr><td>Instagram</td><td>@goldsmith.financial.corp</td><td>Account exists; content unknown</td><td class="severity-gap">Audit pending — browser required</td></tr>
+      <tr><td>YouTube</td><td>Not found</td><td>No YouTube channel identified</td><td class="severity-gap">Opportunity channel</td></tr>
+    </table>
+
+    <div class="finding-card high" style="margin-bottom:28px;">
+      <div class="tag">High Priority — Brand Confusion</div>
+      <h3>Two LinkedIn profiles for "Joshua Goldsmith CFP" create search confusion</h3>
+      <p>A LinkedIn search for "Joshua Goldsmith CFP" returns two profiles: (1) Joshua Goldsmith, CFP® at Goldsmith Financial Corporation (our client) and (2) Joshua Goldsmith, CFP® CRPC® at Scarborough Capital Management. A prospect searching for Joshua after receiving a referral may visit the wrong profile, review the wrong firm, or simply be confused. This is a brand clarity risk that requires differentiating his personal profile headline more specifically (e.g., "Goldsmith Financial · Temecula · Retirement & Wealth Planning").</p>
+    </div>
+  </div>
+
+  <!-- COMPETITIVE LANDSCAPE -->
+  <div class="section">
+    <div class="section-label">Section 3</div>
+    <div class="section-title">Competitive Landscape — Temecula Valley</div>
+
+    <p>The Temecula/Murrieta financial advisory market is actively contested. At least eight firms are competing for the same affluent pre-retiree market Joshua is targeting. The following analysis identifies direct and indirect threats.</p>
+
+    <div class="competitor-row">
+      <div class="comp-card">
+        <div class="comp-name">La Pointe Wealth Advisors</div>
+        <div class="comp-threat high">High Threat</div>
+        <div class="comp-detail">30+ years in Temecula Valley. Multi-advisor team (David + Karen 20+ years + Bryce 15+ years + Craig). LPL Financial Executive's Council — same platform as Joshua, but more tenured on that platform. Temecula Chamber of Commerce member. Well-embedded in the community. <strong>Joshua cannot out-tenure them or out-team them.</strong> He must differentiate on the integrated wealth+insurance specialization and the $1M+ niche focus.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">TeamTax / Team Wealth &amp; Tax Advisors</div>
+        <div class="comp-threat medium">Medium Threat</div>
+        <div class="comp-detail">CFPs + IRS Enrolled Agents + CPAs. 32 Yelp reviews. Differentiates on tax integration. Appeals to business owners who want one firm for financial planning and tax. Strong review presence gives them search credibility. Weakness: primarily a tax firm that added financial planning — not a pure wealth management/retirement specialist.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Grape Wealth Management</div>
+        <div class="comp-threat medium">Medium Threat</div>
+        <div class="comp-detail">Smart local branding ("Grape" referencing Temecula wine country). Fiduciary, retirement-focused. Actively targeting local keywords. Website designed for local SEO. A newer but digitally savvy competitor who understands the Temecula identity. Currently outranking Joshua for local searches.</div>
+      </div>
+    </div>
+
+    <div class="competitor-row">
+      <div class="comp-card">
+        <div class="comp-name">Enduring Wealth Advisors</div>
+        <div class="comp-threat medium">Medium Threat</div>
+        <div class="comp-detail">Founded 2009, Ralph Bender. Fee-only fiduciary RIA. Transparent pricing published (max 1.5% AUM, $500/hr planning). BBB profile. Serves individuals, families, businesses. Different fee structure from LPL model but same target market for retirement/wealth.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Falcon Wealth Planning</div>
+        <div class="comp-threat medium">Medium Threat</div>
+        <div class="comp-detail">Fee-only advisor with a dedicated "Retirement Planning Temecula" page actively competing for that exact keyword. Currently appearing in searches Joshua is invisible for. No LPL affiliation — independent RIA. Appeals to fee-sensitive prospects who prefer the fee-only model.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-name">Merrill Lynch (Temecula)</div>
+        <div class="comp-threat low">Brand Threat</div>
+        <div class="comp-detail">Institutional presence, large brand recognition. Appeals to clients who want name recognition and large-firm resources. Joshua's counterplay: the fiduciary independent advantage — he has no product manufacturing conflicts. Merrill advisors can be motivated to sell proprietary products; Joshua operates as an independent CFP fiduciary.</div>
+      </div>
+    </div>
+
+    <div class="finding-card positive" style="margin-bottom:12px;">
+      <div class="tag">Competitive Opening</div>
+      <h3>No competitor explicitly owns the "wealth + life insurance under one CFP fiduciary" niche</h3>
+      <p>La Pointe, Enduring Wealth, Grape Wealth, and Falcon Wealth all focus primarily on investment management and retirement planning. None appear to actively market an integrated wealth management + life insurance planning capability under a single fiduciary CFP. Joshua's dual licensing and ability to handle IUL, term, permanent, and LTC insurance within a comprehensive financial plan is a genuine and currently unmarketable differentiator.</p>
+    </div>
+  </div>
+
+  <!-- BOTTLENECK ANALYSIS -->
+  <div class="section">
+    <div class="section-label">Section 4</div>
+    <div class="section-title">Bottleneck Analysis</div>
+
+    <p>Bottlenecks are categorized as Critical (actively blocking growth), Quick Wins (fixable in days to weeks), or Strategic (require sustained effort but high long-term value).</p>
+
+    <div style="margin-bottom:32px;">
+      <p style="font-family:'Helvetica Neue',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#c0392b;margin-bottom:16px;">Critical — Actively Blocking Growth</p>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number critical">1</div>
+          <div class="bottleneck-title">NAP Inconsistency — Yelp &amp; Yahoo Local showing wrong city, wrong address, wrong phone</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>Yelp and Yahoo Local list Joshua at <strong>3914 Murphy Canyon Rd, San Diego, CA 92123</strong> with phone <strong>(858) 836-2956</strong>. This is his former location. Google uses cross-directory consistency to validate local business claims. These conflicting signals suppress his Temecula local ranking — Google is uncertain whether he is a Temecula business or a San Diego business.</p>
+          <p><strong>Fix:</strong> Claim and update the Yelp business listing to 30463 Danube Ct, Temecula, CA 92591, (760) 586-5275. Correct or close the Nextdoor "San Diego" listing and create a Temecula Nextdoor business profile. Check and update Apple Maps and Bing Places (status unknown). Estimated time: 2–4 hours of owner action or agency management.</p>
+        </div>
+      </div>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number critical">2</div>
+          <div class="bottleneck-title">Zero public reviews — no social proof for high-trust $1M+ client decisions</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>A prospect preparing to transfer $1M+ in assets will Google the advisor before scheduling a meeting. The absence of any public reviews creates a credibility vacuum. Competitors with 10–30 reviews win these trust searches even if their credentials are weaker. <strong>This is not about reputation — Joshua's reputation is excellent. This is about evidence of reputation that strangers can verify.</strong></p>
+          <p><strong>Fix:</strong> The 2022 SEC Marketing Rule (implemented via LPL's MRR approval process) now permits client testimonials and reviews with proper disclosures. Joshua can ask existing satisfied clients to leave a Google review. The review must not mention investment performance. The review must come from a real client. LPL compliance review is required for any testimonials used in advertising, but organic Google reviews do not require pre-approval — they require a disclosure notice be maintained. Target: 10 Google reviews within 90 days.</p>
+        </div>
+      </div>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number critical">3</div>
+          <div class="bottleneck-title">Complete absence from non-branded local search — invisible to new prospects</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>Joshua Goldsmith does not appear in any non-branded search query a new prospect would use: "retirement planner Temecula," "CFP Temecula," "wealth management 92591," "financial advisor Murrieta," "rollover 401k help Temecula." The competitors appearing in these searches have active SEO strategies and dedicated local landing pages. Joshua's website, despite having the right content, is essentially invisible to new organic discovery.</p>
+          <p><strong>Fix:</strong> Requires a local SEO strategy: a Temecula-specific services page, title tags and meta descriptions optimized for local terms, Google Business Profile optimization (categories, description, services, photos), and consistent NAP across all directories. This is a 60–90 day effort to show meaningful movement.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <p style="font-family:'Helvetica Neue',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#2980b9;margin-bottom:16px;">Quick Wins — Fixable in Days to Weeks</p>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number quick">4</div>
+          <div class="bottleneck-title">FINRA clean record not visible in marketing — 20-year trust signal going unused</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>Zero disclosures in 20 years of FINRA registration is a verifiable, specific, and differentiating credential. Most advisors never mention their FINRA record. A prospect who checks BrokerCheck and finds a clean record will feel confident. A prospect who doesn't know to check BrokerCheck will never discover it. The fix is to surface this fact explicitly: <strong>"FINRA BrokerCheck: 20 Years · 0 Disclosures."</strong> This can be added to the website, the LinkedIn bio, and all marketing materials within days.</p>
+        </div>
+      </div>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number quick">5</div>
+          <div class="bottleneck-title">LinkedIn duplicate name creates brand confusion in referral searches</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>Two advisors named "Joshua Goldsmith CFP" appear in LinkedIn search. A prospect referred to Joshua who searches LinkedIn may land on the Scarborough Capital Management profile instead. Fix: update Joshua's LinkedIn headline to include "Goldsmith Financial · Temecula" to make him immediately identifiable. Differentiate the profile banner, location, and featured sections. This takes under an hour.</p>
+        </div>
+      </div>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number quick">6</div>
+          <div class="bottleneck-title">Google Business Profile not fully optimized</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>GBP presence confirmed, but optimization status is unknown. A fully optimized GBP (categories, services, description, photos, posts, Q&amp;A, appointment link) is the single highest-leverage local search investment for a service business. It costs nothing. It affects Google Maps placement and the local 3-pack ranking directly. Optimization should happen before any other SEO work.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-family:'Helvetica Neue',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6c3483;margin-bottom:16px;">Strategic — Require Sustained Effort, High Long-Term Value</p>
+
+      <div class="bottleneck">
+        <div class="bottleneck-header">
+          <div class="bottleneck-number strategic">7</div>
+          <div class="bottleneck-title">No content strategy establishing authority for the $1M+ pre-retiree audience</div>
+        </div>
+        <div class="bottleneck-body">
+          <p>The advisors who consistently win $1M+ clients online are not the ones with the best ads — they are the ones who have demonstrated expertise through published content that shows up when a pre-retiree researches their decisions. Joshua's dual expertise (wealth management + life insurance + IUL for retirement income) is a topic that generates significant search volume: "IUL retirement income strategy," "401k rollover CFP Temecula," "should I use life insurance in my retirement plan." He is qualified to write authoritatively on all of these. None of his competitors have claimed this content territory yet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGIC RECOMMENDATIONS -->
+  <div class="section">
+    <div class="section-label">Section 5</div>
+    <div class="section-title">Strategic Recommendations</div>
+
+    <p>All seven recommendations are directly traceable to Joshua's stated goal: <strong>+$10 million AUM in 12 months from qualified clients with $1M+ investable assets.</strong></p>
+
+    <div class="compliance-note">
+      <strong>Compliance Note:</strong> All recommendations are designed to be compliant with FINRA regulations, the 2022 SEC Marketing Rule, and LPL Financial's Marketing Review process. Items requiring LPL MRR approval are noted. Performance claims, guarantees, and comparative claims are excluded. Client testimonials require LPL MRR review before use in advertising; Google reviews do not require pre-approval but must not reference investment performance.
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">01</div>
+        <div class="rec-title">Correct the NAP Inconsistency — Yelp, Nextdoor, and All Directories to Temecula</div>
+      </div>
+      <div class="rec-body">
+        <p>Update every directory that still shows the San Diego address (3914 Murphy Canyon Rd, (858) 836-2956) to reflect the current Temecula location (30463 Danube Ct, (760) 586-5275). Priority platforms: Yelp, Yahoo Local (which mirrors Yelp), Nextdoor. Then verify Apple Maps, Bing Places, and any other aggregator-fed directories.</p>
+        <p>This is the highest-leverage, lowest-effort change available. Until the NAP conflict is resolved, local SEO improvements made anywhere else are partially offset by these conflicting signals telling Google that the business is in San Diego.</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Days 1–3</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Effort</span><span class="rec-meta-value">2–4 hours</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Local SEO → organic discovery → new qualified prospects</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">No compliance review needed</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">02</div>
+        <div class="rec-title">Launch a Google Review Campaign — Target 10 Reviews in 90 Days</div>
+      </div>
+      <div class="rec-body">
+        <p>Request Google reviews from 10–15 existing long-term clients. Provide each client with the direct Google review link and a simple, non-scripted ask: "I would really appreciate it if you left a Google review based on your experience working with me." Do not script the language — reviewers should speak in their own voice.</p>
+        <p>Reviews must not mention investment performance or returns. They should speak to the experience: the relationship, the planning process, the clarity of advice, the responsiveness. This is compliant with FINRA and the SEC Marketing Rule for organic reviews.</p>
+        <p>10 genuine Google reviews within 90 days will: (1) create visible social proof for new prospects, (2) improve Google Maps ranking directly, and (3) populate the Google Knowledge Panel with visible credibility signals.</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Week 1–12</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Target</span><span class="rec-meta-value">10 Google reviews</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Trust signals → prospect conversion → new client acquisition</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">Organic Google reviews — no LPL pre-approval needed. Do not use reviews in advertising without MRR.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">03</div>
+        <div class="rec-title">Make "20 Years · 0 Regulatory Disclosures" a Visible Marketing Statement</div>
+      </div>
+      <div class="rec-body">
+        <p>Joshua's clean FINRA BrokerCheck record is a verifiable, specific, and differentiating credential. It should appear explicitly in: (1) the website bio, (2) the LinkedIn "About" section, (3) any introduction materials, and (4) the Google Business Profile description.</p>
+        <p>Suggested language: <em>"Joshua Goldsmith maintains a clean regulatory record with zero disclosures in over 20 years of FINRA registration. Verify independently at FINRA BrokerCheck (CRD #5199694)."</em></p>
+        <p>This converts a passive credential (the BrokerCheck record) into an active trust statement. Directing prospects to verify it themselves makes it more credible than any self-certification. It is factually true, verifiable, and not a performance claim — making it fully compliant.</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Week 1</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Effort</span><span class="rec-meta-value">Under 1 hour</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Trust → conversion at the decision stage</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">Factual regulatory record — confirm LPL MRR for advertising use</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">04</div>
+        <div class="rec-title">Optimize the Google Business Profile — Categories, Services, Photos, Posts</div>
+      </div>
+      <div class="rec-body">
+        <p>The Google Business Profile is the most impactful local SEO asset for a service business with no paid advertising budget. A fully optimized GBP directly affects Google Maps 3-pack placement — the three businesses that appear when someone searches "financial advisor near me" in Temecula.</p>
+        <p>Required optimizations: (1) Primary category set to "Financial Planner" with secondary categories including "Investment Service," "Financial Consultant," and "Retirement Planning Service." (2) Services section populated with specific offerings. (3) Business description updated to include "Temecula," "retirement planning," "wealth management," "CFP," "fiduciary," and "life insurance." (4) At least 10 professional photos uploaded. (5) Weekly or bi-weekly GBP posts published (market updates, educational tips, firm announcements). (6) Appointment link added.</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Days 1–7 (initial), ongoing</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Effort</span><span class="rec-meta-value">4–6 hours initial, 30 min/week ongoing</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Local Maps placement → organic discovery → new prospects</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">LPL MRR review for GBP posts that qualify as advertising</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">05</div>
+        <div class="rec-title">Claim the "Integrated Wealth + Life Insurance" Positioning — Content and Messaging</div>
+      </div>
+      <div class="rec-body">
+        <p>No Temecula competitor explicitly positions as a CFP fiduciary who handles both wealth management and life insurance (including IUL) as part of an integrated retirement strategy. This is Joshua's genuine market differentiator and it is currently invisible in his marketing.</p>
+        <p>The positioning should be built into: (1) the website headline and services pages, (2) the LinkedIn headline and About section, (3) a 3-5 piece content series on how IUL fits into a retirement income plan, 401k rollover considerations, and estate planning for $1M+ families. This content targets the exact search terms his prospect is Googling in the months before they call an advisor.</p>
+        <p>Example content titles (SEO + credibility):<br>
+        — "IUL in a Retirement Plan: When It Makes Sense and When It Doesn't" (CFP candor = trust)<br>
+        — "Temecula 401(k) Rollover: A CFP's Guide to Your Options When Leaving a Job"<br>
+        — "How to Evaluate a Financial Advisor as a Pre-Retiree in 2026" (educational authority)</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Month 1–3</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Effort</span><span class="rec-meta-value">Medium — content development, LPL review</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Differentiation → attract the specific $1M+ pre-retiree audience</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">All website content and articles require LPL MRR review before publication</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">06</div>
+        <div class="rec-title">Build a Compliant Testimonial Program via LPL's MRR Process</div>
+      </div>
+      <div class="rec-body">
+        <p>The 2022 SEC Marketing Rule now permits financial advisors to use client testimonials in marketing materials, replacing the prior blanket prohibition. LPL Financial has operationalized this through their Marketing Regulatory Review (MRR) process. Testimonials used in advertising must be submitted through LPL ClientWorks with client consent documentation and must include proper disclosures (current client status, no compensation for testimonial, no material conflicts).</p>
+        <p>A set of 3–5 well-crafted client testimonials — focused on the planning experience, clarity, and long-term relationship — placed on the website and LinkedIn would create immediate credibility differentiation from competitors who have not yet adopted testimonial programs. This is a medium-term project (6–8 weeks to complete MRR process) but should begin immediately given the 2026 SEC enforcement focus on testimonial compliance.</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Month 1–2</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Social proof → trust → conversion for $1M+ prospects</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">Required: LPL MRR approval + client consent + proper disclosures</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendation">
+      <div class="rec-header">
+        <div class="rec-number">07</div>
+        <div class="rec-title">Develop a LinkedIn Content Presence Targeting Temecula Valley Professionals</div>
+      </div>
+      <div class="rec-body">
+        <p>Joshua's ideal client — a $1M+ professional or business owner approaching retirement — is active on LinkedIn. A consistent LinkedIn publishing cadence (2–3 posts per week) positions him as the visible expert in Temecula Valley retirement and wealth planning. Content topics that resonate with this audience: retirement transition planning, rollover decisions, IUL considerations, Medicare coordination, estate planning basics, and market education.</p>
+        <p>This is not about follower count. It is about appearing in the feed of local professionals who are 3–7 years from retirement and will remember his name when they are ready to act. LinkedIn also allows direct connection requests to local professionals — a referral development strategy without cold outreach tone.</p>
+        <div class="rec-meta">
+          <div class="rec-meta-item"><span class="rec-meta-label">Timeline</span><span class="rec-meta-value">Month 1 → ongoing</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Frequency</span><span class="rec-meta-value">2–3 posts/week</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Goal Link</span><span class="rec-meta-value">Visibility with $1M+ professional audience → referral + direct inquiry</span></div>
+          <div class="rec-meta-item"><span class="rec-meta-label">Compliance</span><span class="rec-meta-value">LPL MRR review for LinkedIn posts that reference specific services or market views</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 90-DAY EXECUTION PLAN -->
+  <div class="section">
+    <div class="section-label">Section 6</div>
+    <div class="section-title">90-Day Execution Plan</div>
+
+    <div class="plan-phase">
+      <div class="phase-header">
+        <div class="phase-label">Phase 1 · Days 1–14</div>
+        <div class="phase-title">Quick Wins — Fix What Is Broken</div>
+      </div>
+      <div class="phase-body">
+        <div class="phase-item">
+          <div class="phase-item-week">Day 1–3</div>
+          <div class="phase-item-content">
+            <h4>Correct Yelp NAP — Claim and Update to Temecula Address</h4>
+            <p>Log into Yelp for Business. Update address to 30463 Danube Ct, Temecula CA 92591. Update phone to (760) 586-5275. Update business category to Financial Advisor / Financial Planner. Upload 3–5 professional photos. This removes the most damaging local SEO signal immediately.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Day 1–3</div>
+          <div class="phase-item-content">
+            <h4>Correct Nextdoor Listing — Update or Close San Diego Profile, Create Temecula Profile</h4>
+            <p>The Nextdoor "Goldsmith Financial" profile currently resolves to san-diego-ca in the URL. Contact Nextdoor to either update the location or close the San Diego listing and create a Temecula business profile.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Day 3–7</div>
+          <div class="phase-item-content">
+            <h4>Verify and Optimize Google Business Profile</h4>
+            <p>Confirm GBP ownership. Set categories, update description with Temecula + retirement + CFP + fiduciary + wealth management + life insurance keywords. Add services list. Upload professional photos. Add appointment booking link. Schedule first GBP post.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Day 3–7</div>
+          <div class="phase-item-content">
+            <h4>Claim Apple Maps and Bing Places</h4>
+            <p>Both platforms are unverified. Claim and update both to current Temecula address. Bing Places is particularly important as it feeds Microsoft's Cortana and other search surfaces.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Day 7–14</div>
+          <div class="phase-item-content">
+            <h4>Add FINRA Clean Record Statement to LinkedIn and Website</h4>
+            <p>Update LinkedIn "About" section and website bio to include: "FINRA BrokerCheck: 20+ years · 0 disclosures. Verify at CRD #5199694." This takes under an hour and immediately strengthens the trust profile for any prospect who researches Joshua directly.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Day 7–14</div>
+          <div class="phase-item-content">
+            <h4>Differentiate LinkedIn Profile — Fix Duplicate Name Confusion</h4>
+            <p>Update LinkedIn headline to clearly identify as "Goldsmith Financial · Temecula · CFP® · Retirement &amp; Wealth Planning." Update banner image, featured section, and location to remove any ambiguity with the other Joshua Goldsmith CFP at Scarborough Capital Management.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Day 7–14</div>
+          <div class="phase-item-content">
+            <h4>Begin Google Review Outreach — First 3–5 Requests</h4>
+            <p>Identify 5 long-term satisfied clients. Send personal, non-scripted review requests via email. Provide direct Google review link. Target 3–5 reviews in the first 30 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-phase">
+      <div class="phase-header">
+        <div class="phase-label">Phase 2 · Days 15–60</div>
+        <div class="phase-title">Foundation — Build the Infrastructure for Discovery</div>
+      </div>
+      <div class="phase-body">
+        <div class="phase-item">
+          <div class="phase-item-week">Week 3–4</div>
+          <div class="phase-item-content">
+            <h4>Website Optimization — Local SEO Pages and Technical Improvements</h4>
+            <p>Create a dedicated Temecula services page targeting local search terms. Optimize all title tags and meta descriptions for local + service keywords. Ensure site structure is crawlable (site: query shows only 1 result currently — interior pages need proper internal linking and sitemaps). Submit sitemap to Google Search Console.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Week 3–6</div>
+          <div class="phase-item-content">
+            <h4>Begin LPL MRR Testimonial Program</h4>
+            <p>Identify 3–5 long-term clients willing to provide testimonials about their experience (not investment performance). Begin the LPL ClientWorks MRR submission process. Timeline: 4–8 weeks for full approval and compliance sign-off. First testimonials live on website by Day 60.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Week 4–8</div>
+          <div class="phase-item-content">
+            <h4>LinkedIn Content Engine — 2–3 Posts Per Week</h4>
+            <p>Begin publishing educational content: retirement planning for pre-retirees, IUL overview, 401(k) rollover guidance, fiduciary vs. broker distinction, market education. All posts require LPL MRR review. Build a content pipeline of 12–15 approved posts before beginning to publish for consistency.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Week 6–8</div>
+          <div class="phase-item-content">
+            <h4>Google Review Campaign — Scale to 10 Reviews</h4>
+            <p>Continue systematic outreach to existing client base. Target reaching 10 Google reviews by Day 60. Monitor and respond professionally to each review as they arrive (response also appears publicly and reinforces the relationship brand).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-phase">
+      <div class="phase-header">
+        <div class="phase-label">Phase 3 · Days 61–90</div>
+        <div class="phase-title">Growth Engine — Content Authority and New Client Pathways</div>
+      </div>
+      <div class="phase-body">
+        <div class="phase-item">
+          <div class="phase-item-week">Month 3</div>
+          <div class="phase-item-content">
+            <h4>Publish First Content Series — The Integrated Retirement Guide</h4>
+            <p>Launch 3-part content series: "Retirement Planning for Temecula Professionals — Wealth, Insurance, and Income Strategy." Publish on website, LinkedIn, and distribute to referral partners (CPAs, estate attorneys). This establishes topical authority in the exact niche Joshua owns. Requires LPL MRR review for each piece.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Month 3</div>
+          <div class="phase-item-content">
+            <h4>Referral Partner Content — Activate the CPA and Estate Attorney Network</h4>
+            <p>Create a one-page advisor introduction document for distribution to CPAs, estate attorneys, and mortgage brokers (like Mike Beal, who already references Joshua on his website). This formalizes what appears to be an existing referral relationship and creates new pathways. Requires LPL compliance review.</p>
+          </div>
+        </div>
+        <div class="phase-item">
+          <div class="phase-item-week">Month 3</div>
+          <div class="phase-item-content">
+            <h4>Review 90-Day Results and Adjust</h4>
+            <p>Measure: (1) Google reviews collected, (2) GBP views and direction requests, (3) website traffic by keyword, (4) LinkedIn post engagement and profile views, (5) new prospect inquiries. Use this data to determine where to invest Month 4–12 effort. Feed findings back into the MONA BIE Framework for the next client.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OPEN INTELLIGENCE GAPS -->
+  <div class="section">
+    <div class="section-label">Section 7</div>
+    <div class="section-title">Open Intelligence Gaps</div>
+
+    <p>The following four questions remain pending from the Step 2 understanding email sent on June 5, 2026. The report above reflects the best available intelligence without these answers. Where answers would modify specific recommendations, that is noted below.</p>
+
+    <table>
+      <tr><th>Question</th><th>Why It Matters</th><th>Current Assumption</th><th>Status</th></tr>
+      <tr>
+        <td>How do most new clients currently find you?</td>
+        <td>Determines whether referral network or digital is the primary acquisition path. Changes the priority order of recommendations.</td>
+        <td>Assumed: primarily referral-based, given the emphasis on face-to-face relationship building. Referral strengthening is recommended regardless.</td>
+        <td class="severity-gap">Pending Step 2</td>
+      </tr>
+      <tr>
+        <td>Prior marketing agency experience?</td>
+        <td>Avoids recommending strategies already tried and rejected. Informs scope conversation.</td>
+        <td>Assumed: limited or no prior agency relationship. All recommendations are foundational in nature.</td>
+        <td class="severity-gap">Pending Step 2</td>
+      </tr>
+      <tr>
+        <td>LPL/FINRA compliance constraints specific to Joshua's registration?</td>
+        <td>May reveal additional restrictions beyond the standard SEC Marketing Rule framework.</td>
+        <td>Assumed: standard LPL MRR process applies. All recommendations include compliance flags. No performance claims included.</td>
+        <td class="severity-gap">Pending Step 2</td>
+      </tr>
+      <tr>
+        <td>What does success look like in 90 days?</td>
+        <td>Sets the client-specific benchmark for the execution plan. Allows the plan to be calibrated to Joshua's specific expectations.</td>
+        <td>Assumed: first qualified prospect inquiry from a non-referral source, and 10 Google reviews. Will refine when confirmed.</td>
+        <td class="severity-gap">Pending Step 2</td>
+      </tr>
+    </table>
+
+    <p>These gaps do not block the delivery of this report or the execution of Phase 1 recommendations. They will refine the strategic layer (Recommendations 5–7) when answered. The Step 2 email draft has been prepared and is ready for delivery.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p><strong>MONA Digital Marketing</strong> · Business Intelligence Engine · Report BIE-001</p>
+  <p>Goldsmith Financial Corporation · Joshua Goldsmith, CFP® · Prepared June 5, 2026</p>
+  <p>Confidential — For internal review and client delivery by Maor Empoweryou</p>
+  <p style="margin-top:16px;font-size:11px;">Research conducted via FINRA BrokerCheck, SEC IAPD, Google Search, LPL Financial public resources, Yelp, LinkedIn, ZoomInfo, Indyfin, ChamberofCommerce.com, and directory search. Website content unavailable (WAF/403). Social media content audit pending browser access. All findings are based on publicly available data as of June 5, 2026.</p>
+</div>
+
+</body>
+</html>

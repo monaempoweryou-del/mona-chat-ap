@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Proposal — Goldsmith Financial | MONA Digital Marketing</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; color: #1a1a1a; background: #f8f6f2; line-height: 1.7; }
+
+  .cover {
+    background: linear-gradient(135deg, #0d2340 0%, #1a3a5c 60%, #0d2340 100%);
+    color: white;
+    padding: 80px 60px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover-label { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #8faec8; margin-bottom: 28px; }
+  .cover-title { font-size: 38px; font-weight: normal; line-height: 1.2; color: #fff; margin-bottom: 16px; }
+  .cover-subtitle { font-size: 17px; color: #8faec8; margin-bottom: 32px; }
+  .cover-meta { font-family: 'Helvetica Neue', sans-serif; font-size: 13px; color: #6a90ab; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 60px 40px; }
+  .section { margin-bottom: 56px; }
+  .section-label { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: #8faec8; margin-bottom: 8px; }
+  .section-title { font-size: 26px; font-weight: normal; color: #0d2340; border-bottom: 2px solid #0d2340; padding-bottom: 12px; margin-bottom: 28px; }
+
+  .intro-block {
+    background: white;
+    border: 1px solid #ddd;
+    border-left: 5px solid #0d2340;
+    padding: 32px;
+    margin-bottom: 48px;
+    border-radius: 0 4px 4px 0;
+  }
+  .intro-block p { font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 14px; }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  .finding-recap { background: #f4f6f9; border-radius: 4px; padding: 28px; margin-bottom: 40px; }
+  .finding-recap h3 { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: #8faec8; margin-bottom: 16px; }
+  .finding-list { list-style: none; }
+  .finding-list li { padding: 10px 0; border-bottom: 1px solid #dce0e8; font-size: 14px; display: flex; gap: 12px; align-items: flex-start; }
+  .finding-list li:last-child { border-bottom: none; }
+  .finding-list .bullet { color: #0d2340; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+
+  .service-card { background: white; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
+  .service-header { background: #0d2340; color: white; padding: 18px 28px; display: flex; justify-content: space-between; align-items: center; }
+  .service-name { font-size: 17px; font-weight: normal; }
+  .service-phase { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #8faec8; }
+  .service-body { padding: 24px 28px; }
+  .service-body p { font-size: 14px; color: #444; line-height: 1.65; margin-bottom: 12px; }
+  .service-body p:last-child { margin-bottom: 0; }
+  .service-deliverables { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e8e8e8; }
+  .service-deliverables-label { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #8faec8; margin-bottom: 8px; }
+  .deliverable-list { list-style: none; }
+  .deliverable-list li { font-size: 13px; color: #555; padding: 4px 0; }
+  .deliverable-list li::before { content: "→ "; color: #0d2340; }
+
+  .investment-table { width: 100%; border-collapse: collapse; }
+  .investment-table th { background: #0d2340; color: white; padding: 14px 20px; text-align: left; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; letter-spacing: 1px; font-weight: normal; }
+  .investment-table td { padding: 14px 20px; border-bottom: 1px solid #e8e8e8; font-size: 14px; vertical-align: top; }
+  .investment-table tr:nth-child(even) td { background: #f4f6f9; }
+  .investment-table .price-cell { font-family: 'Helvetica Neue', sans-serif; color: #0d2340; font-weight: bold; white-space: nowrap; }
+  .total-row td { background: #0d2340 !important; color: white; font-weight: bold; font-family: 'Helvetica Neue', sans-serif; }
+
+  .milestone-phase { margin-bottom: 32px; }
+  .milestone-header { background: #1a3a5c; color: white; padding: 16px 24px; border-radius: 4px 4px 0 0; }
+  .milestone-label { font-family: 'Helvetica Neue', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #8faec8; margin-bottom: 4px; }
+  .milestone-title { font-size: 17px; }
+  .milestone-body { background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px; }
+  .milestone-item { display: flex; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #e8e8e8; align-items: flex-start; }
+  .milestone-item:last-child { border-bottom: none; }
+  .milestone-week { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8faec8; min-width: 80px; padding-top: 2px; }
+  .milestone-content h4 { font-size: 14px; font-weight: normal; color: #0d2340; margin-bottom: 4px; }
+  .milestone-content p { font-size: 13px; color: #555; line-height: 1.55; }
+
+  .cta-block { background: #0d2340; color: white; padding: 48px; text-align: center; border-radius: 4px; margin-bottom: 40px; }
+  .cta-block h2 { font-size: 26px; font-weight: normal; color: white; margin-bottom: 16px; }
+  .cta-block p { font-size: 16px; color: #8faec8; line-height: 1.7; max-width: 520px; margin: 0 auto 28px; }
+  .cta-button { display: inline-block; background: white; color: #0d2340; padding: 14px 32px; text-decoration: none; font-family: 'Helvetica Neue', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; border-radius: 2px; }
+
+  .guarantee-block { background: #f2fdf6; border: 1px solid #27ae60; border-radius: 4px; padding: 24px; margin-bottom: 40px; }
+  .guarantee-block h3 { font-size: 16px; color: #0d2340; margin-bottom: 10px; }
+  .guarantee-block p { font-size: 14px; color: #444; line-height: 1.65; }
+
+  .compliance-note { background: #fef9e7; border: 1px solid #f39c12; border-radius: 4px; padding: 16px 20px; margin-bottom: 28px; font-size: 13px; color: #555; }
+
+  .footer { background: #0d2340; color: #8faec8; padding: 40px 60px; text-align: center; font-family: 'Helvetica Neue', sans-serif; font-size: 12px; line-height: 2; }
+  .footer strong { color: white; }
+
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-label">MONA Digital Marketing · Service Proposal · Goldsmith Financial</div>
+  <div class="cover-title">A Proposal for<br>Joshua Goldsmith, CFP®</div>
+  <div class="cover-subtitle">Visibility · Trust · Client Acquisition — for the $1M+ Retirement Planning Market in Temecula Valley</div>
+  <div class="cover-meta">
+    <span>Prepared: June 5, 2026</span>
+    <span>Presented by: Mona Empoweryou · MONA Digital Marketing</span>
+    <span>Proposal valid: 30 days from date of preparation</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro-block" style="margin-top:48px;">
+    <p>Joshua,</p>
+    <p>What we found about Goldsmith Financial confirms what we suspected from your brief: the problem is not who you are or what you have built. You have 20 years of experience, a clean regulatory record, a CFP® designation, and a dual wealth management and life insurance capability that no other advisor in Temecula appears to market explicitly. The problem is who can find you.</p>
+    <p>This proposal is designed to change that — systematically, in 90 days, with every recommendation tied directly to your stated goal of adding $10 million in assets under management over the next 12 months.</p>
+    <p>Everything in this proposal is based on what the research revealed about your specific situation. Nothing in here is a template.</p>
+  </div>
+
+  <!-- WHAT WE FOUND -->
+  <div class="section">
+    <div class="section-label">What We Found</div>
+    <div class="section-title">The Four Things Standing Between You and Your Goal</div>
+
+    <div class="finding-recap">
+      <h3>Critical Findings from the Business Intelligence Report</h3>
+      <ul class="finding-list">
+        <li><span class="bullet">01</span><span>Your Yelp and Yahoo Local listings still show your former San Diego address (3914 Murphy Canyon Rd) and your old phone number (858) 836-2956. These conflicting signals are actively suppressing your Temecula local search ranking. Google sees two locations and trusts neither.</span></li>
+        <li><span class="bullet">02</span><span>You have zero visible public reviews after 20 years in business. A prospect considering transferring $1M+ in assets will search for evidence before scheduling a meeting. The absence of reviews registers as a question mark — even though your actual reputation is excellent.</span></li>
+        <li><span class="bullet">03</span><span>You do not appear in any non-branded local search. "Retirement planner Temecula," "CFP Temecula," "financial advisor 92591" — none of these return Goldsmith Financial. Eight other firms are actively competing for these searches. You are not visible to new prospects who don't already know your name.</span></li>
+        <li><span class="bullet">04</span><span>Your strongest differentiator — a CFP fiduciary who integrates wealth management and life insurance planning under one advisor — does not appear clearly in your public marketing. This is the one positioning in the Temecula market that no competitor currently owns.</span></li>
+      </ul>
+    </div>
+
+    <p>The good news: three of these four problems are fixable within the first 30 days. The fourth — building sustained local search presence — is a 60–90 day effort. All four have a direct path to the $10M AUM goal.</p>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section">
+    <div class="section-label">What We Recommend</div>
+    <div class="section-title">The MONA Goldsmith Financial Engagement</div>
+
+    <div class="compliance-note">All recommendations are designed to comply with FINRA regulations, the 2022 SEC Marketing Rule, and LPL Financial's Marketing Regulatory Review (MRR) process. Items requiring LPL MRR approval are identified below.</div>
+
+    <div class="service-card">
+      <div class="service-header">
+        <span class="service-name">1 · Digital Presence Correction — NAP, Directories, and GBP Optimization</span>
+        <span class="service-phase">Phase 1 — Days 1–14</span>
+      </div>
+      <div class="service-body">
+        <p>We correct every directory listing that shows your San Diego address and old phone number. Yelp, Yahoo Local, Nextdoor, Apple Maps, and Bing Places are all updated to your current Temecula address and (760) 586-5275. We then fully optimize your Google Business Profile — categories, services description, photos, Q&amp;A, weekly posts, and appointment link.</p>
+        <p>This is the highest-leverage change available. Until the NAP conflict is resolved, every other SEO improvement you make is partially offset by directories telling Google you're in San Diego.</p>
+        <div class="service-deliverables">
+          <div class="service-deliverables-label">Deliverables</div>
+          <ul class="deliverable-list">
+            <li>Yelp, Yahoo Local, Nextdoor updated to current location</li>
+            <li>Apple Maps and Bing Places claimed and corrected</li>
+            <li>Google Business Profile fully optimized (categories, description, services, photos)</li>
+            <li>GBP monthly post cadence established (2 posts/month)</li>
+            <li>NAP consistency verification report</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-header">
+        <span class="service-name">2 · Google Review Campaign — 10 Reviews in 90 Days</span>
+        <span class="service-phase">Phase 1 — Weeks 1–12</span>
+      </div>
+      <div class="service-body">
+        <p>We design and execute a systematic outreach campaign to your existing client base requesting Google reviews. Reviews must speak to the client experience — not investment performance — which keeps them fully compliant with FINRA and the SEC Marketing Rule without requiring LPL pre-approval.</p>
+        <p>We provide: the direct Google review link, a personal outreach script, and guidance on the disclosure requirement if any reviews are later used in advertising materials. Target: 10 authentic Google reviews within 90 days.</p>
+        <div class="service-deliverables">
+          <div class="service-deliverables-label">Deliverables</div>
+          <ul class="deliverable-list">
+            <li>Google review request sequence (email and in-person ask templates)</li>
+            <li>Review monitoring and response drafts for each incoming review</li>
+            <li>Disclosure guidance for future advertising use (LPL MRR requirement)</li>
+            <li>Target: 10 Google reviews by Day 90</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-header">
+        <span class="service-name">3 · LinkedIn Presence and Clean Record Statement</span>
+        <span class="service-phase">Phase 1 — Week 1</span>
+      </div>
+      <div class="service-body">
+        <p>We update your LinkedIn profile to clearly differentiate you from the other "Joshua Goldsmith CFP" that appears in search results (a different advisor at Scarborough Capital Management). Your headline, banner, About section, and featured content are updated to unambiguously identify you as the principal of Goldsmith Financial in Temecula.</p>
+        <p>We also add your clean FINRA BrokerCheck record as an explicit trust statement — "20 years · 0 disclosures" with a direct link to your CRD #5199694. This converts a passive regulatory asset into an active marketing statement that prospects can verify themselves.</p>
+        <div class="service-deliverables">
+          <div class="service-deliverables-label">Deliverables</div>
+          <ul class="deliverable-list">
+            <li>LinkedIn headline, banner, About section rewritten</li>
+            <li>FINRA clean record statement added to bio and website</li>
+            <li>Featured section updated with key credentials and firm positioning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-header">
+        <span class="service-name">4 · Website Local SEO — Temecula Search Visibility</span>
+        <span class="service-phase">Phase 2 — Weeks 3–8</span>
+      </div>
+      <div class="service-body">
+        <p>We audit your website structure, title tags, meta descriptions, and content to determine why interior pages (bio, services, team) are not ranking for relevant local searches. We then implement a local SEO strategy: a Temecula-specific services page, keyword-optimized page titles and descriptions, proper internal linking, and sitemap submission to Google Search Console.</p>
+        <p>Goal: Goldsmith Financial appears in the first page of results for "retirement planning Temecula," "CFP financial advisor Temecula," and "401k rollover Temecula" within 90 days of implementation.</p>
+        <div class="service-deliverables">
+          <div class="service-deliverables-label">Deliverables</div>
+          <ul class="deliverable-list">
+            <li>Website SEO audit with specific recommendations</li>
+            <li>Temecula services landing page (copy requires LPL MRR review)</li>
+            <li>Title tag and meta description updates for all key pages</li>
+            <li>Sitemap and Google Search Console setup</li>
+            <li>Monthly ranking report for target keywords</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-header">
+        <span class="service-name">5 · The Integrated Retirement Advisor Content Series</span>
+        <span class="service-phase">Phase 3 — Month 2–3</span>
+      </div>
+      <div class="service-body">
+        <p>We build a 3-piece content series that claims the market position no Temecula competitor currently owns: the CFP fiduciary who integrates wealth management and life insurance planning as a single, coordinated retirement strategy. Each piece targets a high-intent search query a $1M+ pre-retiree would use in the months before they choose an advisor.</p>
+        <p>Content topics (subject to LPL MRR review): (1) "Should Life Insurance Be Part of Your Retirement Plan? A CFP's Objective Guide" — (2) "Temecula 401(k) Rollover: What Your Options Are and How to Evaluate Them" — (3) "How to Choose a Retirement Advisor in Temecula: 5 Questions to Ask."</p>
+        <p>These pieces are published on the Goldsmith Financial website and distributed on LinkedIn. They establish topical authority with exactly the audience Joshua wants to attract.</p>
+        <div class="service-deliverables">
+          <div class="service-deliverables-label">Deliverables</div>
+          <ul class="deliverable-list">
+            <li>3 long-form articles (800–1,200 words each) — requires LPL MRR review</li>
+            <li>LinkedIn post series adapted from each article</li>
+            <li>Distribution to referral partner network (CPAs, estate attorneys)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-header">
+        <span class="service-name">6 · LPL-Compliant Testimonial Program</span>
+        <span class="service-phase">Phase 2 — Month 1–2</span>
+      </div>
+      <div class="service-body">
+        <p>Since 2022, the SEC Marketing Rule permits investment advisers to use client testimonials in marketing materials — with proper disclosures. LPL has operationalized this through their Marketing Regulatory Review (MRR) process. Most LPL advisors have not yet adopted this capability, which means early movers gain a significant credibility advantage.</p>
+        <p>We design a testimonial collection program, submit 3–5 approved testimonials through the LPL MRR process, and place approved testimonials on your website and LinkedIn profile with all required disclosures. Timeline: 6–8 weeks for MRR process completion.</p>
+        <div class="service-deliverables">
+          <div class="service-deliverables-label">Deliverables</div>
+          <ul class="deliverable-list">
+            <li>Testimonial collection templates and client outreach sequence</li>
+            <li>LPL MRR submission preparation and compliance disclosures</li>
+            <li>Placement on website and LinkedIn upon approval</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INVESTMENT -->
+  <div class="section">
+    <div class="section-label">Investment</div>
+    <div class="section-title">Engagement Options</div>
+
+    <p>Two engagement options based on scope. All pricing is for services rendered by MONA Digital Marketing on behalf of Goldsmith Financial. LPL MRR filing fees (if applicable) are not included.</p>
+
+    <table class="investment-table">
+      <tr>
+        <th>Service</th>
+        <th>Option A — Core Package</th>
+        <th>Option B — Full Engagement</th>
+      </tr>
+      <tr>
+        <td>NAP Correction + Directory Management + GBP Optimization (one-time)</td>
+        <td class="price-cell">Included</td>
+        <td class="price-cell">Included</td>
+      </tr>
+      <tr>
+        <td>Google Review Campaign (90-day)</td>
+        <td class="price-cell">Included</td>
+        <td class="price-cell">Included</td>
+      </tr>
+      <tr>
+        <td>LinkedIn + FINRA Clean Record Update (one-time)</td>
+        <td class="price-cell">Included</td>
+        <td class="price-cell">Included</td>
+      </tr>
+      <tr>
+        <td>Website Local SEO — Temecula Pages + Optimization</td>
+        <td class="price-cell">—</td>
+        <td class="price-cell">Included</td>
+      </tr>
+      <tr>
+        <td>Integrated Retirement Advisor Content Series (3 articles)</td>
+        <td class="price-cell">—</td>
+        <td class="price-cell">Included</td>
+      </tr>
+      <tr>
+        <td>LPL-Compliant Testimonial Program</td>
+        <td class="price-cell">—</td>
+        <td class="price-cell">Included</td>
+      </tr>
+      <tr>
+        <td>Monthly GBP posts + review monitoring + reporting (ongoing)</td>
+        <td class="price-cell">Monthly</td>
+        <td class="price-cell">Monthly</td>
+      </tr>
+      <tr class="total-row">
+        <td>One-Time Setup</td>
+        <td class="price-cell">[TO BE SET]</td>
+        <td class="price-cell">[TO BE SET]</td>
+      </tr>
+      <tr class="total-row">
+        <td>Monthly Ongoing (after setup)</td>
+        <td class="price-cell">[TO BE SET]</td>
+        <td class="price-cell">[TO BE SET]</td>
+      </tr>
+    </table>
+
+    <div class="guarantee-block">
+      <h3>What We Stand Behind</h3>
+      <p>Every recommendation in this proposal is specific to Goldsmith Financial — not a template applied to your name. If after the first 30 days you feel that our work has not demonstrated the level of specificity, strategy, and execution quality described here, we will refund the first month's investment, no discussion required. We operate this way because we believe the work should speak for itself.</p>
+    </div>
+  </div>
+
+  <!-- 90-DAY MILESTONES -->
+  <div class="section">
+    <div class="section-label">How We'll Execute</div>
+    <div class="section-title">90-Day Milestone Schedule</div>
+
+    <div class="milestone-phase">
+      <div class="milestone-header">
+        <div class="milestone-label">Phase 1 · Days 1–30</div>
+        <div class="milestone-title">Fix What Is Broken — Immediate Impact</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-item">
+          <div class="milestone-week">Day 1–3</div>
+          <div class="milestone-content">
+            <h4>Correct all directory NAP errors</h4>
+            <p>Yelp, Yahoo Local, Nextdoor updated to current Temecula address. San Diego listings closed or corrected.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Day 3–7</div>
+          <div class="milestone-content">
+            <h4>Google Business Profile fully optimized</h4>
+            <p>Categories, description, services, 10 photos uploaded, appointment link active, first GBP post live.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Day 7–14</div>
+          <div class="milestone-content">
+            <h4>LinkedIn differentiated + FINRA record added</h4>
+            <p>Headline updated. FINRA clean record statement live on LinkedIn and website bio.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Day 7–30</div>
+          <div class="milestone-content">
+            <h4>First 3–5 Google reviews requested and received</h4>
+            <p>Systematic outreach to existing clients. Reviews live on Google Business Profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="milestone-phase">
+      <div class="milestone-header">
+        <div class="milestone-label">Phase 2 · Days 31–60</div>
+        <div class="milestone-title">Build the Foundation for Discovery</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-item">
+          <div class="milestone-week">Week 5–6</div>
+          <div class="milestone-content">
+            <h4>Website SEO audit complete</h4>
+            <p>Specific recommendations delivered. Temecula services page built and submitted for LPL MRR review.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Week 5–8</div>
+          <div class="milestone-content">
+            <h4>LPL MRR testimonial program initiated</h4>
+            <p>3–5 clients identified, outreach complete, testimonials submitted to LPL for review.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Week 6–8</div>
+          <div class="milestone-content">
+            <h4>10 Google reviews reached</h4>
+            <p>Full review campaign complete. Google Maps ranking improvement measurable by Week 8.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="milestone-phase">
+      <div class="milestone-header">
+        <div class="milestone-label">Phase 3 · Days 61–90</div>
+        <div class="milestone-title">Growth Engine — Content Authority</div>
+      </div>
+      <div class="milestone-body">
+        <div class="milestone-item">
+          <div class="milestone-week">Month 3</div>
+          <div class="milestone-content">
+            <h4>Integrated Retirement Advisor content series published</h4>
+            <p>3 articles live on website and LinkedIn. LPL MRR approval complete. Distributed to referral partner network.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Month 3</div>
+          <div class="milestone-content">
+            <h4>Testimonials live (pending LPL approval)</h4>
+            <p>3–5 approved testimonials placed on website and LinkedIn with required compliance disclosures.</p>
+          </div>
+        </div>
+        <div class="milestone-item">
+          <div class="milestone-week">Day 90</div>
+          <div class="milestone-content">
+            <h4>90-Day Results Review</h4>
+            <p>Metrics: Google review count, GBP views and direction requests, keyword ranking movement, LinkedIn engagement, new prospect inquiries. Adjust Month 4–12 strategy based on results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Ready to Proceed</h2>
+    <p>If the findings and recommendations in this report match what you're looking for, the next step is a brief conversation to confirm scope, answer any questions, and set the engagement start date.</p>
+    <p style="margin-top:12px;">Or, if you prefer to proceed directly based on this proposal, we can begin Phase 1 immediately upon your confirmation.</p>
+  </div>
+
+  <div class="section" style="margin-bottom:20px;">
+    <div class="section-label">A Final Note</div>
+    <div class="section-title">Why This Matters for Your 12-Month Goal</div>
+    <p>Adding $10 million in assets under management requires two things working simultaneously: (1) being discoverable by the right prospects, and (2) earning their trust quickly once they find you.</p>
+    <p>The recommendations in this proposal address both. The NAP correction and GBP optimization address discoverability. The reviews, clean record statement, testimonials, and content series address trust. None of these require paid advertising. All of them compound over time.</p>
+    <p>A single new client at $1M+ in investable assets, generating 1% in advisory fees, produces $10,000 in annual revenue. The investment in this engagement is designed to produce far more than that in qualified client opportunities over the next 12 months.</p>
+    <p>We look forward to working with you.</p>
+    <p style="margin-top:20px;font-style:italic;">Mona Empoweryou<br>MONA Digital Marketing</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p><strong>MONA Digital Marketing</strong> · Service Proposal</p>
+  <p>Prepared for Joshua Goldsmith, CFP® · Goldsmith Financial · June 5, 2026</p>
+  <p>Proposal valid for 30 days from date of preparation</p>
+  <p style="margin-top:16px;font-size:11px;">All proposed services are subject to LPL Financial Marketing Regulatory Review (MRR) where applicable. MONA Digital Marketing is not a FINRA-registered firm. Compliance responsibility remains with Joshua Goldsmith and Goldsmith Financial Corporation.</p>
+</div>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 # MONA Deliverables — Master Index
 
 > Governed by STORAGE-001, REPORT-001, DELIVERABLES-001, DELIVERABLES-001A (see MONA_AGENCY_RULES.md)
-> Last updated: June 5, 2026 (session 003 — WCE system added, BIE Framework, Goldsmith execution doc)
+> Last updated: June 5, 2026 (session 004 — WF-003 added, BIE Report, Goldsmith Proposal, autonomy notes)
 
 ---
 
@@ -64,6 +64,7 @@ MONA Deliverables/
 |------|------|----------------|------|
 | `Clients/Goldsmith Financial/Goldsmith_Financial_BIE_Execution_June2026.md` | June 5, 2026 | 🔄 In Progress — BIE Report complete, Step 2 draft ready to send | BIE Execution Document |
 | `Clients/Goldsmith Financial/Goldsmith_Financial_Business_Intelligence_Report_June2026.html` | June 5, 2026 | ✅ Complete — Ready for Maor review and delivery to Joshua Goldsmith | Business Intelligence Report |
+| `Clients/Goldsmith Financial/Goldsmith_Financial_Proposal_June2026.html` | June 5, 2026 | ⏳ Draft — Awaiting Maor pricing decision ([TO BE SET] placeholders) | Client Proposal |
 
 ---
 
@@ -148,12 +149,12 @@ MONA Deliverables/
 
 | Category | Count |
 |----------|-------|
-| Client deliverables in folder | 7 (4 Renova + 1 Laguna + 2 Goldsmith) |
+| Client deliverables in folder | 8 (4 Renova + 1 Laguna + 3 Goldsmith) |
 | Internal documents | 14 (strategy 6 + audits 2 + systems 6) |
 | Workflow Capture Engine | 11 (README + tracker + routing map + 5 templates + 3 workflows) |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **40** |
+| **Total in MONA Deliverables** | **41** |
 | Desktop-only gaps | 2 |
 
 ---
@@ -651,4 +652,18 @@ Producing Agent:   Claude Code · Business Intelligence Engine · Research Agent
 Workflow:          MONA BIE Session 001 · Goldsmith Financial Live Test
 File:              Clients/Goldsmith Financial/Goldsmith_Financial_Business_Intelligence_Report_June2026.html
 Status:            Complete — Ready for Maor review and delivery to Joshua Goldsmith
+```
+
+---
+
+**Goldsmith_Financial_Proposal_June2026.html**
+```
+Timestamp:         2026-06-05 (session 004)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Goldsmith Financial · New Client Acquisition
+Deliverable Type:  Client Proposal — 6 service packages
+Producing Agent:   Claude Code · Business Intelligence Engine · BIE Proposal Generator
+Workflow:          MONA BIE Session 001 · Goldsmith Financial Live Test · Step 8 — Proposal
+File:              Clients/Goldsmith Financial/Goldsmith_Financial_Proposal_June2026.html
+Status:            Draft — Pricing [TO BE SET] by Maor · Requires Maor review before delivery
 ```

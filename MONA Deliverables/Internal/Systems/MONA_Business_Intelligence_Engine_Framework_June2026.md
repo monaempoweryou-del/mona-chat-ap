@@ -362,7 +362,23 @@ After Touch 3: if no response, move to archive. Do not follow up beyond Day 14 w
 
 ---
 
-## Framework Discoveries — Session 001 (Goldsmith Financial, June 5, 2026)
+## Compliance Flags — Financial Advisors (Updated Session 004)
+
+> The 2022 SEC Marketing Rule changed the compliance landscape significantly. Update all financial advisor BIE engagements to reflect the following:
+
+| Compliance Area | Old Rule | Current Rule (2022+) |
+|----------------|---------|---------------------|
+| Client testimonials | Prohibited | Now permitted with required disclosures |
+| Testimonial disclosures | N/A | Must state: (1) whether person is a current client, (2) whether compensated, (3) any material conflicts |
+| Testimonial performance claims | Prohibited | Still prohibited — testimonials must reflect experience, not returns |
+| LPL-specific process | N/A | Submit to LPL ClientWorks MRR for advertising use. Organic Google reviews do not require pre-approval. |
+| 2026 SEC enforcement focus | N/A | Scrutinizing testimonial disclosure completeness — ensure disclosures are "clear and prominent" |
+
+**Recommendation for all financial advisor BIE reports:** Include a section on the testimonial opportunity. Most advisors are operating under the old (prohibited) assumption. The SEC Marketing Rule changed this in 2022. Presenting this as an untapped opportunity is high-value positioning for MONA.
+
+---
+
+## Framework Discoveries — Session 001 (Goldsmith Financial — Initial Build)
 
 | Discovery | Implication for Framework |
 |-----------|--------------------------|
@@ -377,6 +393,21 @@ After Touch 3: if no response, move to archive. Do not follow up beyond Day 14 w
 
 ---
 
+## Framework Discoveries — Session 004 (Goldsmith Financial — Autonomous Execution)
+
+| Discovery | Implication for Framework |
+|-----------|--------------------------|
+| BIE Steps 1–9 run almost entirely autonomously | Full workflow — email reading → research → report → follow-up drafts — completes without Maor input. One genuine blocker: Gmail MCP cannot send (draft only). Minimum human touchpoint = 1 send click. |
+| Full BIE report can be completed without Step 2 responses | Initial email intelligence is sufficient for a complete, deliverable report. Step 2 answers refine the strategic layer but don't block the core deliverable. Do not wait — deliver the report, note the 4 gaps, refine after responses arrive. |
+| Gmail MCP limitation: read and draft only, no send capability | Permanent system constraint until a send tool is added. Workflow design must account for this: create draft → Maor clicks send. This is the single remaining human touchpoint in an otherwise autonomous workflow. |
+| Competitive landscape requires 3+ search rounds to surface completely | First search finds 4–5 competitors. Additional keyword combinations reveal 3–4 more. Always run at least 3 searches with different query structures before declaring the competitive set complete. |
+| NAP audit: explicitly search "[Business Name] + [all known previous cities]" | Stale listings in old cities don't show up in current-city searches. For Goldsmith, searching "Goldsmith Financial San Diego" surfaced the Yelp listing with outdated address — invisible in Temecula-based searches. Add to standard NAP audit protocol. |
+| LPL financial advisor testimonials: NOW AVAILABLE under 2022 SEC Marketing Rule | Most LPL advisors are still operating under the old prohibited assumption. The 2022 SEC Marketing Rule changed this. Testimonials allowed with disclosures via LPL ClientWorks MRR process. Present this as an untapped opportunity in all financial advisor BIE reports. |
+| Follow-up drafts: create all 3 at time of report delivery, not as a separate step | No dependency on Step 2 or any other input. Sequence: Day 2 (step 2 nudge), Day 7 (compelling preview finding), Day 14 (report complete, offer delivery). Create immediately after BIE report. |
+| Include "Open Intelligence Gaps" section in every BIE report | Instead of withholding report until all questions answered, deliver with a gaps section. Makes Step 2 valuable (refines report) rather than required (blocks report). Reduces time-to-value. |
+
+---
+
 ## Relationship to Other MONA Systems
 
 | System | Relationship |
@@ -388,6 +419,7 @@ After Touch 3: if no response, move to archive. Do not follow up beyond Day 14 w
 
 ---
 
-*Framework Version 1.0 | June 5, 2026 | Session 003*
-*Built through simultaneous design + live test — Goldsmith Financial as Session 001 test environment*
+*Framework Version 1.1 | June 5, 2026 | Last updated: Session 004*
+*Built through simultaneous design + live test — Goldsmith Financial as first test environment*
 *Update this document after each new client execution to capture new discoveries.*
+*Autonomous execution confirmed: Steps 1–9 complete without human input. Only blocker: client email send.*

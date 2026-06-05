@@ -11,7 +11,7 @@
 | ID | Workflow Name | Status | Automation Phase | Last Updated | File |
 |----|--------------|--------|-----------------|-------------|------|
 | WF-001 | Renova Visual Training Platform | Tested Once | Phase 1 | June 5, 2026 | `Workflows/WF-001_Renova_Visual_Training.md` |
-| WF-002 | MONA Business Intelligence Engine | Tested Once | Phase 1 | June 5, 2026 | `Workflows/WF-002_Business_Intelligence_Engine.md` |
+| WF-002 | MONA Business Intelligence Engine | Tested — Advanced | Phase 1 | June 5, 2026 | `Workflows/WF-002_Business_Intelligence_Engine.md` |
 
 ---
 
@@ -31,8 +31,8 @@
 ### Phase 1 — Manual-Assisted (active)
 | ID | Workflow | Next Action |
 |----|---------|------------|
-| WF-001 | Renova Visual Training | Second real-world test to validate |
-| WF-002 | Business Intelligence Engine | Goldsmith Financial test → capture lessons → update WF-002 |
+| WF-001 | Renova Visual Training | Second real-world test to validate — success condition: approved publishable content |
+| WF-002 | Business Intelligence Engine | Goldsmith step 2 reply pending → deliver report → capture final lessons → update WF-002 score |
 
 ---
 
@@ -61,4 +61,13 @@
 
 ---
 
-*Last updated: June 5, 2026 | Session 003*
+---
+
+## Autonomy Notes (Added Session 004)
+
+| Workflow | Current Autonomous Capability | Remaining Human Touchpoints |
+|---------|------------------------------|---------------------------|
+| WF-002 BIE | Steps 1–9 executable autonomously | (1) Send Step 2 email — Gmail MCP cannot send, draft only. (2) Approve BIE report before client delivery. (3) Set proposal pricing and scope. |
+| WF-001 Visual Training | Framework design and content generation | (1) Client approves trade category list. (2) Maor approves output before delivery. (3) Images require Higgsfield API access (available). |
+
+*Last updated: June 5, 2026 | Session 004*

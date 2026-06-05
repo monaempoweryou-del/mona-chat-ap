@@ -54,6 +54,12 @@ MONA Deliverables/
 |------|------|----------------|-------|
 | *(Full Audit — June 2026)* | June 2026 | ❌ Not in repo | Desktop only: `Finish_Line_Taxi_Report_2026_06.html` — PMA-003 |
 
+### Goldsmith Financial
+
+| File | Date | Delivery Status | Type |
+|------|------|----------------|------|
+| `Clients/Goldsmith Financial/Goldsmith_Financial_BIE_Execution_June2026.md` | June 5, 2026 | 🔄 In Progress — Step 2 draft in Gmail (ID: r3365570789961105155) | BIE Execution Document |
+
 ---
 
 ## Internal Deliverables
@@ -85,6 +91,7 @@ MONA Deliverables/
 | `Internal/Systems/HIM001_Metrics.md` | June 3, 2026 (ongoing) | HIM-001 session tracking. Updated each session. |
 | `Internal/Systems/MONA_Chat_Infrastructure_Report_June2026.md` | June 3, 2026 | App.py bug analysis, SMTP fix, GMAIL_APP_PASSWORD PMA. |
 | `Internal/Systems/MONA_Lead_Onboarding_Workflow_June2026.md` | June 5, 2026 | Master lead onboarding workflow — 7 steps. Gap analysis and build pending. |
+| `Internal/Systems/MONA_Business_Intelligence_Engine_Framework_June2026.md` | June 5, 2026 | Canonical BIE framework — 9 steps, reusable across all clients. Built through live Goldsmith test. |
 
 ### Brand
 
@@ -120,11 +127,11 @@ MONA Deliverables/
 
 | Category | Count |
 |----------|-------|
-| Client deliverables in folder | 5 (4 Renova + 1 Laguna) |
-| Internal documents | 11 |
+| Client deliverables in folder | 6 (4 Renova + 1 Laguna + 1 Goldsmith) |
+| Internal documents | 12 |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **24** |
+| **Total in MONA Deliverables** | **26** |
 | Desktop-only gaps | 2 |
 
 ---

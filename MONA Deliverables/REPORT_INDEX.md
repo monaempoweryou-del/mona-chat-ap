@@ -1,7 +1,7 @@
 # MONA Deliverables — Master Index
 
 > Governed by STORAGE-001, REPORT-001, DELIVERABLES-001, DELIVERABLES-001A (see MONA_AGENCY_RULES.md)
-> Last updated: June 4, 2026 (session 002 — Automation Audit added)
+> Last updated: June 5, 2026 (session 003 — WCE system added, BIE Framework, Goldsmith execution doc)
 
 ---
 
@@ -12,12 +12,16 @@ MONA Deliverables/
 ├── Clients/          — Client-facing reports, audits, proposals, plans
 │   ├── Renova Builders/
 │   ├── Laguna Luxury Pools/
-│   └── Finish Line Taxi/
+│   ├── Finish Line Taxi/
+│   └── Goldsmith Financial/
 ├── Internal/         — Internal strategy, systems, brand, audits
 │   ├── Strategy/
 │   ├── Audits/
 │   ├── Systems/
-│   └── Brand/
+│   ├── Brand/
+│   └── Workflow Capture Engine/   — WCE meta-system: captures, templates, routing
+│       ├── _Templates/            — 5 reusable templates
+│       └── Workflows/             — Captured workflow documents (WF-001, WF-002...)
 └── Archive/          — Delivered documents kept for reference only
 ```
 
@@ -93,6 +97,21 @@ MONA Deliverables/
 | `Internal/Systems/MONA_Lead_Onboarding_Workflow_June2026.md` | June 5, 2026 | Master lead onboarding workflow — 7 steps. Gap analysis and build pending. |
 | `Internal/Systems/MONA_Business_Intelligence_Engine_Framework_June2026.md` | June 5, 2026 | Canonical BIE framework — 9 steps, reusable across all clients. Built through live Goldsmith test. |
 
+### Workflow Capture Engine
+
+| File | Date | Description |
+|------|------|-------------|
+| `Internal/Workflow Capture Engine/README.md` | June 5, 2026 | WCE architecture, 13-step loop, status definitions, automation phases, scoring system, operating principles. |
+| `Internal/Workflow Capture Engine/WORKFLOW_STATUS_TRACKER.md` | June 5, 2026 | Master tracker: all captured workflows, their status, and phase. WF-001 + WF-002 active. |
+| `Internal/Workflow Capture Engine/AGENT_ROUTING_MAP.md` | June 5, 2026 | Routing logic: 11 lesson categories mapped to agent/system destinations. |
+| `Internal/Workflow Capture Engine/_Templates/WORKFLOW_CAPTURE_TEMPLATE.md` | June 5, 2026 | 21-section master template for capturing any MONA workflow. |
+| `Internal/Workflow Capture Engine/_Templates/LESSON_EXTRACTION_TEMPLATE.md` | June 5, 2026 | 13-question extraction form for post-session use. |
+| `Internal/Workflow Capture Engine/_Templates/RULE_PROPOSAL_TEMPLATE.md` | June 5, 2026 | Rule proposal with MASTER-001 compliance checklist (5 components). |
+| `Internal/Workflow Capture Engine/_Templates/AGENT_TRAINING_UPDATE_TEMPLATE.md` | June 5, 2026 | Agent update form with before/after behavioral change + routing status. |
+| `Internal/Workflow Capture Engine/_Templates/AUTOMATION_CANDIDATE_TEMPLATE.md` | June 5, 2026 | Full automation evaluation with 5-dimension scoring matrix and phase roadmap. |
+| `Internal/Workflow Capture Engine/Workflows/WF-001_Renova_Visual_Training.md` | June 5, 2026 | First captured workflow. Score 15/25. Key lesson: review tool vs training framework. |
+| `Internal/Workflow Capture Engine/Workflows/WF-002_Business_Intelligence_Engine.md` | June 5, 2026 | Second captured workflow. Score 15/25. BIE framework captured from live Goldsmith test. |
+
 ### Brand
 
 | File | Date | Description |
@@ -128,10 +147,11 @@ MONA Deliverables/
 | Category | Count |
 |----------|-------|
 | Client deliverables in folder | 6 (4 Renova + 1 Laguna + 1 Goldsmith) |
-| Internal documents | 12 |
+| Internal documents | 14 (strategy 6 + audits 2 + systems 6) |
+| Workflow Capture Engine | 10 (README + tracker + routing map + 5 templates + 2 workflows) |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **26** |
+| **Total in MONA Deliverables** | **38** |
 | Desktop-only gaps | 2 |
 
 ---
@@ -419,4 +439,200 @@ Producing Agent:   Claude Code · Systems Auditor
 Workflow:          MONA Agency Build Session 002 · Full Operational Automation Audit
 File:              Internal/Audits/MONA_Automation_Operations_Audit_June2026.md
 Status:            Complete — PROPOSED CHANGES require Maor approval before implementation
+```
+
+---
+
+**MONA_Chat_Infrastructure_Report_June2026.md**
+```
+Timestamp:         2026-06-03 (session 001)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Infrastructure
+Deliverable Type:  Infrastructure Analysis Report
+Producing Agent:   Claude Code · Systems Analyst
+Workflow:          MONA Agency Build Session 001 · MONA Chat Infrastructure Audit
+File:              Internal/Systems/MONA_Chat_Infrastructure_Report_June2026.md
+Status:            Complete — GMAIL_APP_PASSWORD fix pending (PMA-012)
+```
+
+---
+
+**MONA_Lead_Onboarding_Workflow_June2026.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Systems
+Deliverable Type:  Workflow Document (superseded)
+Producing Agent:   Claude Code · Systems Analyst
+Workflow:          MONA Agency Build Session 003 · BIE Framework Build
+File:              Internal/Systems/MONA_Lead_Onboarding_Workflow_June2026.md
+Status:            Superseded by BIE Framework — kept for reference
+```
+
+---
+
+**MONA_Business_Intelligence_Engine_Framework_June2026.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Systems
+Deliverable Type:  Reusable Framework Document
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · BIE Dual-Track Build + Goldsmith Test
+File:              Internal/Systems/MONA_Business_Intelligence_Engine_Framework_June2026.md
+Status:            Active v1.0 — validated through first Goldsmith Financial test run
+```
+
+---
+
+**Goldsmith_Financial_BIE_Execution_June2026.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Goldsmith Financial · New Client Acquisition
+Deliverable Type:  BIE Execution Document (live)
+Producing Agent:   Claude Code · Business Intelligence Engine
+Workflow:          MONA Agency Build Session 003 · BIE Live Test — Goldsmith Financial
+File:              Clients/Goldsmith Financial/Goldsmith_Financial_BIE_Execution_June2026.md
+Status:            In Progress — Step 1 complete, awaiting Step 2 response from Joshua Goldsmith
+```
+
+---
+
+**WCE/README.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  System Architecture Document
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/README.md
+Status:            Active v1.0
+```
+
+---
+
+**WCE/WORKFLOW_STATUS_TRACKER.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Living Status Tracker
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/WORKFLOW_STATUS_TRACKER.md
+Status:            Active — updated each session
+```
+
+---
+
+**WCE/AGENT_ROUTING_MAP.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Agent Routing Reference
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/AGENT_ROUTING_MAP.md
+Status:            Active v1.0 — 11 lesson categories mapped
+```
+
+---
+
+**WCE/_Templates/WORKFLOW_CAPTURE_TEMPLATE.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Reusable Template
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/_Templates/WORKFLOW_CAPTURE_TEMPLATE.md
+Status:            Active — use after every major working session
+```
+
+---
+
+**WCE/_Templates/LESSON_EXTRACTION_TEMPLATE.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Reusable Template
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/_Templates/LESSON_EXTRACTION_TEMPLATE.md
+Status:            Active
+```
+
+---
+
+**WCE/_Templates/RULE_PROPOSAL_TEMPLATE.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Reusable Template
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/_Templates/RULE_PROPOSAL_TEMPLATE.md
+Status:            Active — requires MASTER-001 compliance check before submitting
+```
+
+---
+
+**WCE/_Templates/AGENT_TRAINING_UPDATE_TEMPLATE.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Reusable Template
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/_Templates/AGENT_TRAINING_UPDATE_TEMPLATE.md
+Status:            Active — app.py changes require Maor approval before implementation
+```
+
+---
+
+**WCE/_Templates/AUTOMATION_CANDIDATE_TEMPLATE.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · Meta-Systems
+Deliverable Type:  Reusable Template
+Producing Agent:   Claude Code · Systems Architect
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/_Templates/AUTOMATION_CANDIDATE_TEMPLATE.md
+Status:            Active — complete only when workflow is Tested Once or higher
+```
+
+---
+
+**WCE/Workflows/WF-001_Renova_Visual_Training.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  Renova Builders · MONA Internal
+Deliverable Type:  Workflow Capture Document
+Producing Agent:   Claude Code · WCE Capture Agent
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/Workflows/WF-001_Renova_Visual_Training.md
+Status:            Tested Once — Phase 1 (score 15/25)
+```
+
+---
+
+**WCE/Workflows/WF-002_Business_Intelligence_Engine.md**
+```
+Timestamp:         2026-06-05 (session 003)
+Business Owner:    Mona Digital Marketing
+Client / Project:  MONA Internal · All Clients
+Deliverable Type:  Workflow Capture Document
+Producing Agent:   Claude Code · WCE Capture Agent
+Workflow:          MONA Agency Build Session 003 · Workflow Capture Engine Build
+File:              Internal/Workflow Capture Engine/Workflows/WF-002_Business_Intelligence_Engine.md
+Status:            Tested Once — Phase 1 (score 15/25) · Goldsmith test in progress
 ```

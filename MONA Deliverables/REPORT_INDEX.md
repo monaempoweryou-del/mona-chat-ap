@@ -84,6 +84,7 @@ MONA Deliverables/
 | `Internal/Systems/MONA_LessonsLearned_Audit_June2026.md` | June 4, 2026 | Full system review. 7 new lessons. 0 rule conflicts. HIM-001 metrics updated. |
 | `Internal/Systems/HIM001_Metrics.md` | June 3, 2026 (ongoing) | HIM-001 session tracking. Updated each session. |
 | `Internal/Systems/MONA_Chat_Infrastructure_Report_June2026.md` | June 3, 2026 | App.py bug analysis, SMTP fix, GMAIL_APP_PASSWORD PMA. |
+| `Internal/Systems/MONA_Lead_Onboarding_Workflow_June2026.md` | June 5, 2026 | Master lead onboarding workflow — 7 steps. Gap analysis and build pending. |
 
 ### Brand
 
@@ -120,10 +121,10 @@ MONA Deliverables/
 | Category | Count |
 |----------|-------|
 | Client deliverables in folder | 5 (4 Renova + 1 Laguna) |
-| Internal documents | 10 |
+| Internal documents | 11 |
 | Brand assets | 6 |
 | Archive | 2 |
-| **Total in MONA Deliverables** | **23** |
+| **Total in MONA Deliverables** | **24** |
 | Desktop-only gaps | 2 |
 
 ---

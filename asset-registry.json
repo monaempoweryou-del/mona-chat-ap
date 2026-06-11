@@ -1,0 +1,142 @@
+{
+  "_meta": {
+    "purpose": "Permanent source of truth for all approved agency deliverables. Every approved asset must be recorded here. This file is the custodian — not the human.",
+    "schema_version": "1.0",
+    "last_updated": "2026-06-11",
+    "instructions": "When an asset is approved: add an entry here immediately, commit to git, push. When starting a new session: read this file first before asking any human where anything is.",
+    "statuses": ["pending_approval", "approved", "rejected", "in_production", "delivered"]
+  },
+  "clients": {
+    "renova_builders": {
+      "name": "Renova Builders",
+      "location": "Bay Area, CA",
+      "contact": "Omri Dror",
+      "contact_email": "renovabuilders@gmail.com",
+      "google_ads_customer_id": "630-398-6974",
+      "projects": {
+        "houzz_gallery": {
+          "name": "Houzz Portfolio Gallery",
+          "target": 20,
+          "description": "20 high-quality AI-generated interior/exterior remodeling images for Renova Builders Houzz profile. Square format (1080x1080). Renova logo in bottom corner with horizontal rectangular dark banner.",
+          "brand_standards": {
+            "format": "1:1 square (1080x1080)",
+            "logo_placement": "bottom-left corner",
+            "logo_background": "horizontal rectangle, semi-transparent dark, elegant minimal premium — NOT a square",
+            "style": "photorealistic, luxury, high-end renovation, editorial quality",
+            "categories": [
+              "kitchens", "bathrooms", "living rooms", "master bedrooms",
+              "outdoor spaces", "home offices", "dining rooms", "entryways",
+              "before/after concepts", "specialty rooms"
+            ]
+          },
+          "approved_template": {
+            "status": "ESTABLISHED — do not deviate",
+            "note": "Template established in prior sessions. Kitchen image with horizontal rectangular Renova logo banner in bottom-left corner is the approved direction. All subsequent images must match this standard exactly.",
+            "generation_id": "TO_BE_CONFIRMED — user must confirm which generation is the locked template",
+            "confirmed_by": "Maor",
+            "date": "2026-06-11"
+          },
+          "assets": [
+            {
+              "id": "renova-houzz-001",
+              "description": "Luxury modern kitchen — golden hour twilight, quartz waterfall island, walnut cabinetry, brass hardware",
+              "generation_id": "cdc9ee99-0b9d-4121-8f9f-c360dc035d97",
+              "image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260604_203709_cdc9ee99-0b9d-4121-8f9f-c360dc035d97.png",
+              "status": "pending_approval",
+              "version": "base — no logo overlay",
+              "submitted_date": "2026-06-04",
+              "approval_date": null,
+              "approved_by": null,
+              "notes": "Base kitchen. Directionally approved by Nataly as closest to target. Logo overlay versions attempted 2026-06-11. Approved template version TBD — awaiting Maor to confirm correct generation ID."
+            },
+            {
+              "id": "renova-houzz-002",
+              "description": "Kitchen with rectangular logo banner attempt v1",
+              "generation_id": "a2114e73-f3b4-48ab-b3ce-32dfed7cabe7",
+              "image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260611_214143_a2114e73-f3b4-48ab-b3ce-32dfed7cabe7.png",
+              "status": "rejected",
+              "version": "v1 — rejected",
+              "submitted_date": "2026-06-11",
+              "approval_date": null,
+              "approved_by": null,
+              "notes": "Rejected by Maor 2026-06-11. Do not use as reference."
+            }
+          ],
+          "progress": {
+            "approved_count": 0,
+            "pending_count": 1,
+            "rejected_count": 1,
+            "remaining": 20,
+            "note": "User believes ~5 were approved in prior sessions. Generation IDs not yet confirmed. Registry will be updated once template is located."
+          }
+        }
+      }
+    },
+    "finish_line_taxi": {
+      "name": "Finish Line Taxi",
+      "location": "Temecula, CA",
+      "projects": {}
+    },
+    "mona_digital_marketing": {
+      "name": "Mona Digital Marketing",
+      "location": "Los Angeles, CA",
+      "projects": {
+        "brand_identity": {
+          "name": "Logo & Brand Identity",
+          "assets": [
+            {
+              "id": "mona-logo-001",
+              "description": "MONA logo — M lettermark with mountain/growth peaks, navy blue",
+              "generation_id": "37550793-1f6b-42a1-885c-4c6844a9b98f",
+              "image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214422_37550793-1f6b-42a1-885c-4c6844a9b98f.png",
+              "status": "pending_approval",
+              "submitted_date": "2026-06-03",
+              "approval_date": null,
+              "approved_by": null,
+              "notes": "One of three logo concepts generated. Approval status unknown — not tracked at time of generation."
+            },
+            {
+              "id": "mona-logo-002",
+              "description": "MONA logo — signal/WiFi bars M concept, navy to electric blue gradient",
+              "generation_id": "3a99e630-8f89-49b8-8c7a-7411e8b404fa",
+              "image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214450_3a99e630-8f89-49b8-8c7a-7411e8b404fa.png",
+              "status": "pending_approval",
+              "submitted_date": "2026-06-03",
+              "approval_date": null,
+              "approved_by": null,
+              "notes": "One of three logo concepts generated."
+            },
+            {
+              "id": "mona-logo-003",
+              "description": "MONA logo — flowing M line, navy/sky blue two-tone, GPT Image model",
+              "generation_id": "3dd7ddd1-0d79-48b6-998d-a1f2bff0a81d",
+              "image_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3EWHLVZERh0UJFhuopr0aNP3t90/hf_20260603_214457_3dd7ddd1-0d79-48b6-998d-a1f2bff0a81d.png",
+              "status": "pending_approval",
+              "submitted_date": "2026-06-03",
+              "approval_date": null,
+              "approved_by": null,
+              "notes": "One of three logo concepts generated."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "process": {
+    "asset_lifecycle": [
+      "1. GENERATE — asset created in Higgsfield or other tool",
+      "2. LOG — immediately add entry to this registry with status: pending_approval",
+      "3. SUBMIT — present to approver with registry ID",
+      "4. DECISION — approved: update status + approval_date + approved_by; rejected: update status + notes",
+      "5. CATALOG — approved assets committed to git immediately",
+      "6. DELIVER — delivered assets flagged as delivered with delivery date and recipient",
+      "7. REUSE — future sessions check registry before generating anything new"
+    ],
+    "session_startup_protocol": [
+      "1. Read asset-registry.json FIRST",
+      "2. Check approved assets by client and project",
+      "3. Continue from last approved state — do not regenerate approved work",
+      "4. Do not ask the human where assets are — the registry is the answer"
+    ]
+  }
+}

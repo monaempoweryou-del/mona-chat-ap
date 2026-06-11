@@ -6,7 +6,8 @@
  */
 
 var EMAIL_RECIPIENT = 'monaempoweryou@gmail.com';
-var DATE_RANGE = 'LAST_90_DAYS';
+var DATE_RANGE = 'LAST_30_DAYS';
+var AWQL_DATE_RANGE = '20260313,20260611';
 var CLIENT_NAME = 'Renova Builders';
 
 function main() {
@@ -135,7 +136,7 @@ function getSearchTermData() {
       'SELECT Query, Impressions, Clicks, Ctr, AverageCpc, Cost, Conversions, ConversionRate ' +
       'FROM SEARCH_QUERY_PERFORMANCE_REPORT ' +
       'WHERE Impressions > 0 ' +
-      'DURING ' + DATE_RANGE + ' ' +
+      'DURING ' + AWQL_DATE_RANGE + ' ' +
       'ORDER BY Impressions DESC ' +
       'LIMIT 50'
     );
@@ -201,23 +202,33 @@ function getAdData() {
 function getConversionData() {
   var lines = ['--- CONVERSION TRACKING ---'];
   try {
-    var convActions = AdsApp.conversionActions().get();
-    var count = 0;
-    while (convActions.hasNext()) {
-      var ca = convActions.next();
-      count++;
-      lines.push('Action: ' + ca.getName());
-      lines.push('  Category: ' + ca.getCategory());
-      lines.push('  Status:   ' + ca.isEnabled());
-      lines.push('  Count:    ' + ca.getCountingType());
+    var report = AdsApp.report(
+      'SELECT ConversionTypeName, Conversions, ConversionRate, CostPerConversion ' +
+      'FROM CAMPAIGN_PERFORMANCE_REPORT ' +
+      'DURING ' + AWQL_DATE_RANGE
+    );
+    var rows = report.rows();
+    var totalConversions = 0;
+    var seen = {};
+    while (rows.hasNext()) {
+      var row = rows.next();
+      var name = row['ConversionTypeName'];
+      var convs = parseFloat(row['Conversions']) || 0;
+      totalConversions += convs;
+      if (name && !seen[name]) {
+        seen[name] = true;
+        lines.push('Conversion type: ' + name + ' | Total: ' + convs);
+      }
     }
-    if (count === 0) {
-      lines.push('WARNING: No conversion actions found. Conversion tracking may not be set up.');
-      lines.push('This is a critical gap — without conversion tracking, bidding optimization is impossible.');
+    if (totalConversions === 0) {
+      lines.push('WARNING: Zero conversions recorded in date range.');
+      lines.push('CRITICAL: Conversion tracking may not be set up or is broken.');
+      lines.push('Action required: Verify Google Tag or GA4 conversion import in Tools > Conversions.');
+    } else {
+      lines.push('Total conversions in period: ' + totalConversions);
     }
   } catch(e) {
-    lines.push('Conversion action check: ' + e.message);
-    lines.push('Manual check required — go to Tools > Conversions in Google Ads.');
+    lines.push('Could not read conversion data: ' + e.message);
   }
   return lines;
 }

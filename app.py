@@ -203,7 +203,141 @@ def format_email_body(plan: dict, approval_required: bool = False) -> str:
 </div>
 """
 
-# ─── Platinum Pool Proposal Email ─────────────────────────────────────────────
+# ─── UNVEILED Communication System ────────────────────────────────────────────
+# Brand: Dark #111111, Gold #C4A35A, White #F5F5F5
+# Rule: Website = proposal. Email = bridge. No pricing. CTA = start conversation.
+
+def unveiled_outreach_email(
+    first_name: str,
+    business_name: str,
+    business_type: str,
+    location: str,
+    website_url: str,
+    what_we_built: str,
+    why_it_matters: str,
+) -> str:
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNVEILED</title>
+</head>
+<body style="margin:0;padding:0;background:#0C0C0C;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+<!-- OUTER WRAPPER -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0C0C0C;">
+<tr><td align="center" style="padding:40px 16px 60px;">
+
+<table width="620" cellpadding="0" cellspacing="0" border="0" style="max-width:620px;width:100%;">
+
+  <!-- HEADER -->
+  <tr>
+    <td style="padding:0 0 1px 0;background:#0C0C0C;">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="padding:36px 40px 28px;border-bottom:1px solid #C4A35A;">
+            <p style="margin:0;color:#C4A35A;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;">DIGITAL EXPERIENCES</p>
+            <h1 style="margin:8px 0 0;color:#F5F5F5;font-size:32px;font-weight:800;letter-spacing:8px;text-transform:uppercase;line-height:1;">UNVEILED</h1>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- BODY -->
+  <tr>
+    <td style="background:#111111;padding:44px 40px 40px;">
+
+      <p style="margin:0 0 28px;color:#F5F5F5;font-size:17px;font-weight:400;line-height:1.7;">{first_name},</p>
+
+      <p style="margin:0 0 22px;color:#D0D0D0;font-size:15px;line-height:1.85;font-weight:300;">{what_we_built}</p>
+
+      <p style="margin:0 0 36px;color:#D0D0D0;font-size:15px;line-height:1.85;font-weight:300;">{why_it_matters}</p>
+
+      <!-- DIVIDER -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:36px;">
+        <tr><td style="border-top:1px solid #2A2A2A;"></td></tr>
+      </table>
+
+      <!-- BUSINESS TAG -->
+      <p style="margin:0 0 12px;color:#888888;font-size:11px;letter-spacing:3px;text-transform:uppercase;">Built for</p>
+      <p style="margin:0 0 6px;color:#F5F5F5;font-size:20px;font-weight:700;letter-spacing:-0.3px;">{business_name}</p>
+      <p style="margin:0 0 36px;color:#888888;font-size:13px;">{business_type} &nbsp;·&nbsp; {location}</p>
+
+      <!-- PRIMARY CTA -->
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;">
+        <tr>
+          <td style="border:1px solid #C4A35A;border-radius:4px;">
+            <a href="{website_url}" style="display:block;padding:15px 36px;color:#C4A35A;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;">See What We Built For You &nbsp;→</a>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SECONDARY CTA -->
+      <p style="margin:0 0 36px;color:#666666;font-size:13px;">Or <a href="mailto:monaempoweryou@gmail.com" style="color:#C4A35A;text-decoration:none;font-weight:600;">reply to this email</a> — we read every response.</p>
+
+      <!-- DIVIDER -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+        <tr><td style="border-top:1px solid #2A2A2A;"></td></tr>
+      </table>
+
+      <!-- CONFIDENCE STATEMENT -->
+      <p style="margin:0;color:#555555;font-size:13px;line-height:1.8;font-style:italic;">No obligation. No pressure. We built this because we believe your business deserves a digital presence that actually works for you. Take a look — if it resonates, let's talk.</p>
+
+    </td>
+  </tr>
+
+  <!-- FOOTER -->
+  <tr>
+    <td style="background:#0C0C0C;padding:28px 40px;border-top:1px solid #C4A35A;">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <p style="margin:0 0 4px;color:#C4A35A;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;">UNVEILED</p>
+            <p style="margin:0;color:#444444;font-size:12px;line-height:1.6;">Digital experiences built before the conversation starts.<br>Los Angeles, CA &nbsp;·&nbsp; monaempoweryou@gmail.com</p>
+          </td>
+          <td style="text-align:right;vertical-align:top;">
+            <p style="margin:0;color:#333333;font-size:11px;line-height:1.6;">Curious?<br><a href="mailto:monaempoweryou@gmail.com?subject=Re: {business_name} Website" style="color:#C4A35A;text-decoration:none;font-weight:600;">Let's talk</a></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+</td></tr>
+</table>
+
+</body>
+</html>"""
+
+
+def platinum_pool_unveiled_html() -> str:
+    return unveiled_outreach_email(
+        first_name="John",
+        business_name="Platinum Pool &amp; Property Services LLC",
+        business_type="Pool &amp; Property Services",
+        location="Inland Empire, CA",
+        website_url="https://mona-chat-ap.onrender.com/platinum-pool",
+        what_we_built="We put together a custom website for Platinum Pool &amp; Property Services — designed around your services, your service area, and the customers you want to reach across the Inland Empire. It's live right now.",
+        why_it_matters="Most pool and property service companies in your market have outdated websites or no website at all. This gives you a professional presence that works 24/7 — capturing leads while you're on the job, not chasing them after.",
+    )
+
+
+def goldsmith_unveiled_html(website_url: str) -> str:
+    return unveiled_outreach_email(
+        first_name="there",
+        business_name="Goldsmith Financial",
+        business_type="Financial Services",
+        location="Los Angeles, CA",
+        website_url=website_url,
+        what_we_built="We built a custom website for Goldsmith Financial — a professional digital presence designed to reflect the quality and trust your clients already experience working with you.",
+        why_it_matters="In financial services, first impressions close deals before the first meeting. This gives you a digital front door that matches your credibility — and converts the visitors who find you online into clients who call.",
+    )
+
+
+# ─── Platinum Pool Proposal Email (legacy — superseded by UNVEILED system) ────
 
 def platinum_pool_proposal_html() -> str:
     return """<!DOCTYPE html>
@@ -348,6 +482,39 @@ def platinum_pool():
 @app.route("/health", methods=["GET"])
 def health():
     return {"status": "ok", "agent": "Mona"}
+
+def _check_token(data: dict) -> bool:
+    expected = os.environ.get("SEND_TOKEN", "platinum2024")
+    return data.get("token", "") == expected
+
+@app.route("/send-platinum-outreach", methods=["POST"])
+def send_platinum_outreach():
+    """Send UNVEILED outreach email for Platinum Pool."""
+    data = request.get_json() or {}
+    if not _check_token(data):
+        return {"error": "Unauthorized"}, 401
+    subject = "We built something for Platinum Pool & Property Services"
+    body = platinum_pool_unveiled_html()
+    sent = send_to_email(subject, body)
+    if sent:
+        return {"status": "sent", "message": "UNVEILED outreach sent to monaempoweryou@gmail.com"}
+    return {"status": "failed", "message": "SMTP failed — check GMAIL_APP_PASSWORD"}, 500
+
+@app.route("/send-goldsmith-outreach", methods=["POST"])
+def send_goldsmith_outreach():
+    """Send UNVEILED outreach email for Goldsmith Financial."""
+    data = request.get_json() or {}
+    if not _check_token(data):
+        return {"error": "Unauthorized"}, 401
+    website_url = data.get("website_url", "")
+    if not website_url:
+        return {"error": "website_url required"}, 400
+    subject = "We built something for Goldsmith Financial"
+    body = goldsmith_unveiled_html(website_url)
+    sent = send_to_email(subject, body)
+    if sent:
+        return {"status": "sent", "message": "UNVEILED outreach sent to monaempoweryou@gmail.com"}
+    return {"status": "failed", "message": "SMTP failed — check GMAIL_APP_PASSWORD"}, 500
 
 @app.route("/send-platinum-proposal", methods=["POST"])
 def send_platinum_proposal():

@@ -469,6 +469,382 @@ def platinum_pool_proposal_html() -> str:
 </body>
 </html>"""
 
+# ─── MONA Client Communication Standard — Renova Builders ─────────────────────
+# Permanent MONA template: Navy #1B2D4F, Blue #2E86C1, clean professional structure.
+# This report becomes the foundation for all MONA client update communications.
+
+def renova_strategic_update_html() -> str:
+    return """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Renova Builders — Strategic Account Review</title>
+</head>
+<body style="margin:0;padding:0;background:#ECF0F5;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ECF0F5;">
+<tr><td align="center" style="padding:32px 16px 48px;">
+<table width="680" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;width:100%;">
+
+  <!-- ── MONA HEADER ── -->
+  <tr>
+    <td style="background:linear-gradient(135deg,#1B2D4F 0%,#1a3a6b 100%);padding:28px 36px 24px;border-bottom:3px solid #2E86C1;">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <p style="margin:0;color:rgba(255,255,255,0.5);font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;">Mona Digital Marketing</p>
+            <h1 style="margin:6px 0 0;color:#ffffff;font-size:22px;font-weight:800;letter-spacing:-0.3px;">Strategic Account Review</h1>
+          </td>
+          <td style="text-align:right;vertical-align:middle;">
+            <p style="margin:0;color:#2E86C1;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Google Ads</p>
+            <p style="margin:4px 0 0;color:rgba(255,255,255,0.6);font-size:12px;">June 2026</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- CLIENT NAMEPLATE -->
+  <tr>
+    <td style="background:#2E86C1;padding:14px 36px;">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <p style="margin:0;color:#fff;font-size:16px;font-weight:700;">Renova Builders</p>
+            <p style="margin:2px 0 0;color:rgba(255,255,255,0.75);font-size:12px;">Bay Area, CA &nbsp;·&nbsp; Residential Remodeling &amp; Construction</p>
+          </td>
+          <td style="text-align:right;">
+            <p style="margin:0;color:rgba(255,255,255,0.6);font-size:11px;">Prepared by Mona Digital Marketing<br>monaempoweryou@gmail.com</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ── BODY ── -->
+  <tr>
+    <td style="background:#ffffff;padding:36px 36px 32px;">
+
+      <!-- EXECUTIVE SUMMARY -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+        <tr>
+          <td style="background:#EBF5FB;border-left:4px solid #2E86C1;border-radius:0 6px 6px 0;padding:20px 24px;">
+            <p style="margin:0 0 8px;color:#1B2D4F;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Executive Summary</p>
+            <p style="margin:0;color:#2C3E50;font-size:14px;line-height:1.8;">
+              Over the past several weeks we have been monitoring your Google Ads account closely — reviewing campaign performance data, analyzing search behavior in your target market, validating our findings, and mapping out a strategic path forward. We are now at a point where we feel confident in what we see, what it means, and what we recommend. This review captures our analysis and the roadmap we are building for the next phase of growth.
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SECTION 1: PERFORMANCE HIGHLIGHTS -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr>
+          <td style="padding-bottom:12px;border-bottom:2px solid #EBF5FB;">
+            <p style="margin:0;color:#1B2D4F;font-size:16px;font-weight:800;">01 &nbsp;—&nbsp; What's Working</p>
+          </td>
+        </tr>
+      </table>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+        <tr style="vertical-align:top;">
+          <td width="50%" style="padding:0 8px 16px 0;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#F8FBFF;border:1px solid #D4E6F5;border-radius:8px;padding:18px 20px;">
+                  <p style="margin:0 0 4px;color:#2E86C1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Click-Through Rate</p>
+                  <p style="margin:0 0 8px;color:#1B2D4F;font-size:20px;font-weight:800;">Above Benchmark</p>
+                  <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.6;">CTR performance is tracking above standard home services benchmarks. This tells us your ads are resonating with the right search intent — people are clicking.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="50%" style="padding:0 0 16px 8px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#F8FBFF;border:1px solid #D4E6F5;border-radius:8px;padding:18px 20px;">
+                  <p style="margin:0 0 4px;color:#2E86C1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Search Demand</p>
+                  <p style="margin:0 0 8px;color:#1B2D4F;font-size:20px;font-weight:800;">Strong &amp; Consistent</p>
+                  <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.6;">Search volume for remodeling services in the Bay Area is healthy. The market is active and your ads are showing up in the right places at the right time.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td width="50%" style="padding:0 8px 0 0;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#F8FBFF;border:1px solid #D4E6F5;border-radius:8px;padding:18px 20px;">
+                  <p style="margin:0 0 4px;color:#2E86C1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Campaign Foundation</p>
+                  <p style="margin:0 0 8px;color:#1B2D4F;font-size:20px;font-weight:800;">Producing Signals</p>
+                  <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.6;">The existing campaigns are generating meaningful performance data. We now have enough signal to make informed, data-driven decisions rather than relying on assumptions.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="50%" style="padding:0 0 0 8px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#F8FBFF;border:1px solid #D4E6F5;border-radius:8px;padding:18px 20px;">
+                  <p style="margin:0 0 4px;color:#2E86C1;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Cost Efficiency</p>
+                  <p style="margin:0 0 8px;color:#1B2D4F;font-size:20px;font-weight:800;">Well-Positioned</p>
+                  <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.6;">Cost-per-click is holding at competitive levels for this market. We are not overpaying for visibility, which gives us room to scale intelligently.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <div style="height:28px;"></div>
+
+      <!-- SECTION 2: OPTIMIZATION PRIORITIES -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr>
+          <td style="padding-bottom:12px;border-bottom:2px solid #EBF5FB;">
+            <p style="margin:0;color:#1B2D4F;font-size:16px;font-weight:800;">02 &nbsp;—&nbsp; What We're Improving</p>
+          </td>
+        </tr>
+      </table>
+
+      <p style="margin:0 0 16px;color:#5D6D7E;font-size:14px;line-height:1.7;">Every mature account has areas that can be sharpened. Below are the items we are actively addressing — not because the account is broken, but because we are building for long-term performance, not just short-term results.</p>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr style="vertical-align:top;">
+          <td style="width:20px;padding:10px 12px 10px 0;">
+            <div style="width:20px;height:20px;background:#2E86C1;border-radius:50%;text-align:center;line-height:20px;color:#fff;font-size:11px;font-weight:700;">1</div>
+          </td>
+          <td style="padding:8px 0;border-bottom:1px solid #EBF5FB;">
+            <p style="margin:0 0 4px;color:#1B2D4F;font-size:14px;font-weight:700;">Conversion Tracking Refinement</p>
+            <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.7;">We are tightening up how conversions are measured so we can connect ad activity directly to lead outcomes. This is foundational — without clean conversion data, optimization decisions are made in the dark.</p>
+          </td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:20px;padding:10px 12px 10px 0;">
+            <div style="width:20px;height:20px;background:#2E86C1;border-radius:50%;text-align:center;line-height:20px;color:#fff;font-size:11px;font-weight:700;">2</div>
+          </td>
+          <td style="padding:8px 0;border-bottom:1px solid #EBF5FB;">
+            <p style="margin:0 0 4px;color:#1B2D4F;font-size:14px;font-weight:700;">Campaign Structure Expansion</p>
+            <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.7;">The existing structure does not yet reflect the full scope of Renova's service offerings. We are building dedicated campaigns for each core service category, which improves relevance, quality scores, and lead matching.</p>
+          </td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:20px;padding:10px 12px 10px 0;">
+            <div style="width:20px;height:20px;background:#2E86C1;border-radius:50%;text-align:center;line-height:20px;color:#fff;font-size:11px;font-weight:700;">3</div>
+          </td>
+          <td style="padding:8px 0;border-bottom:1px solid #EBF5FB;">
+            <p style="margin:0 0 4px;color:#1B2D4F;font-size:14px;font-weight:700;">Lead Attribution Visibility</p>
+            <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.7;">Right now, we can tell when clicks happen — but we want to see the full path from click to contact to booked job. We are implementing attribution improvements so you will have a clear picture of which campaigns are generating actual business.</p>
+          </td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:20px;padding:10px 12px 10px 0;">
+            <div style="width:20px;height:20px;background:#2E86C1;border-radius:50%;text-align:center;line-height:20px;color:#fff;font-size:11px;font-weight:700;">4</div>
+          </td>
+          <td style="padding:8px 0;">
+            <p style="margin:0 0 4px;color:#1B2D4F;font-size:14px;font-weight:700;">Call Tracking Implementation</p>
+            <p style="margin:0;color:#5D6D7E;font-size:13px;line-height:1.7;">In home services, phone calls often drive more revenue than form submissions. Call tracking is on our roadmap — it will give us visibility into which ads are driving calls, call duration, and call quality, so we can optimize for the leads that actually convert.</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SECTION 3: GROWTH ROADMAP -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr>
+          <td style="padding-bottom:12px;border-bottom:2px solid #EBF5FB;">
+            <p style="margin:0;color:#1B2D4F;font-size:16px;font-weight:800;">03 &nbsp;—&nbsp; Growth Roadmap</p>
+          </td>
+        </tr>
+      </table>
+
+      <p style="margin:0 0 20px;color:#5D6D7E;font-size:14px;line-height:1.7;">Based on our analysis of Renova's service mix and the Bay Area remodeling market, we have identified a clear set of campaign expansions that will improve coverage, capture additional demand, and position Renova ahead of competitors who are not advertising at this level of precision.</p>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
+        <tr>
+          <td style="background:#1B2D4F;border-radius:8px 8px 0 0;padding:12px 20px;">
+            <p style="margin:0;color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Service-Specific Campaign Expansion</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #D4E6F5;border-top:0;border-radius:0 0 8px 8px;padding:0;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr style="background:#F8FBFF;">
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#1B2D4F;font-size:13px;font-weight:600;">&#9679;&nbsp; Kitchen Remodeling</td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;">High-intent, high-value. Dedicated campaign captures buyers actively researching kitchen upgrades.</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#1B2D4F;font-size:13px;font-weight:600;">&#9679;&nbsp; Bathroom Remodeling</td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;">Strong search volume. Separate campaign prevents budget dilution with kitchen terms.</td>
+              </tr>
+              <tr style="background:#F8FBFF;">
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#1B2D4F;font-size:13px;font-weight:600;">&#9679;&nbsp; ADU Construction</td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;">ADU demand in Bay Area is surging. This vertical alone can generate significant qualified pipeline.</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#1B2D4F;font-size:13px;font-weight:600;">&#9679;&nbsp; Garage Conversions</td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;">Related to ADU but distinct enough in intent to warrant its own ad group and landing strategy.</td>
+              </tr>
+              <tr style="background:#F8FBFF;">
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#1B2D4F;font-size:13px;font-weight:600;">&#9679;&nbsp; Luxury Remodeling</td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;">Targets high-net-worth Bay Area homeowners. Higher CPC but significantly higher project value.</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;color:#1B2D4F;font-size:13px;font-weight:600;">&#9679;&nbsp; Brand Protection</td>
+                <td style="padding:12px 20px;color:#5D6D7E;font-size:13px;">Ensures competitors cannot capture prospects searching specifically for Renova Builders.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SECTION 4: BUDGET RECOMMENDATION -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr>
+          <td style="padding-bottom:12px;border-bottom:2px solid #EBF5FB;">
+            <p style="margin:0;color:#1B2D4F;font-size:16px;font-weight:800;">04 &nbsp;—&nbsp; Budget Strategy &amp; Expansion Recommendation</p>
+          </td>
+        </tr>
+      </table>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">
+        <tr>
+          <td style="background:#FEF9EE;border:1px solid #F4D03F;border-radius:8px;padding:20px 24px;">
+            <p style="margin:0 0 8px;color:#7D6608;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Strategic Recommendation</p>
+            <p style="margin:0;color:#2C3E50;font-size:14px;line-height:1.8;">We have identified an opportunity to deploy an additional <strong>~$2,000/month</strong> in advertising investment that would meaningfully expand campaign coverage and accelerate lead generation. However, we are recommending a measured approach — not an immediate increase.</p>
+          </td>
+        </tr>
+      </table>
+
+      <p style="margin:0 0 16px;color:#5D6D7E;font-size:14px;line-height:1.7;">Our philosophy on budget expansion is straightforward: <strong>more money should only move when the infrastructure is ready to use it well</strong>. Deploying additional budget before conversion tracking is clean, campaign structure is complete, and attribution is measurable would mean spending more money with less visibility into what it produces.</p>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
+        <tr>
+          <td style="background:#1B2D4F;border-radius:8px 8px 0 0;padding:12px 20px;">
+            <p style="margin:0;color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Recommended Timeline — Next Two Weeks</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #D4E6F5;border-top:0;border-radius:0 0 8px 8px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr style="background:#F8FBFF;">
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;width:130px;">
+                  <p style="margin:0;color:#2E86C1;font-size:12px;font-weight:700;">Week 1</p>
+                </td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;line-height:1.6;">Finalize conversion tracking setup. Complete service-specific campaign builds. Validate data accuracy.</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;">
+                  <p style="margin:0;color:#2E86C1;font-size:12px;font-weight:700;">Week 2</p>
+                </td>
+                <td style="padding:12px 20px;border-bottom:1px solid #EBF5FB;color:#5D6D7E;font-size:13px;line-height:1.6;">Monitor performance with new structure. Confirm tracking is capturing lead activity correctly. Assess readiness for budget scale.</td>
+              </tr>
+              <tr style="background:#F8FBFF;">
+                <td style="padding:12px 20px;">
+                  <p style="margin:0;color:#27AE60;font-size:12px;font-weight:700;">Week 3+</p>
+                </td>
+                <td style="padding:12px 20px;color:#5D6D7E;font-size:13px;line-height:1.6;">Deploy the additional ~$2,000/month investment with precision — allocated by service category, validated by data, and set up to scale with confidence.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+        <tr>
+          <td style="background:#EBF5FB;border-left:4px solid #27AE60;border-radius:0 6px 6px 0;padding:18px 24px;">
+            <p style="margin:0;color:#1B2D4F;font-size:14px;line-height:1.8;"><strong>The goal is not to spend more.</strong> The goal is to spend more <em>correctly</em> — at the right time, in the right campaigns, with the right tracking in place to tell us what's working and what isn't. That discipline is how we protect your investment and build campaigns that scale.</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- SECTION 5: NEXT STEPS -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr>
+          <td style="padding-bottom:12px;border-bottom:2px solid #EBF5FB;">
+            <p style="margin:0;color:#1B2D4F;font-size:16px;font-weight:800;">05 &nbsp;—&nbsp; Immediate Next Steps</p>
+          </td>
+        </tr>
+      </table>
+
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+        <tr style="vertical-align:top;">
+          <td style="width:28px;padding:8px 12px 8px 0;vertical-align:top;">
+            <div style="width:24px;height:24px;background:#2E86C1;border-radius:50%;text-align:center;line-height:24px;color:#fff;font-size:11px;font-weight:700;">&#10003;</div>
+          </td>
+          <td style="padding:8px 0;color:#2C3E50;font-size:14px;line-height:1.7;border-bottom:1px solid #EBF5FB;">Finalize conversion tracking across all campaigns and confirm lead measurement is accurate</td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:28px;padding:8px 12px 8px 0;vertical-align:top;">
+            <div style="width:24px;height:24px;background:#2E86C1;border-radius:50%;text-align:center;line-height:24px;color:#fff;font-size:11px;font-weight:700;">&#10003;</div>
+          </td>
+          <td style="padding:8px 0;color:#2C3E50;font-size:14px;line-height:1.7;border-bottom:1px solid #EBF5FB;">Build out service-specific campaigns (Kitchen, Bathroom, ADU, Garage, Luxury, Brand Protection)</td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:28px;padding:8px 12px 8px 0;vertical-align:top;">
+            <div style="width:24px;height:24px;background:#2E86C1;border-radius:50%;text-align:center;line-height:24px;color:#fff;font-size:11px;font-weight:700;">&#10003;</div>
+          </td>
+          <td style="padding:8px 0;color:#2C3E50;font-size:14px;line-height:1.7;border-bottom:1px solid #EBF5FB;">Review and improve landing page alignment for each service category</td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:28px;padding:8px 12px 8px 0;vertical-align:top;">
+            <div style="width:24px;height:24px;background:#2E86C1;border-radius:50%;text-align:center;line-height:24px;color:#fff;font-size:11px;font-weight:700;">&#10003;</div>
+          </td>
+          <td style="padding:8px 0;color:#2C3E50;font-size:14px;line-height:1.7;border-bottom:1px solid #EBF5FB;">Plan and initiate call tracking implementation</td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="width:28px;padding:8px 12px 8px 0;vertical-align:top;">
+            <div style="width:24px;height:24px;background:#27AE60;border-radius:50%;text-align:center;line-height:24px;color:#fff;font-size:11px;font-weight:700;">&#10003;</div>
+          </td>
+          <td style="padding:8px 0;color:#2C3E50;font-size:14px;line-height:1.7;">Schedule a strategy call to review findings, confirm budget expansion timeline, and align on next phase priorities</td>
+        </tr>
+      </table>
+
+      <!-- CTA -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#1B2D4F,#2E86C1);border-radius:8px;padding:24px;text-align:center;">
+            <p style="margin:0 0 6px;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:2px;text-transform:uppercase;">Ready to discuss?</p>
+            <p style="margin:0 0 16px;color:#ffffff;font-size:18px;font-weight:700;">Schedule Your Strategy Call</p>
+            <p style="margin:0;color:rgba(255,255,255,0.75);font-size:13px;line-height:1.7;">Reply to this email or reach us directly at monaempoweryou@gmail.com<br>We'll walk through findings, answer questions, and map out the next 30 days.</p>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+
+  <!-- ── MONA FOOTER ── -->
+  <tr>
+    <td style="background:#1B2D4F;padding:24px 36px;">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <p style="margin:0 0 2px;color:#ffffff;font-size:13px;font-weight:700;">Mona Digital Marketing</p>
+            <p style="margin:0;color:rgba(255,255,255,0.5);font-size:12px;line-height:1.6;">Los Angeles, CA &nbsp;·&nbsp; monaempoweryou@gmail.com</p>
+          </td>
+          <td style="text-align:right;">
+            <p style="margin:0;color:#2E86C1;font-size:11px;font-weight:700;letter-spacing:1px;">SEO · Google Ads · Meta Ads</p>
+            <p style="margin:2px 0 0;color:rgba(255,255,255,0.35);font-size:10px;">Social Media · Web Design · AI Content</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+            <p style="margin:0;color:rgba(255,255,255,0.25);font-size:10px;text-align:center;">This report is prepared by Mona Digital Marketing exclusively for Renova Builders. Confidential.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+</td></tr>
+</table>
+
+</body>
+</html>"""
+
 # ─── Routes ────────────────────────────────────────────────────────────────────
 
 @app.route("/", methods=["GET"])
@@ -498,6 +874,19 @@ def send_platinum_outreach():
     sent = send_to_email(subject, body)
     if sent:
         return {"status": "sent", "message": "UNVEILED outreach sent to monaempoweryou@gmail.com"}
+    return {"status": "failed", "message": "SMTP failed — check GMAIL_APP_PASSWORD"}, 500
+
+@app.route("/send-renova-update", methods=["POST"])
+def send_renova_update():
+    """Send MONA-branded Renova strategic update email via SMTP."""
+    data = request.get_json() or {}
+    if not _check_token(data):
+        return {"error": "Unauthorized"}, 401
+    subject = "[Renova Builders] Strategic Account Review — June 2026"
+    body = renova_strategic_update_html()
+    sent = send_to_email(subject, body)
+    if sent:
+        return {"status": "sent", "message": "Renova update sent to monaempoweryou@gmail.com"}
     return {"status": "failed", "message": "SMTP failed — check GMAIL_APP_PASSWORD"}, 500
 
 @app.route("/send-goldsmith-outreach", methods=["POST"])

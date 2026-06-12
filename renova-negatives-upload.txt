@@ -1,0 +1,139 @@
+RENOVA BUILDERS — ACCOUNT-LEVEL NEGATIVE KEYWORD LIST
+Generated: 2026-06-12
+Source: Actual search term data from 30-day account report (2,500 terms analyzed)
+
+━━━ UPLOAD INSTRUCTIONS ━━━
+
+Step 1: Google Ads → Tools & Settings → Shared Library → Negative keyword lists
+Step 2: Click "+ New list"
+Step 3: Name it: "Renova — Account Negatives v1 (Jun 2026)"
+Step 4: Paste the PHRASE MATCH section below (copy as-is, one per line)
+Step 5: Save list
+Step 6: Go to Campaigns → select ALL active campaigns → Negative keywords → Apply list
+
+Match type notation:
+  "quotes"   = phrase match  (blocks any query containing this phrase)
+  [brackets] = exact match   (blocks only this exact query)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION A — PHRASE MATCH NEGATIVES
+Paste these into the negative keyword list (include the quotes).
+These are the highest-impact terms — adding them blocks 400+ irrelevant queries.
+
+─── DIY / Educational intent (biggest waste driver) ───
+"how to"
+"diy"
+"step by step"
+"tutorial"
+"yourself"
+"can i do"
+"guide to"
+
+─── Price research / Informational (high volume, low purchase intent) ───
+"average cost"
+"how much does"
+"cost calculator"
+"estimate calculator"
+"price of"
+"is it worth"
+"pros and cons"
+
+─── Product stores (not contractors) ───
+"home depot"
+"lowes"
+"lowe's"
+"supply store"
+"hardware store"
+"tile store"
+"cabinet store"
+
+─── Wrong trade types ───
+"roofer"
+"roofing company"
+"roof repair"
+"plumber"
+"plumbing repair"
+"plumbing service"
+"handyman plumbing"
+"electrician"
+"electrical repair"
+"landscaping"
+"lawn service"
+"pest control"
+"hvac"
+"air conditioning"
+"solar panel"
+"moving company"
+
+─── Job-seeking ───
+"job"
+"jobs"
+"career"
+"careers"
+"hiring"
+"salary"
+"employment"
+"apprentice"
+"trade school"
+"work for us"
+
+─── Rental / Lease ───
+"for rent"
+"to rent"
+"rental"
+"renting"
+
+─── Service types Renova does not offer ───
+"new construction"
+"home builder"
+"custom home builder"
+"commercial contractor"
+"commercial remodel"
+
+─── Review / directory navigation ───
+"complaint"
+"homeadvisor"
+"thumbtack"
+"angie's list"
+
+─── Permit-only queries ───
+"permit only"
+"inspection only"
+"city permit"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION B — EXACT MATCH NEGATIVES
+Add these separately as exact match negatives at campaign level
+(apply to both KEEP campaigns: "Leads Service base--13" and "full home remodel").
+
+[home improvement]           — 113 impressions, 0 clicks. Confirmed waste.
+[backyard landscaping]       — confirmed wrong service, paid for click
+[foam roofing bay area]      — confirmed wrong trade, paid for click
+[best roofer in my area]     — confirmed wrong trade, paid for click
+[handyman plumbing near me]  — confirmed wrong service, paid for click
+[handyman plumbers near me]  — confirmed wrong service, paid for click
+[castro valley home depot]   — product store navigation, paid for click
+[home depot shower remodel]  — product store, 2 clicks at $3.22 total
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION C — DO NOT ADD (false positives, confirmed safe queries)
+These were flagged by the script but are NOT irrelevant. Do not add as negatives.
+
+"current bathroom designs"    — design research, valid intent
+"bathroom different tiles"    — product research, valid intent
+"bathroom tile waterproofing" — valid remodel-adjacent service
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXPECTED IMPACT:
+  Impressions blocked: ~1,000+/month (low — most waste terms have 1-5 impressions each)
+  Spend saved directly: ~$20-40/month (these terms rarely convert anyway)
+  Primary value: prevents Smart Bidding from learning on DIY/informational signals
+  Secondary value: improves click-to-lead rate by removing non-buyer traffic
+
+NOTE: The biggest waste driver in this account is conversion tracking pollution,
+not irrelevant clicks. Fixing "all pages views" will have 10x more impact than
+this negative keyword list. Upload negatives AFTER completing conversion tracking fix.

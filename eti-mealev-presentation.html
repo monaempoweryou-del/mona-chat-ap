@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eti Mealev — Website Architecture & Design System | Mona Digital Marketing</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+
+  /* ── Layout ── */
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+  section { padding: 64px 0; border-bottom: 1px solid #e5e5e5; }
+  section:last-child { border-bottom: none; }
+
+  /* ── Cover ── */
+  .cover { background: #1C1C1C; color: #fff; padding: 80px 32px; text-align: left; }
+  .cover .agency { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #888; margin-bottom: 48px; }
+  .cover h1 { font-size: 52px; font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .cover h1 strong { font-weight: 700; }
+  .cover .hebrew { font-size: 28px; font-weight: 300; color: #C8A96E; margin-bottom: 32px; direction: rtl; font-family: 'Arial', sans-serif; }
+  .cover .meta { font-size: 13px; color: #888; line-height: 2; }
+  .cover .meta span { color: #C8A96E; }
+  .cover .directive { margin-top: 40px; padding: 20px 24px; border-left: 3px solid #C8A96E; background: rgba(200,169,110,0.08); font-size: 14px; color: #ccc; font-style: italic; max-width: 640px; }
+  .cover .directive strong { color: #C8A96E; font-style: normal; }
+
+  /* ── Internal banner ── */
+  .internal-flag { background: #7f1d1d; color: #fff; padding: 12px 32px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+
+  /* ── Section headings ── */
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #C8A96E; margin-bottom: 12px; }
+  h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+  h3 { font-size: 16px; font-weight: 700; margin: 28px 0 8px; }
+  h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 20px 0 6px; color: #555; }
+  p { margin-bottom: 14px; font-size: 15px; color: #333; }
+  .lead { font-size: 18px; color: #1a1a1a; line-height: 1.55; margin-bottom: 28px; font-weight: 300; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  th { background: #1C1C1C; color: #fff; text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  td { padding: 10px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: #1a1a1a; }
+
+  /* ── Callouts ── */
+  .callout { padding: 16px 20px; margin: 20px 0; border-left: 3px solid #C8A96E; background: #faf8f3; font-size: 14px; }
+  .callout.dark { background: #1C1C1C; color: #ccc; border-left-color: #C8A96E; }
+  .callout.dark strong { color: #C8A96E; }
+  .callout.red { background: #fdf2f0; border-left-color: #c0392b; }
+  .callout strong { color: #1a1a1a; }
+
+  /* ── Sitemap ── */
+  .sitemap-page { display: flex; align-items: flex-start; gap: 20px; padding: 16px 0; border-bottom: 1px solid #eee; }
+  .sitemap-page:last-child { border-bottom: none; }
+  .page-num { font-size: 11px; font-weight: 700; color: #C8A96E; min-width: 28px; padding-top: 2px; letter-spacing: 0.05em; }
+  .page-info { flex: 1; }
+  .page-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .page-name-he { font-size: 13px; color: #888; direction: rtl; margin-bottom: 4px; font-family: Arial, sans-serif; }
+  .page-purpose { font-size: 13px; color: #555; }
+  .page-elements { font-size: 12px; color: #888; margin-top: 4px; }
+
+  /* ── Color palette ── */
+  .palette { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+  .swatch { width: 80px; }
+  .swatch-color { height: 64px; border-radius: 4px; margin-bottom: 6px; border: 1px solid rgba(0,0,0,0.1); }
+  .swatch-name { font-size: 11px; font-weight: 700; display: block; }
+  .swatch-hex { font-size: 10px; color: #888; display: block; font-family: monospace; }
+
+  /* ── Type specimen ── */
+  .type-specimen { padding: 24px; background: #f8f8f8; margin: 16px 0; border-radius: 2px; }
+  .type-specimen.dark { background: #1C1C1C; }
+  .specimen-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 12px; display: block; }
+  .type-specimen.dark .specimen-label { color: #555; }
+
+  /* ── Page wireframe ── */
+  .wireframe-section { background: #f5f5f5; border: 1px solid #ddd; margin: 8px 0; padding: 14px 18px; font-size: 13px; color: #555; display: flex; align-items: center; justify-content: space-between; }
+  .wireframe-section .ws-name { font-weight: 700; color: #1a1a1a; }
+  .wireframe-section .ws-note { font-size: 11px; color: #888; }
+  .wireframe-section.hero { background: #1C1C1C; color: #888; }
+  .wireframe-section.hero .ws-name { color: #C8A96E; }
+
+  /* ── RTL demo ── */
+  .rtl-demo { background: #1C1C1C; color: #fff; padding: 32px; margin: 20px 0; direction: rtl; font-family: Arial, sans-serif; }
+  .rtl-demo .rtl-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-size: 13px; color: #888; border-bottom: 1px solid #333; padding-bottom: 16px; }
+  .rtl-demo .rtl-logo { font-size: 18px; font-weight: 700; color: #C8A96E; letter-spacing: 0.05em; }
+  .rtl-demo .rtl-menu { display: flex; gap: 24px; }
+  .rtl-demo .rtl-hero-text { font-size: 36px; font-weight: 300; line-height: 1.2; margin-bottom: 8px; }
+  .rtl-demo .rtl-sub { font-size: 14px; color: #888; }
+
+  /* ── Footer ── */
+  .doc-footer { background: #1C1C1C; color: #555; padding: 32px; font-size: 12px; margin-top: 64px; }
+  .doc-footer strong { color: #888; }
+</style>
+</head>
+<body>
+
+<div class="internal-flag">Internal Review Only — Moe → Nataly → Client | Asset ID: eti-web-001 | June 12, 2026</div>
+
+<!-- ── COVER ── -->
+<div class="cover">
+  <div class="wrap">
+    <div class="agency">Mona Digital Marketing — Client Presentation Package</div>
+    <h1><strong>Eti Mealev</strong><br>Website Architecture</h1>
+    <div class="hebrew">אתי מעלב — ארכיטקטורה ועיצוב פנים</div>
+    <div class="meta">
+      Location: <span>Haifa, Israel</span><br>
+      Industry: <span>Luxury Architecture + Interior Design</span><br>
+      Deliverable: <span>WordPress website — full architecture, design system, content structure, Hebrew copy</span><br>
+      Creative reference: <span>EDNE Group (ednegroup.com) — sister brand relationship</span><br>
+      Prepared: <span>June 12, 2026</span>
+    </div>
+    <div class="directive">
+      <strong>Creative directive:</strong> "Make it feel like a sister website to EDNE Group." — The client provided the visual benchmark, the mood, the level of luxury, and the quality standard. This package translates that directive into architecture, design, and content — <em>related, not replicated.</em>
+    </div>
+  </div>
+</div>
+
+<!-- ── 1. EDNE ANALYSIS + TRANSLATION ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">01 — Reference Analysis</div>
+    <h2>The EDNE Relationship</h2>
+    <p class="lead">The client did not give a mood board. They gave a sister company. That is a more precise creative brief than any collection of Pinterest images.</p>
+
+    <h3>What EDNE Group is</h3>
+    <table>
+      <tr><th>Attribute</th><th>EDNE Group Signal</th></tr>
+      <tr><td><strong>Tagline</strong></td><td>"Elevate Your Earthly Possessions"</td></tr>
+      <tr><td><strong>Brand voice</strong></td><td>"We don't follow trends, we create them"</td></tr>
+      <tr><td><strong>Team identity</strong></td><td>"Experienced and edgy creatives who like to break the rules of design"</td></tr>
+      <tr><td><strong>Positioning</strong></td><td>Non-conformist luxury — premium with a point of view, not safe generic luxury</td></tr>
+      <tr><td><strong>Target client</strong></td><td>Someone who wants their space to make a statement, not just look expensive</td></tr>
+      <tr><td><strong>Visual character</strong></td><td>Bold, confident, dark/rich palette, assertive typography, no apology</td></tr>
+    </table>
+
+    <h3>Design Translation: Related, Not Replicated</h3>
+    <table>
+      <tr><th>Design Element</th><th>EDNE Expression</th><th>Eti Mealev Expression</th></tr>
+      <tr><td><strong>Confidence level</strong></td><td>Provocative, edgy, rule-breaking</td><td>Precise, monumental, certain — architecture is permanent</td></tr>
+      <tr><td><strong>Color personality</strong></td><td>Bold luxury darks + statement accents</td><td>Warm concrete, limestone, shadow — Mediterranean palette</td></tr>
+      <tr><td><strong>Typography character</strong></td><td>Assertive, large, attitude-forward</td><td>Monumental, structural — type that has weight and mass</td></tr>
+      <tr><td><strong>Photography style</strong></td><td>Statement interior shots, dramatic staging</td><td>Architectural photography — volume, light, shadow, Haifa context</td></tr>
+      <tr><td><strong>Copy voice</strong></td><td>English, first-person confidence, no hedging</td><td>Hebrew primary — precise, spare. English secondary — equally native.</td></tr>
+      <tr><td><strong>Portfolio approach</strong></td><td>Each project as an event</td><td>Each project as an architectural argument</td></tr>
+      <tr><td><strong>What is NOT shown</strong></td><td>Generic, template-feeling, explanatory</td><td>Same — the work leads. Copy does not over-explain.</td></tr>
+    </table>
+
+    <div class="callout dark">
+      <strong>The test:</strong> Someone familiar with both companies should open both sites side by side and immediately think: "These companies belong to the same premium family" — while immediately recognizing one is EDNE Group and the other is Eti Mealev. Same DNA. Different voice.
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. SITEMAP ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">02 — Site Architecture</div>
+    <h2>Sitemap</h2>
+    <p class="lead">Six pages. Maximum clarity. Every page has a singular purpose and a single conversion path.</p>
+
+    <div class="sitemap-page">
+      <div class="page-num">01</div>
+      <div class="page-info">
+        <div class="page-name">Home — <em>בית</em></div>
+        <div class="page-purpose">First impression. Establishes identity, quality, and creative direction in under 10 seconds. No explanation — just presence.</div>
+        <div class="page-elements">Hero (full-bleed) → Selected work (3 projects) → Philosophy statement → Studio identity → CTA to Projects</div>
+      </div>
+    </div>
+
+    <div class="sitemap-page">
+      <div class="page-num">02</div>
+      <div class="page-info">
+        <div class="page-name">Projects — <em>פרויקטים</em></div>
+        <div class="page-purpose">The portfolio. Each project as an event, not a thumbnail. Architecture and interior work shown with equal weight.</div>
+        <div class="page-elements">Filter (Architecture / Interior Design / All) → Full-bleed project entries → Project name + location + year only on hover → Click-through to individual project</div>
+      </div>
+    </div>
+
+    <div class="sitemap-page">
+      <div class="page-num">02a</div>
+      <div class="page-info">
+        <div class="page-name">Single Project — <em>פרויקט</em></div>
+        <div class="page-purpose">Full project story. Photography-led. Brief architectural statement. Technical specifics secondary to visual experience.</div>
+        <div class="page-elements">Hero image (full-bleed) → Project name, location, year, typology → Photography sequence → Brief statement (2-3 sentences) → Materials / Area → Next project →</div>
+      </div>
+    </div>
+
+    <div class="sitemap-page">
+      <div class="page-num">03</div>
+      <div class="page-info">
+        <div class="page-name">Studio — <em>אודות הסטודיו</em></div>
+        <div class="page-purpose">Who Eti Mealev is. Not a biography — a statement of creative position. Why clients choose this studio over others.</div>
+        <div class="page-elements">Studio philosophy (3-5 sentences) → Eti Mealev portrait → Services (Architecture / Interior Design / Renovation) → Selected clients or project types → Studio location (Haifa)</div>
+      </div>
+    </div>
+
+    <div class="sitemap-page">
+      <div class="page-num">04</div>
+      <div class="page-info">
+        <div class="page-name">Services — <em>שירותים</em></div>
+        <div class="page-purpose">What the studio offers, described with confidence — not a menu, a commitment. Each service as a premium offering.</div>
+        <div class="page-elements">Architecture (new construction, renovation, addition) → Interior Design (residential, hospitality) → Project Management → Process overview (4 phases) → CTA to Contact</div>
+      </div>
+    </div>
+
+    <div class="sitemap-page">
+      <div class="page-num">05</div>
+      <div class="page-info">
+        <div class="page-name">Contact — <em>צור קשר</em></div>
+        <div class="page-purpose">Remove all friction. One form. Studio location. Phone. Response time expectation set.</div>
+        <div class="page-elements">Brief statement ("Every project begins with a conversation") → Contact form (Name, Phone, Email, Project type, Message) → Studio address (Haifa) → Phone → Email → Response time note</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Navigation items (5):</strong> Projects — Studio — Services — Contact — [Language toggle: EN / עב]<br>
+      <strong>Not included:</strong> Blog, testimonials, press page — these can be Phase 2. Phase 1 is the portfolio + identity.
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. DESIGN SYSTEM ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">03 — Design System</div>
+    <h2>Visual Identity</h2>
+    <p class="lead">The design system translates the EDNE sister relationship into a specific, buildable visual language rooted in Haifa, Mediterranean materiality, and architectural permanence.</p>
+
+    <h3>Color Palette</h3>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1C1C1C;"></div>
+        <span class="swatch-name">Charcoal</span>
+        <span class="swatch-hex">#1C1C1C</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5F0E8;"></div>
+        <span class="swatch-name">Limestone</span>
+        <span class="swatch-hex">#F5F0E8</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C8A96E;"></div>
+        <span class="swatch-name">Brass</span>
+        <span class="swatch-hex">#C8A96E</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2C2C2C; border:1px solid #444;"></div>
+        <span class="swatch-name">Deep Shadow</span>
+        <span class="swatch-hex">#2C2C2C</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#8A8A8A;"></div>
+        <span class="swatch-name">Stone</span>
+        <span class="swatch-hex">#8A8A8A</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E8E2D8; border:1px solid #ddd;"></div>
+        <span class="swatch-name">Sand</span>
+        <span class="swatch-hex">#E8E2D8</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Color logic:</strong> Charcoal (#1C1C1C) is the primary dark — same family as EDNE's bold dark aesthetic. Limestone (#F5F0E8) replaces clinical white with warmth rooted in Mediterranean stone. Brass (#C8A96E) is the single accent — structural, warm, never decorative for its own sake. Used for headings on dark backgrounds, borders, and language toggle only.
+    </div>
+
+    <h3>Typography</h3>
+
+    <h4>Display / Headings (English)</h4>
+    <div class="type-specimen dark">
+      <span class="specimen-label">Cormorant Garamond — Display Heading</span>
+      <div style="font-family:'Georgia',serif;font-size:48px;font-weight:300;color:#F5F0E8;line-height:1.05;letter-spacing:-0.02em;">Architecture<br>as Permanence</div>
+    </div>
+
+    <h4>Body / UI (English)</h4>
+    <div class="type-specimen">
+      <span class="specimen-label">Helvetica Neue Light — Body Text</span>
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;font-weight:300;color:#333;line-height:1.7;">Every project begins with a question about permanence. Not how it will look — how it will feel in ten years. Eti Mealev works at the intersection of architectural structure and interior atmosphere, where the boundary between building and living dissolves.</div>
+    </div>
+
+    <h4>Display / Headings (Hebrew)</h4>
+    <div class="type-specimen dark" dir="rtl">
+      <span class="specimen-label" dir="ltr">Frank Ruhl Libre — Hebrew Display</span>
+      <div style="font-family:'Arial',sans-serif;font-size:42px;font-weight:300;color:#F5F0E8;line-height:1.1;direction:rtl;">אדריכלות<br>כקביעות</div>
+    </div>
+
+    <h4>Body (Hebrew)</h4>
+    <div class="type-specimen" dir="rtl">
+      <span class="specimen-label" dir="ltr">Assistant — Hebrew Body (RTL)</span>
+      <div style="font-family:'Arial',sans-serif;font-size:16px;font-weight:300;color:#333;line-height:1.8;direction:rtl;">כל פרויקט מתחיל בשאלה על קביעות. לא איך ייראה — איך ירגיש בעוד עשר שנים. אתי מעלב עובדת בנקודת ההצטלבות בין מבנה אדריכלי ואווירת פנים, שם הגבול בין הבנין לחיים מתמוסס.</div>
+    </div>
+
+    <table>
+      <tr><th>Role</th><th>English Font</th><th>Hebrew Font</th><th>Notes</th></tr>
+      <tr><td>Display headings</td><td>Cormorant Garamond Light/Regular</td><td>Frank Ruhl Libre</td><td>Serif gravity. Monumental.</td></tr>
+      <tr><td>Navigation / UI</td><td>Helvetica Neue Light</td><td>Assistant Light</td><td>Clean, invisible</td></tr>
+      <tr><td>Body copy</td><td>Helvetica Neue Light</td><td>Assistant Regular</td><td>+10% size vs English equiv.</td></tr>
+      <tr><td>Labels / caps</td><td>Helvetica Neue, letter-spacing 0.15em</td><td>—</td><td>Hebrew has no caps</td></tr>
+      <tr><td>Project names</td><td>Cormorant Garamond Italic</td><td>Frank Ruhl Libre</td><td>Distinctive, memorable</td></tr>
+    </table>
+
+    <h3>Spacing System</h3>
+    <table>
+      <tr><th>Element</th><th>Value</th><th>Rationale</th></tr>
+      <tr><td>Section padding (desktop)</td><td>120px top/bottom</td><td>Breathe. Each section is a room, not a slide.</td></tr>
+      <tr><td>Content max-width</td><td>1200px (content) / 1440px (full-bleed)</td><td>Photography bleeds. Text doesn't.</td></tr>
+      <tr><td>Body text max-width</td><td>640px</td><td>Comfortable reading line length</td></tr>
+      <tr><td>Between elements</td><td>40px minimum</td><td>Nothing crowds</td></tr>
+      <tr><td>Navigation height</td><td>72px</td><td>Present but not dominant</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ── 4. PAGE ARCHITECTURE ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">04 — Page Architecture</div>
+    <h2>Page-by-Page Structure</h2>
+
+    <h3>Homepage</h3>
+    <div class="wireframe-section hero">
+      <div><span class="ws-name">HERO — Full bleed, 100vh</span></div>
+      <div class="ws-note">One architectural photograph. Studio name in Cormorant Garamond. Location: Haifa. Scroll indicator only.</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Philosophy Statement</span></div>
+      <div class="ws-note">3 sentences. No heading. Centered. Hebrew + English toggle visible.</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Selected Projects — 3 items</span></div>
+      <div class="ws-note">Full-width alternating layout. Image left / text right, then flip. Project name, type, year. CTA: "View project →"</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Studio Identity Strip</span></div>
+      <div class="ws-note">Dark background. Single sentence about the studio's position. CTA: "Meet the studio →"</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Services Summary — 3 columns</span></div>
+      <div class="ws-note">Architecture / Interior Design / Renovation. Icon-free. Text only. Clean.</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Contact CTA</span></div>
+      <div class="ws-note">One sentence. One button. Full section — not a footer line item.</div>
+    </div>
+
+    <h3>Projects Page</h3>
+    <div class="wireframe-section hero">
+      <div><span class="ws-name">Page Header</span></div>
+      <div class="ws-note">"Projects" in large Cormorant Garamond. Filter bar below: All / Architecture / Interior Design</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Project Grid</span></div>
+      <div class="ws-note">Asymmetric masonry-style. Full-width images. On hover: project name + location + year slides up. No descriptions in grid view.</div>
+    </div>
+
+    <h3>Single Project</h3>
+    <div class="wireframe-section hero">
+      <div><span class="ws-name">Hero — Full bleed</span></div>
+      <div class="ws-note">Project name overlaid bottom-left. Location + Year. Type (Architecture / Interior Design)</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Project Statement</span></div>
+      <div class="ws-note">2-3 sentences. Architectural position. Not a description of what you see in the photos — why this project matters.</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Photography Sequence</span></div>
+      <div class="ws-note">Full-bleed images with occasional 50/50 splits. No captions unless technically necessary. The sequence tells the story.</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Project Specifications</span></div>
+      <div class="ws-note">Location / Area / Year / Status / Materials — small type, right-aligned. Secondary to the images.</div>
+    </div>
+    <div class="wireframe-section">
+      <div><span class="ws-name">Next Project →</span></div>
+      <div class="ws-note">Full-bleed teaser image of the next project. Keeps the visitor in the portfolio.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. RTL / HEBREW ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">05 — Hebrew + RTL System</div>
+    <h2>Bilingual Architecture</h2>
+    <p class="lead">Hebrew is not a translation of the English site. It is the primary language. The English version is not a mirror — it is independently written for an English-speaking audience.</p>
+
+    <h3>Navigation (Hebrew RTL Preview)</h3>
+    <div class="rtl-demo">
+      <div class="rtl-nav">
+        <div class="rtl-menu">
+          <span>EN</span>
+          <span>צור קשר</span>
+          <span>שירותים</span>
+          <span>אודות</span>
+          <span>פרויקטים</span>
+        </div>
+        <div class="rtl-logo">אתי מעלב</div>
+      </div>
+      <div class="rtl-hero-text">אדריכלות ועיצוב פנים<br>בחיפה</div>
+      <div class="rtl-sub">כל פרויקט מתחיל בשיחה.</div>
+    </div>
+
+    <h3>RTL Technical Implementation</h3>
+    <table>
+      <tr><th>Element</th><th>Implementation</th></tr>
+      <tr><td>HTML direction</td><td><code>dir="rtl"</code> on <code>&lt;html&gt;</code> tag for Hebrew version</td></tr>
+      <tr><td>Logo position</td><td>Right side (Hebrew) / Left side (English)</td></tr>
+      <tr><td>Navigation</td><td>Left side (Hebrew) / Right side (English)</td></tr>
+      <tr><td>Text alignment</td><td>Right (Hebrew) / Left (English)</td></tr>
+      <tr><td>Reading direction</td><td>Right-to-left / Left-to-right</td></tr>
+      <tr><td>Font size adjustment</td><td>Hebrew: +10% vs English equivalent</td></tr>
+      <tr><td>Text expansion</td><td>Allow 20-30% more space for Hebrew text vs English</td></tr>
+      <tr><td>Language switcher</td><td>Top-right corner (Hebrew) / Top-right corner (English). Small, always visible.</td></tr>
+    </table>
+
+    <h3>Hebrew Copy Structure — Proposed Voice</h3>
+    <div class="callout">
+      <strong>In Hebrew, less is more — even more than in English.</strong> The most powerful Hebrew architectural copy uses precise, spare language. Avoid translation tone. Every Hebrew line must be written natively and reviewed by a Hebrew speaker before delivery.
+    </div>
+
+    <table>
+      <tr><th>Page Section</th><th>English Voice</th><th>Hebrew Direction</th></tr>
+      <tr><td>Hero</td><td>"Architecture that lasts."</td><td>אדריכלות שנשארת. (Architecture that remains.)</td></tr>
+      <tr><td>Philosophy</td><td>"We work at the intersection of structure and atmosphere — where a building stops being a building and becomes a place."</td><td>Short, direct. Philosophical but not abstract.</td></tr>
+      <tr><td>CTA</td><td>"Begin a conversation →"</td><td>בואו נדבר (Let's talk) — informal warmth appropriate for Israeli market</td></tr>
+      <tr><td>Project names</td><td>Location-based: "The Carmel House" / "A House on the Sea"</td><td>In Hebrew with same naming convention: בית הכרמל / בית על הים</td></tr>
+      <tr><td>Services</td><td>Confident, present tense: "We design, we build, we transform."</td><td>Slightly warmer in Hebrew: less corporate, more personal</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ── 6. WORDPRESS CONTENT MODEL ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">06 — WordPress Content Model</div>
+    <h2>CMS Architecture</h2>
+
+    <div class="callout red">
+      <strong>WordPress site not yet created.</strong> Access to WordPress.com is confirmed. Two existing sites visible (renovabuilders.com, bestgaragedoorandgateotinc.com). Eti Mealev site must be created before build begins. Requires: domain name decision and WordPress.com plan selection.
+    </div>
+
+    <h3>Custom Post Types Required</h3>
+    <table>
+      <tr><th>Post Type</th><th>Fields</th><th>Purpose</th></tr>
+      <tr><td><strong>Projects</strong></td><td>Title (EN/HE), Location, Year, Typology, Area (m²), Status, Hero image, Gallery (ordered), Statement (EN/HE), Materials</td><td>Portfolio entries</td></tr>
+      <tr><td><strong>Services</strong></td><td>Title (EN/HE), Description (EN/HE), Icon (optional), Order</td><td>Services page</td></tr>
+      <tr><td><strong>Team</strong></td><td>Name, Role (EN/HE), Bio (EN/HE), Photo</td><td>Studio page — if team beyond Eti</td></tr>
+    </table>
+
+    <h3>Bilingual Implementation Options</h3>
+    <table>
+      <tr><th>Approach</th><th>Pro</th><th>Con</th><th>Recommendation</th></tr>
+      <tr><td>WPML plugin</td><td>Industry standard, full RTL support, SEO-friendly separate URLs (/he/ /en/)</td><td>Annual license cost (~$99/year)</td><td><strong>✓ Recommended</strong></td></tr>
+      <tr><td>Polylang plugin</td><td>Free tier available, simpler</td><td>Less robust for RTL edge cases</td><td>Viable if budget is constraint</td></tr>
+      <tr><td>Two separate sites</td><td>Full control per language</td><td>Double the maintenance</td><td>Not recommended</td></tr>
+    </table>
+
+    <h3>Recommended Theme Approach</h3>
+    <p>Custom block theme (WordPress Full Site Editing) built on a minimal base. Not a pre-made architecture template. The design system in this document is the template — built to spec, not adapted from stock.</p>
+
+    <table>
+      <tr><th>Component</th><th>Implementation</th></tr>
+      <tr><td>Header</td><td>Sticky, transparent over hero, solid on scroll. Logo + nav + language toggle.</td></tr>
+      <tr><td>Hero</td><td>Full-viewport video or photography. No slider. One image per page.</td></tr>
+      <tr><td>Project grid</td><td>CSS Grid with asymmetric layout. Hover: slide-up name/location overlay.</td></tr>
+      <tr><td>Typography</td><td>Google Fonts: Cormorant Garamond (display) + system stack (body). Frank Ruhl Libre for Hebrew display.</td></tr>
+      <tr><td>Performance</td><td>Lazy-load all images. WebP format. Max 3s load target.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ── 7. NEXT STEPS ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">07 — Next Steps</div>
+    <h2>From Architecture to Live Site</h2>
+
+    <table>
+      <tr><th>#</th><th>Action</th><th>Owner</th><th>Blockers</th></tr>
+      <tr><td>1</td><td>Moe reviews this presentation package</td><td>Moe</td><td>—</td></tr>
+      <tr><td>2</td><td>Nataly approves for client presentation</td><td>Nataly</td><td>Nataly email unknown</td></tr>
+      <tr><td>3</td><td>Present to Eti Mealev for creative direction approval</td><td>Mona</td><td>Client email unknown</td></tr>
+      <tr><td>4</td><td>Confirm domain name (etimealev.co.il? etimealev.com?)</td><td>Client</td><td>Requires client input</td></tr>
+      <tr><td>5</td><td>Create WordPress.com site</td><td>Mona (can execute)</td><td>Domain decision needed</td></tr>
+      <tr><td>6</td><td>Client provides project photography for portfolio</td><td>Client</td><td>Required before any page build</td></tr>
+      <tr><td>7</td><td>Native Hebrew copy review</td><td>Hebrew copywriter / client</td><td>Copy drafts in this package are directional only</td></tr>
+      <tr><td>8</td><td>Build homepage + projects page as Phase 1</td><td>Mona</td><td>Photography + domain + approval</td></tr>
+      <tr><td>9</td><td>Full site build + bilingual implementation</td><td>Mona</td><td>Phase 1 approval</td></tr>
+      <tr><td>10</td><td>QA, mobile testing, RTL verification</td><td>Mona</td><td>—</td></tr>
+    </table>
+
+    <div class="callout">
+      <strong>What can begin immediately (no client input needed):</strong><br>
+      WordPress site creation, theme scaffolding, custom post type setup, Google Fonts integration, color and typography system implementation, homepage layout build with placeholder content.
+    </div>
+  </div>
+</section>
+
+<div class="doc-footer">
+  <div class="wrap">
+    <strong>Mona Digital Marketing</strong> | monaempoweryou@gmail.com<br>
+    Client: Eti Mealev (אתי מעלב) | Asset ID: eti-web-001 | v1 — June 12, 2026<br>
+    Status: Pending Moe review → Nataly approval → Client delivery<br>
+    File: eti-mealev-presentation.html | Branch: claude/nova-image-preview-ri1q4z
+  </div>
+</div>
+
+</body>
+</html>

@@ -280,6 +280,49 @@
       }
     },
 
+    "eti_mealev": {
+      "name": "Eti Mealev (אתי מעלב)",
+      "location": "Haifa, Israel",
+      "industry": "Luxury Architecture + Interior Design",
+      "contact_name": "Eti Mealev",
+      "contact_email": "UNKNOWN — must be established",
+      "language": "Hebrew primary (RTL), English secondary",
+      "creative_reference": "EDNE Group (ednegroup.com) — sister brand relationship. Related, not replicated.",
+      "projects": {
+        "website": {
+          "name": "Eti Mealev — Full Website",
+          "description": "Full WordPress website: architecture, design system, Hebrew content structure, page strategy, client presentation package",
+          "platform": "WordPress.com",
+          "wordpress_site_id": "NOT CREATED — pending",
+          "status": "In production",
+          "priority": "HIGH — active live prospect",
+          "assets": [
+            {
+              "id": "eti-web-001",
+              "asset_type": "strategy",
+              "name": "Eti Mealev — Website Architecture + Design System + Presentation Package",
+              "file_name": "eti-mealev-presentation.html",
+              "file_path": "eti-mealev-presentation.html",
+              "version": "v1",
+              "status": "pending_approval",
+              "source_tool": "Claude",
+              "template_used": null,
+              "intended_use": "Internal review package — sitemap, page architecture, design system, Hebrew copy structure, creative direction. Pending Moe review → Nataly approval → client delivery.",
+              "submitted_date": "2026-06-12",
+              "approval_date": null,
+              "approved_by": null,
+              "delivered_to": null,
+              "delivery_date": null,
+              "generation_id": null,
+              "file_url": null,
+              "notes": "Creative direction: sister website to EDNE Group. Same premium ecosystem, distinct Eti Mealev identity. Hebrew RTL primary. Luxury architecture + interior design positioning. Haifa, Israel context.",
+              "next_action": "Moe to review → Nataly to approve → present to Eti Mealev"
+            }
+          ]
+        }
+      }
+    },
+
     "finish_line_taxi": {
       "name": "Finish Line Taxi",
       "location": "Temecula, CA",

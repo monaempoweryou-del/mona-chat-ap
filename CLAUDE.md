@@ -107,22 +107,44 @@ IF recipient = UNVEILED prospect (website demo outreach):
 
 ---
 
-## Email Delivery Infrastructure
+## Email Delivery Infrastructure — Permanent Standard
 
-**Method:** GitHub Actions pipeline — permanent, runs outside the container.
-
-**How it works:**
-1. Write email JSON to `email_queue/[timestamp]_[name].json` with `subject`, `to`, `html` keys
-2. `git add email_queue/ && git commit && git push origin main`
-3. GitHub Actions workflow (`.github/workflows/send-email.yml`) fires automatically
-4. Python script sends via Gmail SMTP using GitHub repository secrets
-5. File renamed to `sent_[name].json` to confirm delivery
+**Method:** GitHub Actions pipeline. Credentials in GitHub secrets. Never in code.
 
 **Required GitHub secrets (one-time setup):**
 - `GMAIL_USER` = monaempoweryou@gmail.com
-- `GMAIL_APP_PASSWORD` = [Gmail app password]
+- `GMAIL_APP_PASSWORD` = Gmail App Password (myaccount.google.com → Security → App Passwords)
 
-**To send any email:** push a queue file. GitHub sends it. Done.
+**Queue file format** (`email_queue/pending/[id].json`):
+```json
+{
+  "id": "descriptive-kebab-case-name",
+  "brand": "unveiled | mona",
+  "subject": "Email subject line",
+  "stage": "test | send",
+  "to_test": "monaempoweryou@gmail.com",
+  "to_customer": "customer@email.com",
+  "html": "<complete HTML email>"
+}
+```
+
+**Two-stage delivery workflow:**
+1. Create queue file with `"stage": "test"` → sends to monaempoweryou@gmail.com for approval
+2. Review and approve in inbox
+3. Change `"stage": "test"` → `"stage": "send"` and move back to pending/ → sends to customer
+4. Same HTML, same content — no rebuilding
+
+**Directory structure:**
+- `email_queue/pending/` — emails waiting to send (workflow triggers on push here)
+- `email_queue/sent/` — successfully sent (moved automatically, `sent_to` field added)
+- `email_queue/failed/` — failed sends (moved automatically, `error` field added, retryable)
+
+**To retry a failed email:** move from `failed/` back to `pending/` and push.
+
+**Workflow:** `.github/workflows/send-email.yml` → triggers on push to `email_queue/pending/*.json`
+**Script:** `.github/send_queued_emails.py` → reads queue, sends, moves files, writes GitHub summary
+
+**End state:** "Boss, the email hit your inbox."
 
 ## Render Deployment
 

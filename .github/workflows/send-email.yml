@@ -3,7 +3,10 @@ name: Send Email Queue
 on:
   push:
     paths:
-      - 'email_queue/*.json'
+      - 'email_queue/pending/*.json'
+
+permissions:
+  contents: write
 
 jobs:
   send:
@@ -11,23 +14,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Send queued emails
+        id: send
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: python .github/send_queued_emails.py
 
-      - name: Commit sent emails as processed
+      - name: Commit results
         run: |
           git config user.name "Mona Agency OS"
           git config user.email "monaempoweryou@gmail.com"
           if [ -n "$(git status --porcelain email_queue/)" ]; then
             git add email_queue/
-            git commit -m "Mark emails as sent [skip ci]"
+            git commit -m "Email queue: processed [skip ci]"
             git push
           fi

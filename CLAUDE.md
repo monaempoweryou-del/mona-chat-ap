@@ -148,6 +148,54 @@ Then: `git add asset-registry.json && git commit -m "Registry: [client] [asset-t
 
 ---
 
+## RENOVA BUILDERS — PPC EXECUTION AUTHORITY
+### Formal Execution Order — June 12, 2026
+
+**Budget Cap:** $5,000/month total. Do not exceed without explicit approval.
+
+**Success Metric:** Qualified leads generated for Renova Builders. Every recommendation, optimization, and report must support this objective.
+
+**Reporting Chain:** Internal Moe report → Nataly approval → Client delivery (Omri Dror)
+
+#### FULL AUTHORITY (execute immediately, no approval needed):
+- Conversion tracking: demote page view events to Secondary, verify form/quote/call tag triggers
+- Negative keywords: add/update negative keyword lists at campaign and account level
+- Geo targeting: add/remove locations within Bay Area CA scope
+- Ad schedule: adjust day/hour bid modifiers
+- Ad extensions / assets: add, update, or remove sitelinks, callouts, call assets
+- Tracking and attribution improvements
+- Recurring monitoring and diagnostic systems
+- Account hygiene: pause zero-impression ad groups, remove duplicate/irrelevant keywords
+- Search term quality management: weekly review and negative addition
+- Landing page audit and recommendations (recommendations only — no site edits)
+
+#### REQUIRES APPROVAL BEFORE EXECUTING:
+- New campaigns (any type)
+- Deleting campaigns (even dead ones)
+- Pausing active campaigns that have ANY recent spend
+- Increasing total monthly budget above $5,000
+- Major structural rebuilds (ad group restructure, keyword strategy overhaul)
+- Bid strategy changes on active KEEP campaigns
+
+#### ACTIVE KEEP CAMPAIGNS (as of June 12, 2026):
+- "Leads Service base--13"
+- "full home remodel"
+All other campaigns are dead/zero-impression and subject to pause only with approval.
+
+#### EXECUTION PHASES:
+1. **Measurement Integrity** — Fix conversion tracking, verify phone/form/call signals, remove page view pollution
+2. **Traffic Quality** — Negative keywords, irrelevant traffic removal, geo targeting, weekly search term review
+3. **Lead Capture** — Landing page audit, mobile click-to-call, form functionality review
+4. **Growth Optimization** — Device/geo/schedule performance analysis, budget reallocation within cap
+
+#### STANDING ORDERS:
+- Do NOT open new diagnostic tracks or research cycles after authorized A-items are complete
+- Do NOT optimize only to save money — optimize to create predictable lead growth
+- Do NOT produce another audit before executing what is already authorized
+- Do NOT surface B-items as blockers — execute A-items, then return with B-item recommendations
+
+---
+
 ## ESCALATION RULES
 
 Surface to Maor immediately if:
@@ -155,9 +203,11 @@ Surface to Maor immediately if:
 - A generation tool fails after 2 attempts
 - A client has not responded to a submitted deliverable in 48+ hours
 - A Google Ads campaign shows anomalous spend or performance
+- Account spend approaches $4,500/month (early warning before $5,000 cap)
 
 Do NOT surface to Maor:
 - Questions about where assets are stored (check the registry)
 - Questions about what template to use (check the registry)
 - Questions about what was previously approved (check the registry)
 - Routine status updates (update the registry and continue)
+- PPC A-items within full execution authority (execute, then report)

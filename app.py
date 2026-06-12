@@ -209,6 +209,10 @@ def format_email_body(plan: dict, approval_required: bool = False) -> str:
 def index():
     return send_file("chat-widget.html")
 
+@app.route("/platinum-pool", methods=["GET"])
+def platinum_pool():
+    return send_file("platinum-pool.html")
+
 @app.route("/health", methods=["GET"])
 def health():
     return {"status": "ok", "agent": "Mona"}

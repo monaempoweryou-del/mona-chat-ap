@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platinum Pool & Property Services LLC | Clean. Clear. Carefree.</title>
+  <meta name="description" content="Professional pool maintenance, green-to-clean restorations, and property services in the Inland Empire. Book your appointment today. Call 909-970-1982." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS Variables ─────────────────────────────────── */
+    :root {
+      --navy:       #0D1B3E;
+      --navy-mid:   #152347;
+      --navy-light: #1E3163;
+      --blue:       #0095DA;
+      --blue-light: #00B8F0;
+      --blue-pale:  #E8F6FF;
+      --silver:     #B0BEC5;
+      --silver-light: #E8EAED;
+      --white:      #FFFFFF;
+      --off-white:  #F7FAFD;
+      --text-dark:  #0D1B3E;
+      --text-mid:   #2C3E6B;
+      --text-light: #607090;
+      --shadow-sm:  0 2px 8px rgba(13,27,62,.08);
+      --shadow-md:  0 8px 32px rgba(13,27,62,.12);
+      --shadow-lg:  0 20px 60px rgba(13,27,62,.16);
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+
+    /* ─── Reset ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Typography ────────────────────────────────────── */
+    h1,h2,h3,h4 { font-family: 'Montserrat', sans-serif; }
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-top: 10px;
+    }
+    .section-title span { color: var(--blue); }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-top: 14px;
+      max-width: 560px;
+    }
+
+    /* ─── Buttons ──────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .25s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(0,149,218,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,149,218,.45); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+    .btn-navy {
+      background: var(--navy);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-navy:hover { background: var(--navy-light); transform: translateY(-2px); }
+
+    /* ─── Nav ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(13,27,62,.08);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .nav-logo { height: 52px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mid);
+      letter-spacing: .5px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .nav-phone {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-phone svg { color: var(--blue); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--navy); border-radius: 2px;
+      transition: all .3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 72px 0 0 0;
+      background: var(--white);
+      z-index: 999;
+      padding: 32px 24px;
+      flex-direction: column;
+      gap: 24px;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--silver-light);
+    }
+
+    /* ─── Hero ──────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 40%, #0a3060 100%);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0,149,218,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(0,149,218,.10) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: .04;
+      background-image: linear-gradient(var(--blue) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--blue) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,149,218,.2);
+      border: 1px solid rgba(0,149,218,.4);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 24px;
+    }
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(1.4); } }
+    .hero-title {
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+    .hero-title .accent { color: var(--blue-light); }
+    .hero-tagline {
+      font-size: clamp(14px, 2vw, 17px);
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      margin: 20px 0 32px;
+      max-width: 480px;
+    }
+    .hero-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .hero-chip {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .hero-logo-wrap {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 24px 64px rgba(0,0,0,.3);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      max-width: 420px;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      padding: 16px 12px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+    .hero-stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--blue-light);
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,.6);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+    .hero-wave {
+      position: absolute; bottom: -1px; left: 0; right: 0;
+    }
+
+    /* ─── Trust Bar ────────────────────────────────────── */
+    .trust-bar {
+      background: var(--navy);
+      padding: 18px 24px;
+      overflow: hidden;
+    }
+    .trust-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,.8);
+      letter-spacing: .5px;
+    }
+    .trust-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(0,149,218,.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ─── Section wrapper ───────────────────────────────── */
+    .section {
+      padding: 96px 24px;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-head { margin-bottom: 56px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ─── Booking ────────────────────────────────────────── */
+    #booking {
+      background: linear-gradient(160deg, var(--blue-pale) 0%, #fff 60%);
+      padding: 96px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    #booking::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,149,218,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .booking-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      border: 1px solid rgba(13,27,62,.06);
+    }
+    .booking-card-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 24px 28px;
+    }
+    .booking-card-header h3 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .booking-card-header p { color: rgba(255,255,255,.7); font-size: 13px; margin-top: 4px; }
+    .booking-body { padding: 28px; }
+
+    /* Calendar */
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .cal-nav button {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--silver-light);
+      background: var(--off-white);
+      cursor: pointer;
+      font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+      color: var(--navy);
+    }
+    .cal-nav button:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .cal-month-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--navy);
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+    .cal-day-name {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      padding: 6px 0;
+      letter-spacing: .5px;
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+      color: var(--text-dark);
+      border: 1px solid transparent;
+    }
+    .cal-day:hover:not(.disabled):not(.empty) { background: var(--blue-pale); border-color: var(--blue); color: var(--blue); }
+    .cal-day.selected { background: var(--blue); color: #fff; font-weight: 700; box-shadow: 0 4px 12px rgba(0,149,218,.3); }
+    .cal-day.today { border-color: var(--blue); color: var(--blue); font-weight: 700; }
+    .cal-day.disabled { color: var(--silver); pointer-events: none; }
+    .cal-day.empty { pointer-events: none; }
+
+    .time-slots {
+      margin-top: 20px;
+    }
+    .time-slots-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .slot {
+      padding: 8px 4px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid var(--silver-light);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      color: var(--text-mid);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .slot:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
+    .slot.selected { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .slot.booked { background: var(--silver-light); color: var(--silver); pointer-events: none; }
+
+    /* Booking Form */
+    .book-form { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      padding: 12px 14px;
+      border: 1.5px solid var(--silver-light);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--off-white);
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--blue);
+      background: #fff;
+    }
+    .form-field textarea { resize: vertical; min-height: 80px; }
+    .form-submit { margin-top: 4px; }
+    .form-submit .btn { width: 100%; justify-content: center; padding: 16px; font-size: 15px; }
+    .success-msg {
+      display: none;
+      background: linear-gradient(135deg, #e8f9f0, #d0f0e2);
+      border: 1px solid #4caf8a;
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #1a7a4a;
+    }
+    .booking-info { display: flex; flex-direction: column; gap: 24px; }
+    .info-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(13,27,62,.06);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .info-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 12px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .info-card h4 {
+      font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px;
+    }
+    .info-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+    .info-card a { color: var(--blue); font-weight: 600; }
+
+    /* ─── Pool Services ─────────────────────────────────── */
+    #pool-services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      border: 1.5px solid transparent;
+      transition: all .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .service-card:hover {
+      border-color: rgba(0,149,218,.2);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+      background: #fff;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue-pale), rgba(0,149,218,.15));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px;
+    }
+    .service-card p { font-size: 14px; color: var(--text-light); line-height: 1.7; }
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .5px;
+    }
+
+    /* ─── Property Services ─────────────────────────────── */
+    #property-services {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #property-services::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,149,218,.08) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(30%, -30%);
+    }
+    #property-services .section-label { color: var(--blue-light); }
+    #property-services .section-title { color: #fff; }
+    #property-services .section-sub { color: rgba(255,255,255,.65); }
+    .prop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .prop-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: all .3s;
+    }
+    .prop-card:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(0,149,218,.4);
+      transform: translateY(-3px);
+    }
+    .prop-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .prop-card h3 {
+      font-size: 16px; font-weight: 700;
+      color: #fff; margin-bottom: 8px;
+    }
+    .prop-card p { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+    .prop-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .prop-tag {
+      background: rgba(0,149,218,.2);
+      border: 1px solid rgba(0,149,218,.3);
+      border-radius: 50px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-light);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* ─── Why Choose Us ─────────────────────────────────── */
+    #why-us {
+      background: var(--off-white);
+      position: relative;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .why-features { display: flex; flex-direction: column; gap: 28px; }
+    .why-feature { display: flex; gap: 20px; align-items: flex-start; }
+    .why-feature-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0,149,218,.3);
+    }
+    .why-feature h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .why-feature p { font-size: 14px; color: var(--text-light); line-height: 1.65; }
+    .why-visual {
+      position: relative;
+    }
+    .why-photo-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .why-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(160deg, #0a6fa8 0%, #0095da 40%, #0bd4c8 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: #fff;
+    }
+    .why-photo-placeholder .pool-wave {
+      font-size: 80px;
+      opacity: .6;
+    }
+    .why-photo-placeholder h3 {
+      font-size: 20px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .why-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      min-width: 120px;
+    }
+    .why-badge .num { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: var(--blue-light); }
+    .why-badge .lbl { font-size: 12px; color: rgba(255,255,255,.7); font-weight: 500; }
+
+    /* ─── Service Area ───────────────────────────────────── */
+    #service-area {
+      background: var(--white);
+    }
+    .area-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .area-map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(13,27,62,.08);
+      position: relative;
+    }
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-pin-icon { font-size: 56px; }
+    .map-placeholder h3 { font-size: 20px; font-weight: 800; text-align: center; }
+    .map-placeholder p { font-size: 14px; color: rgba(255,255,255,.65); text-align: center; max-width: 260px; }
+    .map-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(0,149,218,.3) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .area-cities { display: flex; flex-direction: column; gap: 16px; }
+    .area-city {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      background: var(--off-white);
+      border: 1.5px solid transparent;
+      transition: all .2s;
+    }
+    .area-city:hover { border-color: var(--blue); background: var(--blue-pale); }
+    .area-city .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+    .area-city span { font-weight: 600; font-size: 14px; color: var(--text-dark); }
+    .area-note {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--blue-pale), rgba(0,149,218,.1));
+      border-radius: var(--radius);
+      border-left: 4px solid var(--blue);
+    }
+    .area-note p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .area-note strong { color: var(--navy); }
+
+    /* ─── Gallery / Before & After ──────────────────────── */
+    #gallery {
+      background: var(--off-white);
+      padding: 96px 24px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .gallery-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .gallery-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .gallery-card.featured {
+      grid-column: span 2;
+    }
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-card.featured .gallery-img { aspect-ratio: 16/8; }
+    .gallery-before { background: linear-gradient(160deg, #2d6a1a, #4a8c2a); }
+    .gallery-after  { background: linear-gradient(160deg, #0060a0, #0095da); }
+    .gallery-clean  { background: linear-gradient(160deg, #006080, #00b8d4); }
+    .gallery-prop   { background: linear-gradient(160deg, #3d2a1a, #6b4a2a); }
+    .gallery-deck   { background: linear-gradient(160deg, #1a3050, #2a5080); }
+    .gallery-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .tag-before { background: rgba(220,50,50,.85); color: #fff; }
+    .tag-after  { background: rgba(0,149,218,.9);  color: #fff; }
+    .tag-clean  { background: rgba(0,180,120,.85); color: #fff; }
+    .tag-prop   { background: rgba(100,60,20,.85); color: #fff; }
+    .gallery-caption {
+      padding: 16px 20px;
+      background: var(--white);
+    }
+    .gallery-caption h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .gallery-caption p  { font-size: 12px; color: var(--text-light); }
+
+    /* ─── Testimonials ──────────────────────────────────── */
+    #testimonials {
+      background: var(--navy);
+      padding: 96px 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    #testimonials::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0,149,218,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #testimonials .section-label { color: var(--blue-light); }
+    #testimonials .section-title { color: #fff; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .review-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all .3s;
+    }
+    .review-card:hover { background: rgba(255,255,255,.1); transform: translateY(-3px); }
+    .review-stars { color: #FFD700; font-size: 16px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text {
+      font-size: 14px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: #fff; font-size: 14px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .reviewer-name { font-weight: 700; font-size: 14px; color: #fff; }
+    .reviewer-loc  { font-size: 12px; color: rgba(255,255,255,.5); }
+
+    /* ─── CTA Band ───────────────────────────────────────── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 60%, #0bd4c8 100%);
+      padding: 72px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-band h2 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .cta-band p {
+      font-size: 17px;
+      color: rgba(255,255,255,.85);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+    .cta-band-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      position: relative;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--blue);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+
+    /* ─── Contact ────────────────────────────────────────── */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-method {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0,149,218,.25);
+    }
+    .contact-method h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-light); font-family: 'Montserrat', sans-serif; }
+    .contact-method a,
+    .contact-method p { font-size: 18px; font-weight: 700; color: var(--navy); font-family: 'Montserrat', sans-serif; }
+    .contact-method a:hover { color: var(--blue); }
+    .contact-form-wrap {
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 1px solid rgba(13,27,62,.06);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-form-wrap h3 {
+      font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 24px;
+    }
+
+    /* ─── Footer ────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      padding: 48px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 28px;
+    }
+    .footer-logo { height: 52px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: .85; }
+    .footer-about { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; }
+    .footer-col h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col li a {
+      font-size: 13px;
+      color: rgba(255,255,255,.65);
+      transition: color .2s;
+    }
+    .footer-col li a:hover { color: var(--blue-light); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.35); }
+    .footer-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 2px;
+    }
+
+    /* ─── Sticky Mobile Buttons ─────────────────────────── */
+    .sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 998;
+      background: var(--white);
+      padding: 12px 16px;
+      border-top: 1px solid rgba(13,27,62,.1);
+      gap: 10px;
+      box-shadow: 0 -8px 24px rgba(13,27,62,.12);
+    }
+    .sticky-bar a {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      border-radius: var(--radius);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .sticky-call {
+      background: var(--navy);
+      color: #fff;
+    }
+    .sticky-book {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0,149,218,.35);
+    }
+
+    /* ─── Animations ────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─── Responsive ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; padding: 100px 24px 60px; }
+      .hero-tagline { margin-left: auto; margin-right: auto; }
+      .hero-btns { justify-content: center; }
+      .hero-services { justify-content: center; }
+      .hero-visual { display: none; }
+      .booking-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { display: none; }
+      .area-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-card.featured { grid-column: span 2; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-top > :first-child { grid-column: span 2; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-cta .btn { display: none; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 64px 20px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-card.featured { grid-column: span 1; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stats > :last-child { grid-column: span 2; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-top > :first-child { grid-column: span 1; }
+      .sticky-bar { display: flex; }
+      body { padding-bottom: 70px; }
+      .slots-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 601px) {
+      .sticky-bar { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Navigation ──────────────────────────────────── -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#hero">
+      <img src="/static/images/platinum-logo.png" alt="Platinum Pool & Property Services LLC" class="nav-logo" />
+    </a>
+    <div class="nav-links">
+      <a href="#pool-services">Pool Services</a>
+      <a href="#property-services">Property Services</a>
+      <a href="#why-us">About</a>
+      <a href="#service-area">Service Area</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:9099701982">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        909-970-1982
+      </a>
+      <a href="#booking" class="btn btn-primary">Book Now</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#pool-services" onclick="toggleMenu()">Pool Services</a>
+  <a href="#property-services" onclick="toggleMenu()">Property Services</a>
+  <a href="#why-us" onclick="toggleMenu()">Why Choose Us</a>
+  <a href="#service-area" onclick="toggleMenu()">Service Area</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="tel:9099701982" style="color:#0095DA;">📞 909-970-1982</a>
+  <a href="mailto:johndithommasojr@gmail.com" style="color:#0095DA;">✉ johndithommasojr@gmail.com</a>
+  <a href="#booking" class="btn btn-primary" onclick="toggleMenu()">Book an Appointment</a>
+</div>
+
+<!-- ─── Hero ─────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span></span>
+        Serving the Inland Empire
+      </div>
+      <h1 class="hero-title">
+        Crystal Clear Pools.<br/>
+        <span class="accent">Pristine Properties.</span><br/>
+        Every Time.
+      </h1>
+      <p class="hero-tagline">
+        From green-to-clean pool restorations to full property maintenance — Platinum Pool & Property Services LLC delivers reliable, high-quality residential care you can count on.
+      </p>
+      <div class="hero-services">
+        <span class="hero-chip">🏊 Pool Cleaning</span>
+        <span class="hero-chip">🌿 Green-to-Clean</span>
+        <span class="hero-chip">🔨 Handyman Services</span>
+        <span class="hero-chip">🚛 Debris Hauling</span>
+        <span class="hero-chip">🎨 Painting & Drywall</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#booking" class="btn btn-primary">
+          📅 Book an Appointment
+        </a>
+        <a href="tel:9099701982" class="btn btn-outline">
+          📞 909-970-1982
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <img src="/static/images/platinum-logo.png" alt="Platinum Pool & Property Services LLC" />
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Pools Serviced</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Satisfaction</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5★</div>
+          <div class="hero-stat-label">Rated Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="white"/>
+  </svg>
+</section>
+
+<!-- ─── Trust Bar ──────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-icon">✅</div>
+      Licensed & Insured
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">⭐</div>
+      5-Star Rated
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🏠</div>
+      Residential Specialists
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📅</div>
+      Same-Week Scheduling
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">💧</div>
+      Crystal Clear Guarantee
+    </div>
+  </div>
+</div>
+
+<!-- ─── Booking Section ───────────────────────────── -->
+<section id="booking">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="section-label">Schedule Your Service</div>
+      <h2 class="section-title">Book an <span>Appointment</span></h2>
+      <p class="section-sub" style="margin:0 auto;">Choose your service, pick a date and time, and we'll confirm within 24 hours. Fast, easy, and hassle-free.</p>
+    </div>
+    <div class="booking-grid">
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <h3>📅 Select Date & Time</h3>
+          <p>Choose your preferred appointment slot</p>
+        </div>
+        <div class="booking-body">
+          <div class="cal-nav">
+            <button onclick="changeMonth(-1)">‹</button>
+            <div class="cal-month-label" id="cal-month-label"></div>
+            <button onclick="changeMonth(1)">›</button>
+          </div>
+          <div class="cal-grid" id="cal-grid">
+            <div class="cal-day-name">SUN</div>
+            <div class="cal-day-name">MON</div>
+            <div class="cal-day-name">TUE</div>
+            <div class="cal-day-name">WED</div>
+            <div class="cal-day-name">THU</div>
+            <div class="cal-day-name">FRI</div>
+            <div class="cal-day-name">SAT</div>
+          </div>
+          <div class="time-slots">
+            <div class="time-slots-label">Available Times</div>
+            <div class="slots-grid" id="slots-grid"></div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-info">
+        <div class="booking-card">
+          <div class="booking-card-header">
+            <h3>📋 Service Details</h3>
+            <p>Tell us what you need — we'll handle the rest</p>
+          </div>
+          <div class="booking-body">
+            <form class="book-form" id="booking-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label>First Name</label>
+                  <input type="text" id="first-name" placeholder="John" required />
+                </div>
+                <div class="form-field">
+                  <label>Last Name</label>
+                  <input type="text" id="last-name" placeholder="Smith" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Phone Number</label>
+                  <input type="tel" id="phone" placeholder="(909) 555-0100" required />
+                </div>
+                <div class="form-field">
+                  <label>Email Address</label>
+                  <input type="email" id="email" placeholder="you@email.com" />
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Service Needed</label>
+                <select id="service-type" required>
+                  <option value="">— Select a Service —</option>
+                  <optgroup label="Pool Services">
+                    <option value="green-to-clean">Green-to-Clean Pool Restoration</option>
+                    <option value="weekly-maintenance">Weekly Pool Maintenance</option>
+                    <option value="pool-cleaning">One-Time Pool Cleaning</option>
+                    <option value="water-care">Chemical Balancing & Water Care</option>
+                    <option value="equipment">Pool Equipment Inspection</option>
+                  </optgroup>
+                  <optgroup label="Property Services">
+                    <option value="demolition">Kitchen / Bathroom / Flooring Demo</option>
+                    <option value="hauling">Trash & Debris Hauling</option>
+                    <option value="cleanup">Property Cleanup</option>
+                    <option value="painting">Painting & Drywall Repair</option>
+                    <option value="electrical">Light Electrical Work</option>
+                    <option value="handyman">General Handyman Services</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-field">
+                <label>Property Address</label>
+                <input type="text" id="address" placeholder="123 Main St, Rancho Cucamonga, CA" />
+              </div>
+              <div class="form-field">
+                <label>Notes / Special Instructions</label>
+                <textarea id="notes" placeholder="Describe your situation, any concerns, or special requirements..."></textarea>
+              </div>
+              <div id="selected-info" style="display:none; background:var(--blue-pale); border:1px solid rgba(0,149,218,.3); border-radius:8px; padding:12px 16px; font-size:13px; color:var(--navy);">
+                <strong>📅 Selected:</strong> <span id="selected-display"></span>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn btn-primary">
+                  ✅ Confirm Appointment Request
+                </button>
+              </div>
+            </form>
+            <div class="success-msg" id="success-msg">
+              🎉 <strong>Appointment Request Received!</strong><br/><br/>
+              Thank you! We'll call you at <strong id="success-phone"></strong> within 24 hours to confirm your appointment.<br/><br/>
+              Questions? Call us directly: <strong><a href="tel:9099701982">909-970-1982</a></strong>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div>
+            <h4>Prefer to Call?</h4>
+            <p>Reach us directly at <a href="tel:9099701982">909-970-1982</a>. We're available Monday–Saturday, 7am–6pm. Same-day service available for urgent needs.</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">⚡</div>
+          <div>
+            <h4>Fast Response Guaranteed</h4>
+            <p>We confirm all appointments within 24 hours and offer same-week scheduling for most services in our service area.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Pool Services ─────────────────────────────── -->
+<section id="pool-services" class="section">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">Pool Care Experts</div>
+      <h2 class="section-title">Complete <span>Pool Services</span></h2>
+      <p class="section-sub">From murky green to crystal clear — we handle every aspect of your pool's health, chemistry, and appearance year-round.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🌿➡️💧</div>
+        <h3>Green-to-Clean Restoration</h3>
+        <p>Our signature service transforms overgrown, algae-filled pools back to sparkling clarity. We shock, brush, vacuum, and balance — fully documented with before and after photos.</p>
+        <div class="service-tag">⭐ Most Popular Service</div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">📅</div>
+        <h3>Weekly Pool Maintenance</h3>
+        <p>Consistent, scheduled care keeps your pool safe and swim-ready 365 days a year. Includes skimming, brushing, vacuuming, filter checks, and chemical balancing every visit.</p>
+        <div class="service-tag">✓ Year-Round Plans Available</div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🧹</div>
+        <h3>One-Time Deep Clean</h3>
+        <p>Moving in? Hosting a party? Our one-time deep clean removes built-up dirt, debris, and algae for a fresh start. No long-term commitment required.</p>
+        <div class="service-tag">✓ No Contract Required</div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🧪</div>
+        <h3>Water Chemistry & Balancing</h3>
+        <p>Proper chemical balance protects your equipment, prevents algae growth, and keeps swimmers safe. We test pH, chlorine, alkalinity, calcium hardness, and more on every visit.</p>
+        <div class="service-tag">✓ Professional-Grade Testing</div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">⚙️</div>
+        <h3>Filter & Equipment Service</h3>
+        <p>We inspect and clean your pump, filter, and circulation system to ensure maximum efficiency. Catch problems early before they become expensive repairs.</p>
+        <div class="service-tag">✓ Prevents Costly Repairs</div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🏊</div>
+        <h3>Seasonal Opening & Closing</h3>
+        <p>Start the season right and protect your investment during the off-season. Our seasonal packages include full equipment checks, water prep, and cover installation or removal.</p>
+        <div class="service-tag">✓ Full Equipment Inspection</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="#booking" class="btn btn-primary">Book Pool Service Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Property Services ───────────────────────── -->
+<section id="property-services" class="section">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">Property Solutions</div>
+      <h2 class="section-title" style="color:#fff;">Full-Service <span>Property Care</span></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.65);">Beyond the pool — we're your trusted residential service partner for demolition, cleanup, repairs, and everything in between.</p>
+    </div>
+    <div class="prop-grid">
+      <div class="prop-card fade-up">
+        <div class="prop-icon">🔨</div>
+        <h3>Demolition Services</h3>
+        <p>Kitchen, bathroom, and flooring tear-out done cleanly and efficiently. We haul everything away so your space is ready for the next phase.</p>
+        <div class="prop-tags">
+          <span class="prop-tag">Kitchen Demo</span>
+          <span class="prop-tag">Bathroom Tear-Out</span>
+          <span class="prop-tag">Flooring Removal</span>
+        </div>
+      </div>
+      <div class="prop-card fade-up">
+        <div class="prop-icon">🚛</div>
+        <h3>Trash & Debris Hauling</h3>
+        <p>Fast, reliable removal of construction debris, yard waste, old furniture, and general junk. We load it, haul it, and dispose of it responsibly.</p>
+        <div class="prop-tags">
+          <span class="prop-tag">Junk Removal</span>
+          <span class="prop-tag">Yard Waste</span>
+          <span class="prop-tag">Construction Debris</span>
+        </div>
+      </div>
+      <div class="prop-card fade-up">
+        <div class="prop-icon">🏡</div>
+        <h3>Property Cleanups</h3>
+        <p>Move-out cleanups, pre-sale prep, rental turnovers, and general property clearing. We restore order to any space, inside or out.</p>
+        <div class="prop-tags">
+          <span class="prop-tag">Move-Out Cleanup</span>
+          <span class="prop-tag">Pre-Sale Prep</span>
+          <span class="prop-tag">Rental Turnover</span>
+        </div>
+      </div>
+      <div class="prop-card fade-up">
+        <div class="prop-icon">🎨</div>
+        <h3>Painting & Drywall Repair</h3>
+        <p>Interior touch-ups, full room painting, patching holes, and drywall repair done with clean, professional results. We protect your space and clean up after ourselves.</p>
+        <div class="prop-tags">
+          <span class="prop-tag">Interior Painting</span>
+          <span class="prop-tag">Drywall Patching</span>
+          <span class="prop-tag">Texture Matching</span>
+        </div>
+      </div>
+      <div class="prop-card fade-up">
+        <div class="prop-icon">💡</div>
+        <h3>Light Electrical Work</h3>
+        <p>Outlet replacements, light fixture installations, fan mounting, and minor wiring updates. Safe, code-compliant work by experienced hands.</p>
+        <div class="prop-tags">
+          <span class="prop-tag">Outlet Replacement</span>
+          <span class="prop-tag">Light Fixtures</span>
+          <span class="prop-tag">Ceiling Fans</span>
+        </div>
+      </div>
+      <div class="prop-card fade-up">
+        <div class="prop-icon">🔧</div>
+        <h3>General Handyman Services</h3>
+        <p>The catch-all solution for residential repairs. From leaky faucets to door adjustments to furniture assembly — if it needs fixing, we handle it.</p>
+        <div class="prop-tags">
+          <span class="prop-tag">Plumbing Repairs</span>
+          <span class="prop-tag">Door & Window Fixes</span>
+          <span class="prop-tag">Odd Jobs</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="#booking" class="btn btn-primary">Request Property Service</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Why Choose Us ────────────────────────────── -->
+<section id="why-us" class="section">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-head fade-up">
+          <div class="section-label">Our Promise</div>
+          <h2 class="section-title">Why Homeowners <span>Trust Platinum</span></h2>
+          <p class="section-sub">We don't just do the job — we do it right. Every service call reflects our commitment to quality, reliability, and your complete satisfaction.</p>
+        </div>
+        <div class="why-features">
+          <div class="why-feature fade-up">
+            <div class="why-feature-icon">🏆</div>
+            <div>
+              <h4>Residential Specialists</h4>
+              <p>We focus exclusively on residential properties. That means we understand homeowner priorities — clean work, minimal disruption, and respect for your home.</p>
+            </div>
+          </div>
+          <div class="why-feature fade-up">
+            <div class="why-feature-icon">🔍</div>
+            <div>
+              <h4>Unmatched Attention to Detail</h4>
+              <p>We notice what others miss. Every service includes a thorough inspection and a full report so you always know exactly what was done and what to watch for.</p>
+            </div>
+          </div>
+          <div class="why-feature fade-up">
+            <div class="why-feature-icon">📅</div>
+            <div>
+              <h4>Dependable &amp; On Time</h4>
+              <p>We show up when we say we will — no "service window" all-day waits. Reliable scheduling and prompt communication, every single time.</p>
+            </div>
+          </div>
+          <div class="why-feature fade-up">
+            <div class="why-feature-icon">💬</div>
+            <div>
+              <h4>Clear Communication Always</h4>
+              <p>You'll never be left wondering. We call before we arrive, explain what we find, and follow up after every service to ensure your complete satisfaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-photo-frame">
+          <div class="why-photo-placeholder">
+            <div class="pool-wave">🏊</div>
+            <h3>Crystal Clear Results.<br/>Every Visit.</h3>
+          </div>
+        </div>
+        <div class="why-badge">
+          <div class="num">5★</div>
+          <div class="lbl">Customer Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Service Area ──────────────────────────────── -->
+<section id="service-area" class="section">
+  <div class="section-inner">
+    <div class="area-grid">
+      <div>
+        <div class="section-head fade-up">
+          <div class="section-label">We Come to You</div>
+          <h2 class="section-title">Our <span>Service Area</span></h2>
+          <p class="section-sub">We proudly serve residential customers throughout the Inland Empire and surrounding communities.</p>
+        </div>
+        <div class="area-cities fade-up">
+          <div class="area-city"><div class="dot"></div><span>Rancho Cucamonga</span></div>
+          <div class="area-city"><div class="dot"></div><span>Ontario</span></div>
+          <div class="area-city"><div class="dot"></div><span>Fontana</span></div>
+          <div class="area-city"><div class="dot"></div><span>Rialto</span></div>
+          <div class="area-city"><div class="dot"></div><span>Chino</span></div>
+          <div class="area-city"><div class="dot"></div><span>Chino Hills</span></div>
+          <div class="area-city"><div class="dot"></div><span>Upland</span></div>
+          <div class="area-city"><div class="dot"></div><span>Claremont</span></div>
+          <div class="area-city"><div class="dot"></div><span>Pomona</span></div>
+          <div class="area-city"><div class="dot"></div><span>San Bernardino</span></div>
+        </div>
+        <div class="area-note fade-up">
+          <p>📍 <strong>Don't see your city?</strong> Call us at <a href="tel:9099701982" style="color:var(--blue);font-weight:600;">909-970-1982</a> — we frequently service areas beyond our standard coverage zone. We'll always do our best to accommodate you.</p>
+        </div>
+      </div>
+      <div class="area-map fade-up">
+        <div class="map-placeholder">
+          <div class="map-dots"></div>
+          <div class="map-pin-icon">📍</div>
+          <h3>Inland Empire,<br/>Southern California</h3>
+          <p>Serving residential customers across San Bernardino &amp; portions of Los Angeles and Riverside Counties</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Gallery / Before & After ────────────────── -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-head center fade-up">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Before &amp; <span>After Results</span></h2>
+      <p class="section-sub" style="margin:0 auto;">See the Platinum difference. Real results from real residential properties in our service area.</p>
+    </div>
+    <div class="gallery-grid" style="margin-top:48px;">
+      <div class="gallery-card featured fade-up">
+        <div class="gallery-img gallery-before">
+          <span>🌿</span>
+          <div class="gallery-tag tag-before">BEFORE</div>
+        </div>
+        <div class="gallery-caption">
+          <h4>Rancho Cucamonga Green-to-Clean</h4>
+          <p>3 weeks of algae growth — restored to crystal clear in one visit</p>
+        </div>
+      </div>
+      <div class="gallery-card fade-up">
+        <div class="gallery-img gallery-after">
+          <span>💧</span>
+          <div class="gallery-tag tag-after">AFTER</div>
+        </div>
+        <div class="gallery-caption">
+          <h4>After Full Restoration</h4>
+          <p>Same pool, same day — completely transformed</p>
+        </div>
+      </div>
+      <div class="gallery-card fade-up">
+        <div class="gallery-img gallery-clean">
+          <span>🏊</span>
+          <div class="gallery-tag tag-clean">WEEKLY SERVICE</div>
+        </div>
+        <div class="gallery-caption">
+          <h4>Ontario Weekly Maintenance</h4>
+          <p>Consistently crystal clear — maintained year-round</p>
+        </div>
+      </div>
+      <div class="gallery-card fade-up">
+        <div class="gallery-img gallery-prop">
+          <span>🔨</span>
+          <div class="gallery-tag tag-prop">PROPERTY</div>
+        </div>
+        <div class="gallery-caption">
+          <h4>Kitchen Demo — Chino Hills</h4>
+          <p>Full kitchen tear-out, debris hauled same day</p>
+        </div>
+      </div>
+      <div class="gallery-card fade-up">
+        <div class="gallery-img gallery-deck">
+          <span>🎨</span>
+          <div class="gallery-tag tag-clean">PAINTING</div>
+        </div>
+        <div class="gallery-caption">
+          <h4>Interior Repaint — Fontana</h4>
+          <p>Full interior refresh before listing — clean, professional finish</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <p style="color:var(--text-light); font-size:14px; margin-bottom:20px;">Ready to see results like these at your property?</p>
+      <a href="#booking" class="btn btn-navy">Schedule Your Service →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Testimonials ─────────────────────────────── -->
+<section id="testimonials">
+  <div class="section-inner" style="position:relative; z-index:1;">
+    <div class="section-head center fade-up">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title" style="color:#fff;">What Our <span>Customers Say</span></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our pool was completely green — I was embarrassed to even look at it. Platinum came out and had it looking absolutely stunning within 24 hours. I couldn't believe it. Now we have them on weekly service and it's been perfect ever since."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MR</div>
+          <div>
+            <div class="reviewer-name">Maria R.</div>
+            <div class="reviewer-loc">Rancho Cucamonga, CA</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"John and his crew demoed our entire master bathroom and hauled everything out. They were professional, fast, and left the space totally clean. We're hiring them again for the kitchen. Highly recommend!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">TD</div>
+          <div>
+            <div class="reviewer-name">Tom &amp; Diana K.</div>
+            <div class="reviewer-loc">Chino Hills, CA</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've tried three other pool companies and none of them compared to Platinum. They actually show up on time, document their work, and the pool is always crystal clear. The price is fair and the service is exceptional."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SL</div>
+          <div>
+            <div class="reviewer-name">Sandra L.</div>
+            <div class="reviewer-loc">Ontario, CA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA Band ──────────────────────────────────── -->
+<div class="cta-band">
+  <h2>Ready for a Pool You're Proud Of?</h2>
+  <p>Book your appointment today and experience the Platinum difference — clean, clear, and carefree.</p>
+  <div class="cta-band-btns">
+    <a href="#booking" class="btn btn-white">📅 Book an Appointment</a>
+    <a href="tel:9099701982" class="btn btn-outline">📞 Call 909-970-1982</a>
+  </div>
+</div>
+
+<!-- ─── Contact ──────────────────────────────────── -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-head center fade-up" style="margin-bottom:56px;">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Contact <span>Us Anytime</span></h2>
+      <p class="section-sub" style="margin:0 auto;">We're here to answer your questions, provide free estimates, and schedule your service. Reach out any time.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div>
+          <img src="/static/images/platinum-logo.png" alt="Platinum Pool & Property Services LLC" style="max-width:280px; margin-bottom:20px;" />
+          <p style="font-size:14px; color:var(--text-light); line-height:1.7; max-width:380px;">
+            Platinum Pool &amp; Property Services LLC — your trusted residential pool and property care specialists in the Inland Empire. <em>Clean. Clear. Carefree.</em>
+          </p>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:9099701982">(909) 970-1982</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:johndithommasojr@gmail.com">johndithommasojr@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Hours</h4>
+            <p>Mon–Sat: 7:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Service Area</h4>
+            <p>Inland Empire &amp; Surrounding Communities</p>
+          </div>
+        </div>
+        <a href="#booking" class="btn btn-primary" style="margin-top:8px; display:inline-flex;">📅 Book Online Now</a>
+      </div>
+      <div class="contact-form-wrap fade-up">
+        <h3>Send Us a Message</h3>
+        <form id="contact-form" class="book-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Your Name</label>
+              <input type="text" id="c-name" placeholder="Full name" required />
+            </div>
+            <div class="form-field">
+              <label>Phone Number</label>
+              <input type="tel" id="c-phone" placeholder="(909) 555-0100" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" id="c-email" placeholder="you@email.com" />
+          </div>
+          <div class="form-field">
+            <label>What can we help you with?</label>
+            <select id="c-service">
+              <option value="">— Select a topic —</option>
+              <option>Pool Service Quote</option>
+              <option>Property Service Quote</option>
+              <option>Weekly Maintenance Plan</option>
+              <option>Emergency / Urgent Service</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Message</label>
+            <textarea id="c-message" placeholder="Tell us about your property and what you need..." rows="5"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Send Message →</button>
+          </div>
+        </form>
+        <div class="success-msg" id="contact-success">
+          ✅ <strong>Message Received!</strong><br/><br/>
+          Thanks for reaching out! We'll follow up within 24 hours at the contact info you provided.<br/><br/>
+          Need an immediate response? Call <a href="tel:9099701982">909-970-1982</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ───────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="/static/images/platinum-logo.png" alt="Platinum Pool & Property Services LLC" class="footer-logo" />
+        <p class="footer-about">Reliable, high-quality residential pool and property services throughout the Inland Empire. Licensed, insured, and committed to your complete satisfaction on every visit.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#pool-services">Green-to-Clean Restoration</a></li>
+          <li><a href="#pool-services">Weekly Pool Maintenance</a></li>
+          <li><a href="#pool-services">Water Chemistry</a></li>
+          <li><a href="#property-services">Demolition Services</a></li>
+          <li><a href="#property-services">Debris Hauling</a></li>
+          <li><a href="#property-services">Handyman Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#booking">Book Appointment</a></li>
+          <li><a href="#why-us">About Us</a></li>
+          <li><a href="#service-area">Service Area</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Platinum Pool & Property Services LLC. All rights reserved.</p>
+      <p class="footer-tagline">CLEAN. CLEAR. CAREFREE.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Sticky Mobile Bar ────────────────────────── -->
+<div class="sticky-bar">
+  <a href="tel:9099701982" class="sticky-call">📞 Call Now</a>
+  <a href="#booking" class="sticky-book">📅 Book Appointment</a>
+</div>
+
+<!-- ─── JavaScript ───────────────────────────────── -->
+<script>
+// Nav scroll effect
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('#main-nav') && !e.target.closest('#mobile-menu')) {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+});
+
+// ── Calendar ────────────────────────────────────────
+const TIMES = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM'];
+const BOOKED = [2, 5, 8]; // slot indices that appear as booked (demo)
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let calDate = new Date();
+calDate.setDate(1);
+let selectedDate = null;
+let selectedSlot = null;
+
+function renderCalendar() {
+  const label = document.getElementById('cal-month-label');
+  const grid  = document.getElementById('cal-grid');
+  label.textContent = MONTHS[calDate.getMonth()] + ' ' + calDate.getFullYear();
+
+  // Remove old day cells but keep headers
+  const headers = grid.querySelectorAll('.cal-day-name');
+  grid.innerHTML = '';
+  headers.forEach(h => grid.appendChild(h.cloneNode(true)));
+
+  const today    = new Date();
+  const year     = calDate.getFullYear();
+  const month    = calDate.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  // Empty cells
+  for (let i = 0; i < firstDay; i++) {
+    const d = document.createElement('div');
+    d.className = 'cal-day empty';
+    grid.appendChild(d);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const d = document.createElement('div');
+    d.className = 'cal-day';
+    d.textContent = day;
+
+    const thisDate = new Date(year, month, day);
+    const isPast   = thisDate < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const isSun    = thisDate.getDay() === 0;
+
+    if (isPast || isSun) {
+      d.classList.add('disabled');
+    } else {
+      if (today.getDate() === day && today.getMonth() === month && today.getFullYear() === year) {
+        d.classList.add('today');
+      }
+      if (selectedDate &&
+          selectedDate.getDate() === day &&
+          selectedDate.getMonth() === month &&
+          selectedDate.getFullYear() === year) {
+        d.classList.add('selected');
+      }
+      d.onclick = () => selectDate(new Date(year, month, day));
+    }
+    grid.appendChild(d);
+  }
+}
+
+function selectDate(date) {
+  selectedDate = date;
+  selectedSlot = null;
+  renderCalendar();
+  renderSlots();
+  updateSelectedDisplay();
+}
+
+function renderSlots() {
+  const sg = document.getElementById('slots-grid');
+  sg.innerHTML = '';
+  TIMES.forEach((t, i) => {
+    const s = document.createElement('div');
+    s.className = 'slot';
+    s.textContent = t;
+    if (BOOKED.includes(i)) {
+      s.classList.add('booked');
+      s.textContent = t + ' ✗';
+    } else if (selectedSlot === t) {
+      s.classList.add('selected');
+    }
+    if (!s.classList.contains('booked')) {
+      s.onclick = () => { selectedSlot = t; renderSlots(); updateSelectedDisplay(); };
+    }
+    sg.appendChild(s);
+  });
+}
+
+function updateSelectedDisplay() {
+  const info = document.getElementById('selected-info');
+  const disp = document.getElementById('selected-display');
+  if (selectedDate && selectedSlot) {
+    const dateStr = MONTHS[selectedDate.getMonth()] + ' ' + selectedDate.getDate() + ', ' + selectedDate.getFullYear();
+    disp.textContent = dateStr + ' at ' + selectedSlot;
+    info.style.display = 'block';
+  } else {
+    info.style.display = 'none';
+  }
+}
+
+function changeMonth(dir) {
+  calDate.setMonth(calDate.getMonth() + dir);
+  renderCalendar();
+}
+
+renderCalendar();
+renderSlots();
+
+// ── Booking Form ────────────────────────────────────
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const phone = document.getElementById('phone').value;
+  const service = document.getElementById('service-type').value;
+  if (!service) { alert('Please select a service.'); return; }
+  document.getElementById('booking-form').style.display = 'none';
+  const sm = document.getElementById('success-msg');
+  document.getElementById('success-phone').textContent = phone;
+  sm.style.display = 'block';
+  // Build mailto link for real submission
+  const name  = document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value;
+  const addr  = document.getElementById('address').value;
+  const notes = document.getElementById('notes').value;
+  const date  = selectedDate ? (MONTHS[selectedDate.getMonth()] + ' ' + selectedDate.getDate() + ', ' + selectedDate.getFullYear()) : 'Not selected';
+  const time  = selectedSlot || 'Not selected';
+  const subj  = encodeURIComponent('Appointment Request: ' + service + ' - ' + name);
+  const body  = encodeURIComponent(
+    'Name: ' + name + '\nPhone: ' + phone + '\nService: ' + service +
+    '\nDate: ' + date + '\nTime: ' + time + '\nAddress: ' + addr + '\nNotes: ' + notes
+  );
+  window.open('mailto:johndithommasojr@gmail.com?subject=' + subj + '&body=' + body);
+});
+
+// ── Contact Form ────────────────────────────────────
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name  = document.getElementById('c-name').value;
+  const phone = document.getElementById('c-phone').value;
+  const email = document.getElementById('c-email').value;
+  const svc   = document.getElementById('c-service').value;
+  const msg   = document.getElementById('c-message').value;
+  const subj  = encodeURIComponent('Website Inquiry: ' + svc + ' - ' + name);
+  const body  = encodeURIComponent('Name: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email + '\nService: ' + svc + '\nMessage: ' + msg);
+  window.open('mailto:johndithommasojr@gmail.com?subject=' + subj + '&body=' + body);
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('contact-success').style.display = 'block';
+});
+
+// ── Fade-up on scroll ───────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) en.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

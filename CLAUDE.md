@@ -107,6 +107,23 @@ IF recipient = UNVEILED prospect (website demo outreach):
 
 ---
 
+## Email Delivery Infrastructure
+
+**Method:** GitHub Actions pipeline — permanent, runs outside the container.
+
+**How it works:**
+1. Write email JSON to `email_queue/[timestamp]_[name].json` with `subject`, `to`, `html` keys
+2. `git add email_queue/ && git commit && git push origin main`
+3. GitHub Actions workflow (`.github/workflows/send-email.yml`) fires automatically
+4. Python script sends via Gmail SMTP using GitHub repository secrets
+5. File renamed to `sent_[name].json` to confirm delivery
+
+**Required GitHub secrets (one-time setup):**
+- `GMAIL_USER` = monaempoweryou@gmail.com
+- `GMAIL_APP_PASSWORD` = [Gmail app password]
+
+**To send any email:** push a queue file. GitHub sends it. Done.
+
 ## Render Deployment
 
 **Service:** mona-chat-api on Render.com (free tier — spins down after inactivity)  

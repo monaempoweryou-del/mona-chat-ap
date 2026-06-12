@@ -32,8 +32,8 @@ var NEGATIVE_PATTERNS = [
   // Material / product purchase
   'buy ', 'purchase', 'wholesale', 'home depot', 'lowes', "lowe's",
   'supply store', 'supplier', 'tile store', 'cabinet store', 'hardware store',
-  // Rental
-  'rent ', 'rental', ' lease', 'leasing',
+  // Rental — use full phrases to avoid substring hits inside "current", "different", etc.
+  'for rent', 'to rent', 'rental ', 'renting', ' lease ', 'leasing',
   // Unrelated trades (Renova is a remodeling contractor)
   'plumber', 'plumbing', 'electrician', 'electrical', 'roofer', 'roofing',
   'landscap', 'mover', 'moving company', 'tree service', 'pest control',
@@ -119,21 +119,25 @@ function section1_ConversionAudit() {
       var nameLower = name.toLowerCase();
       var verdict, requiredAction, authorized;
 
-      if (nameLower.indexOf('page') !== -1 || nameLower.indexOf('view') !== -1 ||
-          nameLower.indexOf('session') !== -1 || nameLower.indexOf('scroll') !== -1) {
-        verdict = 'INVALID — Page view event. This is not a lead.';
-        requiredAction = 'Demote to Secondary action. Do NOT delete — deletion breaks historical data.';
-        authorized = 'YES — safe to execute immediately (no spend impact)';
-      } else if (nameLower.indexOf('phone') !== -1 || nameLower.indexOf('call') !== -1) {
+      // Check phone/call FIRST — most specific signal
+      if (nameLower.indexOf('phone') !== -1 || nameLower.indexOf('call') !== -1) {
         verdict = 'VALID — Phone engagement. Real lead signal.';
         requiredAction = 'Keep as Primary. Verify tag is firing on click, not page load.';
         authorized = 'YES — verify only, no changes needed if confirmed';
+      // Check form/quote/request BEFORE page/view — "Services Page - Request Quote" must be UNVERIFIED, not INVALID
       } else if (nameLower.indexOf('form') !== -1 || nameLower.indexOf('submit') !== -1 ||
                  nameLower.indexOf('quote') !== -1 || nameLower.indexOf('qoute') !== -1 ||
                  nameLower.indexOf('request') !== -1 || nameLower.indexOf('contact') !== -1) {
-        verdict = 'UNVERIFIED — Name suggests form/quote but may be page visit. Check tag type.';
-        requiredAction = 'Open action in Conversions UI. If tag trigger = URL match / page visit → demote to Secondary. If trigger = form submit / click → keep Primary.';
-        authorized = 'VERIFY FIRST — classification determines action';
+        verdict = 'UNVERIFIED — Name suggests form/quote but may be tracking a page visit. Check tag type.';
+        requiredAction = 'Open action in Conversions UI → check Tag type. If trigger = URL match / page visit → demote to Secondary. If trigger = form submit / click event → keep Primary.';
+        authorized = 'VERIFY FIRST — do not demote until trigger type is confirmed';
+      // Page view / session events — confirmed low-intent tracking
+      } else if (nameLower.indexOf('all page') !== -1 || nameLower.indexOf('page view') !== -1 ||
+                 nameLower.indexOf('pages view') !== -1 || nameLower.indexOf('pageview') !== -1 ||
+                 nameLower.indexOf('session') !== -1 || nameLower.indexOf('scroll') !== -1) {
+        verdict = 'INVALID — Page view event. This is not a lead.';
+        requiredAction = 'Demote to Secondary action. Do NOT delete — deletion breaks historical data.';
+        authorized = 'YES — safe to execute immediately (no spend impact)';
       } else {
         verdict = 'UNVERIFIED — Cannot classify from name alone.';
         requiredAction = 'Manual review required. Check tag trigger in Conversions UI.';
@@ -413,65 +417,75 @@ function section3_NegativeKeywords() {
 }
 
 // ─── 4. AD APPROVAL AUDIT ─────────────────────────────────────────────────────
+// Note: Google Ads Scripts does not expose getApprovalStatus() for RSA ad types.
+// Approach: flag enabled ads inside active (impression-generating) campaigns that
+// have zero impressions themselves — those are the most likely disapproval candidates.
 
 function section4_AdApproval() {
   var lines = ['━━━ 4. AD APPROVAL AUDIT ━━━'];
-  lines.push('Checks all enabled and paused ads for policy status.');
+  lines.push('Method: Flags enabled ads in active campaigns with 0 impressions (disapproval suspects).');
+  lines.push('RSA ad types do not expose a direct approval status API — manual verification required for flagged ads.');
   lines.push('');
 
   try {
-    var adIter = AdsApp.ads().get();
-    var statusCounts = {};
-    var issues = [];
-    var total = 0;
+    // Step 1: collect which campaigns actually served impressions
+    var activeCampaigns = {};
+    var campIter = AdsApp.campaigns().withCondition('Status = ENABLED').get();
+    while (campIter.hasNext()) {
+      var c = campIter.next();
+      var cStats = c.getStatsFor(DATE_RANGE);
+      if (cStats.getImpressions() > 0) {
+        activeCampaigns[c.getName()] = true;
+      }
+    }
+
+    // Step 2: check all enabled ads within those active campaigns
+    var adIter = AdsApp.ads().withCondition('Status = ENABLED').get();
+    var checked = 0, serving = 0, suspects = [];
 
     while (adIter.hasNext()) {
       var ad = adIter.next();
-      total++;
-      var status = ad.getApprovalStatus();
       var campName = ad.getAdGroup().getCampaign().getName();
-      var agName = ad.getAdGroup().getName();
-      if (!statusCounts[status]) statusCounts[status] = 0;
-      statusCounts[status]++;
-      if (status !== 'APPROVED' && status !== 'APPROVED_LIMITED') {
-        var stats = ad.getStatsFor(DATE_RANGE);
-        issues.push({
-          camp: campName, ag: agName, status: status,
-          impr: stats.getImpressions(), clicks: stats.getClicks()
+      if (!activeCampaigns[campName]) continue; // skip ads in dead campaigns
+      checked++;
+      var adStats = ad.getStatsFor(DATE_RANGE);
+      var adImpr = adStats.getImpressions();
+      if (adImpr > 0) {
+        serving++;
+      } else {
+        suspects.push({
+          camp: campName,
+          ag: ad.getAdGroup().getName(),
+          type: ad.getType(),
+          clicks: adStats.getClicks()
         });
       }
     }
 
-    lines.push('Ads audited: ' + total);
-    lines.push('');
-    lines.push('Approval status breakdown:');
-    Object.keys(statusCounts).forEach(function(s) {
-      lines.push('  ' + s + ': ' + statusCounts[s] + ' ad(s)');
-    });
+    lines.push('Enabled ads in active campaigns: ' + checked);
+    lines.push('  Serving normally (have impressions): ' + serving);
+    lines.push('  Zero impressions — possible disapproval: ' + suspects.length);
     lines.push('');
 
-    if (issues.length === 0) {
-      lines.push('All ads in approved or approved-limited status. No action required.');
+    if (suspects.length === 0) {
+      lines.push('No zero-impression enabled ads found in active campaigns.');
+      lines.push('No disapproval issues detected. All active ads appear to be serving.');
     } else {
-      lines.push('NON-APPROVED ADS (' + issues.length + ') — require attention:');
-      lines.push('');
-      issues.forEach(function(i) {
-        lines.push('  Campaign: ' + i.camp);
-        lines.push('  Ad Group: ' + i.ag);
-        lines.push('  Status: ' + i.status);
-        lines.push('  30d Performance: ' + i.impr + ' impressions | ' + i.clicks + ' clicks');
-        lines.push('');
+      lines.push('ZERO-IMPRESSION ADS IN ACTIVE CAMPAIGNS (verify manually):');
+      suspects.forEach(function(s) {
+        lines.push('  ▸ Campaign: ' + s.camp);
+        lines.push('    Ad Group: ' + s.ag + ' | Type: ' + s.type);
       });
-      lines.push('ACTION: For each disapproved ad:');
-      lines.push('  → Navigate to the ad in the UI');
-      lines.push('  → Click "Why is this ad disapproved?" to see the policy reason');
-      lines.push('  → Fix the policy violation and resubmit');
-      lines.push('  AUTHORIZED: Fixing policy violations and resubmitting is safe to execute.');
+      lines.push('');
+      lines.push('To verify: Ads & assets → filter to campaign → look for red circle (disapproved)');
+      lines.push('  → Click "Why is this ad disapproved?" for the policy reason');
+      lines.push('  → Fix violation and resubmit');
+      lines.push('  AUTHORIZED: Fixing disapproved ads has no spend impact.');
     }
 
     lines.push('');
-    lines.push('NOTE: APPROVED_LIMITED means the ad runs but is restricted in some contexts.');
-    lines.push('Common reasons: alcohol, gambling, political content. If none apply, investigate.');
+    lines.push('NOTE: Ads in the 10 PAUSE-recommended campaigns are excluded from this check.');
+    lines.push('Those campaigns are already dead and their ad status is irrelevant until structure is fixed.');
 
   } catch(e) {
     lines.push('ERROR: ' + e.message);

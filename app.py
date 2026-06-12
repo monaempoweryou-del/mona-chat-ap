@@ -287,33 +287,9 @@ def chat():
         },
     )
 
-def send_from_workspace(subject: str, body_html: str, to: str) -> bool:
-    """Send client-facing email from nataly@monadigitalmarketing.com via Google Workspace SMTP."""
-    smtp_user = os.environ.get("WORKSPACE_EMAIL", "nataly@monadigitalmarketing.com")
-    smtp_pass = os.environ.get("WORKSPACE_APP_PASSWORD")
-
-    if not smtp_pass:
-        return False
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"] = smtp_user
-    msg["To"] = to
-    msg.attach(MIMEText(body_html, "html"))
-
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=15) as server:
-            server.login(smtp_user, smtp_pass)
-            server.sendmail(smtp_user, to, msg.as_string())
-        return True
-    except Exception as e:
-        print(f"Workspace email error: {e}")
-        return False
-
-
 @app.route("/send-email", methods=["POST"])
 def send_email_endpoint():
-    """Send email from nataly@monadigitalmarketing.com. Accepts to, subject, html_body."""
+    """Send email using the configured GMAIL_USER account. Accepts to, subject, html_body."""
     api_key = os.environ.get("SEND_EMAIL_API_KEY")
     if api_key:
         provided = request.headers.get("X-API-Key", "")
@@ -331,10 +307,10 @@ def send_email_endpoint():
     if not subject or not html_body or not to:
         return {"error": "to, subject, and html_body are required"}, 400
 
-    sent = send_from_workspace(subject, html_body, to)
+    sent = send_to_email(subject, html_body, to=to)
     if sent:
-        return {"sent": True, "from": os.environ.get("WORKSPACE_EMAIL", "nataly@monadigitalmarketing.com"), "to": to}
-    return {"sent": False, "error": "SMTP failed — check WORKSPACE_APP_PASSWORD"}, 500
+        return {"sent": True, "from": os.environ.get("GMAIL_USER", "nataly@monadigitalmarketing.com"), "to": to}
+    return {"sent": False, "error": "SMTP failed — check GMAIL_APP_PASSWORD"}, 500
 
 
 if __name__ == "__main__":

@@ -203,6 +203,138 @@ def format_email_body(plan: dict, approval_required: bool = False) -> str:
 </div>
 """
 
+# ─── Platinum Pool Proposal Email ─────────────────────────────────────────────
+
+def platinum_pool_proposal_html() -> str:
+    return """<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f4f8;font-family:'Helvetica Neue',Arial,sans-serif;">
+<div style="max-width:680px;margin:32px auto;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(13,27,62,0.12);">
+
+  <!-- HEADER -->
+  <div style="background:linear-gradient(135deg,#0D1B3E 0%,#0D2B6B 60%,#0095DA 100%);padding:40px 36px 32px;text-align:center;">
+    <div style="display:inline-block;background:rgba(255,255,255,0.08);border:2px solid rgba(0,149,218,0.4);border-radius:10px;padding:14px 28px;margin-bottom:20px;">
+      <p style="margin:0;color:#0095DA;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;">PLATINUM POOL &amp; PROPERTY SERVICES LLC</p>
+    </div>
+    <h1 style="margin:0 0 8px;color:#ffffff;font-size:28px;font-weight:800;letter-spacing:-0.5px;line-height:1.2;">Your Website Is Live &amp; Ready</h1>
+    <p style="margin:0;color:rgba(255,255,255,0.75);font-size:15px;line-height:1.5;">A professional digital presence built to win more customers in the Inland Empire</p>
+    <div style="margin-top:24px;display:inline-block;background:rgba(0,149,218,0.2);border:1px solid rgba(0,149,218,0.5);border-radius:20px;padding:6px 18px;">
+      <span style="color:#00B8F0;font-size:12px;font-weight:600;letter-spacing:1px;">&#10003; APPROVED &amp; DEPLOYED</span>
+    </div>
+  </div>
+
+  <!-- LIVE LINK BANNER -->
+  <div style="background:#0095DA;padding:16px 36px;text-align:center;">
+    <p style="margin:0;color:#fff;font-size:14px;">Your live website: <a href="https://mona-chat-ap.onrender.com/platinum-pool" style="color:#fff;font-weight:700;text-decoration:underline;">https://mona-chat-ap.onrender.com/platinum-pool</a></p>
+  </div>
+
+  <!-- BODY -->
+  <div style="padding:36px;">
+
+    <p style="margin:0 0 20px;color:#0D1B3E;font-size:16px;line-height:1.7;">Hi John,</p>
+    <p style="margin:0 0 20px;color:#3a4a5c;font-size:15px;line-height:1.8;">
+      Your new website for <strong>Platinum Pool &amp; Property Services</strong> is live and ready for customers to find you. It's built to rank on Google, convert visitors into booked jobs, and give your business the professional look that wins in a competitive market.
+    </p>
+    <p style="margin:0 0 28px;color:#3a4a5c;font-size:15px;line-height:1.8;">
+      Here's what's included and what happens next.
+    </p>
+
+    <!-- WHAT'S INCLUDED -->
+    <div style="background:#f0f7ff;border-left:4px solid #0095DA;border-radius:0 8px 8px 0;padding:20px 24px;margin-bottom:28px;">
+      <h3 style="margin:0 0 14px;color:#0D1B3E;font-size:16px;font-weight:700;">What's Live Right Now</h3>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr><td style="padding:5px 0;color:#3a4a5c;font-size:14px;">&#10003;&nbsp; Custom-branded hero with Pool Blue + Navy design</td></tr>
+        <tr><td style="padding:5px 0;color:#3a4a5c;font-size:14px;">&#10003;&nbsp; Interactive booking calendar with time slots</td></tr>
+        <tr><td style="padding:5px 0;color:#3a4a5c;font-size:14px;">&#10003;&nbsp; Full Pool Services + Property Services pages</td></tr>
+        <tr><td style="padding:5px 0;color:#3a4a5c;font-size:14px;">&#10003;&nbsp; Service area map — Inland Empire, Riverside, San Bernardino</td></tr>
+        <tr><td style="padding:5px 0;color:#3a4a5c;font-size:14px;">&#10003;&nbsp; Mobile-first with sticky Call &amp; Book buttons</td></tr>
+        <tr><td style="padding:5px 0;color:#3a4a5c;font-size:14px;">&#10003;&nbsp; Testimonials, Gallery, Contact form wired to your email</td></tr>
+      </table>
+    </div>
+
+    <!-- INVESTMENT / ANCHOR PRICING -->
+    <h2 style="margin:0 0 6px;color:#0D1B3E;font-size:20px;font-weight:800;">Your Investment</h2>
+    <p style="margin:0 0 20px;color:#6b7a8d;font-size:13px;">No contracts. No surprises. Priced for small business owners who need real results.</p>
+
+    <!-- CROSSED-OUT ANCHOR -->
+    <div style="background:#fff8f0;border:1px dashed #e0c080;border-radius:8px;padding:16px 20px;margin-bottom:12px;text-align:center;">
+      <p style="margin:0;color:#a0855a;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:600;">Standard Agency Rate</p>
+      <p style="margin:4px 0 0;color:#c0a060;font-size:26px;font-weight:700;text-decoration:line-through;">$4,500</p>
+      <p style="margin:4px 0 0;color:#a0855a;font-size:12px;">Custom website build + branding</p>
+    </div>
+
+    <!-- FEATURED PRICE -->
+    <div style="background:linear-gradient(135deg,#0D1B3E,#0D2B6B);border-radius:10px;padding:28px 24px;margin-bottom:12px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:12px;right:12px;background:#0095DA;color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:10px;letter-spacing:1px;">LAUNCH SPECIAL</div>
+      <p style="margin:0 0 4px;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:2px;text-transform:uppercase;">You Invest Only</p>
+      <p style="margin:0;color:#ffffff;font-size:52px;font-weight:900;line-height:1;">$997</p>
+      <p style="margin:4px 0 0;color:#00B8F0;font-size:14px;font-weight:600;">One-Time · Yours to Keep</p>
+      <div style="margin-top:16px;border-top:1px solid rgba(255,255,255,0.15);padding-top:16px;">
+        <p style="margin:0;color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;">Custom design · All 9 sections · Mobile-optimized · Booking calendar · Contact form · Branded to your business</p>
+      </div>
+    </div>
+
+    <!-- ADD-ON -->
+    <div style="background:#f8f9ff;border:1px solid #d0ddf5;border-radius:10px;padding:20px 24px;margin-bottom:28px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div>
+          <p style="margin:0;color:#0D1B3E;font-size:15px;font-weight:700;">Optional: Monthly Growth Package</p>
+          <p style="margin:4px 0 0;color:#6b7a8d;font-size:13px;line-height:1.6;">SEO optimization · Google Business · Monthly updates · New service pages · Review management</p>
+        </div>
+        <div style="text-align:right;min-width:100px;">
+          <p style="margin:0;color:#0095DA;font-size:24px;font-weight:800;">$297<span style="font-size:13px;color:#6b7a8d;font-weight:400;">/mo</span></p>
+          <p style="margin:2px 0 0;color:#6b7a8d;font-size:11px;">Cancel anytime</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHY NOW -->
+    <div style="background:#0D1B3E;border-radius:10px;padding:24px;margin-bottom:28px;">
+      <h3 style="margin:0 0 12px;color:#00B8F0;font-size:15px;font-weight:700;letter-spacing:0.5px;">Why This Window Matters</h3>
+      <p style="margin:0 0 10px;color:rgba(255,255,255,0.85);font-size:14px;line-height:1.7;">Pool season is here. Every day without a professional website is another customer calling your competitor. Your site is ready — you just need to say go.</p>
+      <p style="margin:0;color:rgba(255,255,255,0.65);font-size:13px;line-height:1.6;">The launch special expires when the next client signs. There are no guarantees this price holds after that.</p>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-bottom:32px;">
+      <a href="https://mona-chat-ap.onrender.com/platinum-pool" style="display:inline-block;background:linear-gradient(135deg,#0095DA,#00B8F0);color:#fff;text-decoration:none;padding:16px 40px;border-radius:8px;font-size:16px;font-weight:700;letter-spacing:0.5px;box-shadow:0 4px 16px rgba(0,149,218,0.4);">View Your Live Website &rarr;</a>
+      <p style="margin:12px 0 0;color:#6b7a8d;font-size:13px;">Questions? Reply to this email or call <strong>(909) 970-1982</strong></p>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div style="border-top:2px solid #e8edf5;padding-top:24px;">
+      <h3 style="margin:0 0 14px;color:#0D1B3E;font-size:15px;font-weight:700;">What Happens After You Say Yes</h3>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr style="vertical-align:top;">
+          <td style="padding:8px 0;width:28px;"><div style="width:22px;height:22px;background:#0095DA;border-radius:50%;color:#fff;font-size:12px;font-weight:700;text-align:center;line-height:22px;">1</div></td>
+          <td style="padding:8px 0 8px 10px;color:#3a4a5c;font-size:14px;">You confirm — we send the payment link instantly</td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="padding:8px 0;"><div style="width:22px;height:22px;background:#0095DA;border-radius:50%;color:#fff;font-size:12px;font-weight:700;text-align:center;line-height:22px;">2</div></td>
+          <td style="padding:8px 0 8px 10px;color:#3a4a5c;font-size:14px;">We transfer the site to your own domain (e.g. platinumpoolservices.com)</td>
+        </tr>
+        <tr style="vertical-align:top;">
+          <td style="padding:8px 0;"><div style="width:22px;height:22px;background:#0095DA;border-radius:50%;color:#fff;font-size:12px;font-weight:700;text-align:center;line-height:22px;">3</div></td>
+          <td style="padding:8px 0 8px 10px;color:#3a4a5c;font-size:14px;">You start receiving booking requests from new customers</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#0D1B3E;padding:24px 36px;text-align:center;">
+    <p style="margin:0 0 6px;color:#ffffff;font-size:14px;font-weight:700;">Platinum Pool &amp; Property Services LLC</p>
+    <p style="margin:0 0 4px;color:rgba(255,255,255,0.6);font-size:13px;">John Dithommaso Jr · (909) 970-1982</p>
+    <p style="margin:0 0 16px;color:rgba(255,255,255,0.6);font-size:13px;">johndithommasojr@gmail.com · Inland Empire, CA</p>
+    <p style="margin:0;color:rgba(255,255,255,0.35);font-size:11px;">Presented by Mona Digital Marketing · Digital Growth Partner</p>
+  </div>
+
+</div>
+</body>
+</html>"""
+
 # ─── Routes ────────────────────────────────────────────────────────────────────
 
 @app.route("/", methods=["GET"])
@@ -216,6 +348,24 @@ def platinum_pool():
 @app.route("/health", methods=["GET"])
 def health():
     return {"status": "ok", "agent": "Mona"}
+
+@app.route("/send-platinum-proposal", methods=["POST"])
+def send_platinum_proposal():
+    """Send Platinum Pool branded proposal email via SMTP."""
+    data = request.get_json() or {}
+    token = data.get("token", "")
+    expected = os.environ.get("SEND_TOKEN", "platinum2024")
+    if token != expected:
+        return {"error": "Unauthorized"}, 401
+
+    subject = "Your Website Is Live — Platinum Pool & Property Services LLC"
+    body = platinum_pool_proposal_html()
+    sent = send_to_email(subject, body)
+
+    if sent:
+        return {"status": "sent", "message": "Proposal email sent to monaempoweryou@gmail.com"}
+    else:
+        return {"status": "failed", "message": "SMTP send failed — check GMAIL_APP_PASSWORD env var"}, 500
 
 @app.route("/chat", methods=["POST"])
 def chat():

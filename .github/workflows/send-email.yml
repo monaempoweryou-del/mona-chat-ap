@@ -1,5 +1,10 @@
 name: Send Email Queue
 
+# Triggers when email queue files are pushed.
+# Calls the Render server's /send-queued endpoint, which uses
+# the existing GMAIL credentials already configured on Render.
+# No new secrets, no new SMTP setup — reuses what already works.
+
 on:
   push:
     paths:
@@ -14,18 +19,92 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Wake Render server
+        run: |
+          echo "Waking Render..."
+          for i in $(seq 1 10); do
+            STATUS=$(curl -sf --max-time 10 https://mona-chat-ap.onrender.com/health \
+              | python3 -c "import sys,json; print(json.load(sys.stdin).get('status',''))" 2>/dev/null || echo "")
+            if [ "$STATUS" = "ok" ]; then echo "Render is live."; break; fi
+            echo "Attempt $i — waiting 15s..."
+            sleep 15
+          done
 
-      - name: Send queued emails
-        id: send
-        env:
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-        run: python .github/send_queued_emails.py
+      - name: Send each queued email
+        id: send_emails
+        run: |
+          python3 - <<'PYEOF'
+          import json, subprocess, sys, os
+          from pathlib import Path
 
-      - name: Commit results
+          RENDER_URL = "https://mona-chat-ap.onrender.com/send-queued"
+          TOKEN      = "platinum2024"
+
+          pending = sorted(Path("email_queue/pending").glob("*.json"))
+          if not pending:
+              print("No pending emails.")
+              sys.exit(0)
+
+          all_ok = True
+          results = []
+
+          for path in pending:
+              data = json.loads(path.read_text())
+              email_id = data.get("id", path.stem)
+              stage    = data.get("stage", "test")
+              subject  = data["subject"]
+              to       = data.get("to_test") if stage == "test" else data.get("to_customer", "")
+              html     = data["html"]
+
+              print(f"\n[{data.get('brand','?').upper()}] {email_id}")
+              print(f"  Stage: {stage} | To: {to}")
+
+              payload = json.dumps({"token": TOKEN, "subject": subject, "to": to, "html": html})
+              result  = subprocess.run(
+                  ["curl", "-sf", "-X", "POST", RENDER_URL,
+                   "-H", "Content-Type: application/json",
+                   "-d", payload, "--max-time", "45"],
+                  capture_output=True, text=True
+              )
+
+              try:
+                  resp = json.loads(result.stdout)
+              except Exception:
+                  resp = {"status": "failed", "message": result.stderr or result.stdout}
+
+              if resp.get("status") == "sent":
+                  print(f"  ✓ SENT")
+                  # Mark as sent by moving to sent/
+                  sent_dir = path.parent.parent / "sent"
+                  sent_dir.mkdir(exist_ok=True)
+                  data["sent_to"] = to
+                  dest = sent_dir / path.name
+                  dest.write_text(json.dumps(data, indent=2))
+                  path.unlink()
+                  results.append(f"✅ `{email_id}` → `{to}`")
+              else:
+                  err = resp.get("message", "unknown error")
+                  print(f"  ✗ FAILED: {err}")
+                  failed_dir = path.parent.parent / "failed"
+                  failed_dir.mkdir(exist_ok=True)
+                  data["error"] = err
+                  dest = failed_dir / path.name
+                  dest.write_text(json.dumps(data, indent=2))
+                  path.unlink()
+                  results.append(f"❌ `{email_id}` — {err}")
+                  all_ok = False
+
+          summary = os.environ.get("GITHUB_STEP_SUMMARY", "")
+          if summary:
+              with open(summary, "a") as f:
+                  f.write("## Email Queue Results\n\n")
+                  for r in results:
+                      f.write(f"- {r}\n")
+
+          sys.exit(0 if all_ok else 1)
+          PYEOF
+
+      - name: Commit queue state
         run: |
           git config user.name "Mona Agency OS"
           git config user.email "monaempoweryou@gmail.com"

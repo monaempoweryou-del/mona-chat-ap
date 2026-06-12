@@ -863,6 +863,40 @@ def _check_token(data: dict) -> bool:
     expected = os.environ.get("SEND_TOKEN", "platinum2024")
     return data.get("token", "") == expected
 
+@app.route("/send-queued", methods=["POST"])
+def send_queued():
+    """Generic endpoint: accepts any queued email payload and sends via Render SMTP.
+    Body: {"token":"...","subject":"...","to":"...","html":"..."}
+    This is the permanent default send method — uses Render's existing GMAIL credentials.
+    """
+    data = request.get_json() or {}
+    if not _check_token(data):
+        return {"error": "Unauthorized"}, 401
+    subject = data.get("subject", "").strip()
+    to      = data.get("to", "").strip()
+    html    = data.get("html", "").strip()
+    if not subject or not to or not html:
+        return {"error": "subject, to, and html are required"}, 400
+
+    smtp_user = os.environ.get("GMAIL_USER", "monaempoweryou@gmail.com")
+    smtp_pass = os.environ.get("GMAIL_APP_PASSWORD")
+    if not smtp_pass:
+        return {"status": "failed", "message": "GMAIL_APP_PASSWORD not set on Render"}, 500
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"]    = smtp_user
+    msg["To"]      = to
+    msg.attach(MIMEText(html, "html"))
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=15) as s:
+            s.login(smtp_user, smtp_pass)
+            s.sendmail(smtp_user, to, msg.as_string())
+        return {"status": "sent", "message": f"Email sent to {to}"}
+    except Exception as e:
+        print(f"send-queued error: {e}")
+        return {"status": "failed", "message": str(e)}, 500
+
 @app.route("/send-platinum-outreach", methods=["POST"])
 def send_platinum_outreach():
     """Send UNVEILED outreach email for Platinum Pool."""

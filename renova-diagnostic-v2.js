@@ -264,29 +264,30 @@ function getKeywordBidDiagnostic() {
 
 function getAdApprovalStatus() {
   var lines = ['--- 5. AD APPROVAL STATUS (All Ads) ---'];
+  // Fix: CreativeApprovalStatus is not a valid AWQL field in AD_PERFORMANCE_REPORT.
+  // Using AdsApp iterator + ad.getApprovalStatus() instead.
   try {
-    var report = AdsApp.report(
-      'SELECT CampaignName, AdGroupName, CreativeApprovalStatus, Impressions, Clicks ' +
-      'FROM AD_PERFORMANCE_REPORT ' +
-      'DURING LAST_30_DAYS ' +
-      'ORDER BY CampaignName ASC ' +
-      'LIMIT 0,200'
-    );
-    var rows = report.rows();
+    var adIter = AdsApp.ads().get();
     var statusCounts = {};
     var issues = [];
-    while (rows.hasNext()) {
-      var row = rows.next();
-      var status = row['CreativeApprovalStatus'];
+    var total = 0;
+    while (adIter.hasNext()) {
+      var ad = adIter.next();
+      total++;
+      var status = ad.getApprovalStatus();
+      var campName = ad.getAdGroup().getCampaign().getName();
+      var agName = ad.getAdGroup().getName();
+      var stats = ad.getStatsFor(DATE_RANGE);
       if (!statusCounts[status]) statusCounts[status] = 0;
       statusCounts[status]++;
       if (status !== 'APPROVED' && status !== 'APPROVED_LIMITED') {
-        issues.push('  ' + row['CampaignName'] + ' / ' + row['AdGroupName'] +
+        issues.push('  ' + campName + ' / ' + agName +
                     ' — ' + status +
-                    ' | Impressions: ' + row['Impressions'] +
-                    ' | Clicks: ' + row['Clicks']);
+                    ' | Impressions: ' + stats.getImpressions() +
+                    ' | Clicks: ' + stats.getClicks());
       }
     }
+    lines.push('Total ads checked: ' + total);
     lines.push('Status summary:');
     Object.keys(statusCounts).forEach(function(s) {
       lines.push('  ' + s + ': ' + statusCounts[s] + ' ad(s)');
@@ -308,7 +309,8 @@ function getAdApprovalStatus() {
 
 function getSearchTermReport() {
   var lines = ['--- 6. SEARCH TERMS (Top 50 by Impressions, Last 30 Days) ---'];
-  lines.push('Fix applied: LIMIT now uses "LIMIT 0,50" format required by AWQL parser.');
+  // Fix: ORDER BY is unreliable in SEARCH_QUERY_PERFORMANCE_REPORT AWQL.
+  // Fetching all rows (LIMIT 0,2500) then sorting in JS by impressions DESC.
   lines.push('');
   try {
     var report = AdsApp.report(
@@ -317,28 +319,43 @@ function getSearchTermReport() {
       'FROM SEARCH_QUERY_PERFORMANCE_REPORT ' +
       'WHERE Impressions > 0 ' +
       'DURING LAST_30_DAYS ' +
-      'ORDER BY Impressions DESC ' +
-      'LIMIT 0,50'
+      'LIMIT 0,2500'
     );
     var rows = report.rows();
-    var count = 0;
+    var terms = [];
     while (rows.hasNext()) {
       var row = rows.next();
-      count++;
-      lines.push(
-        count + '. "' + row['Query'] + '"' +
-        ' [' + row['CampaignName'] + ' / ' + row['AdGroupName'] + ']' +
-        ' | Impr: ' + row['Impressions'] +
-        ' | Clicks: ' + row['Clicks'] +
-        ' | CTR: ' + (parseFloat(row['Ctr']) * 100).toFixed(1) + '%' +
-        ' | CPC: $' + parseFloat(row['AverageCpc']).toFixed(2) +
-        ' | Cost: $' + parseFloat(row['Cost']).toFixed(2) +
-        ' | Conv: ' + row['Conversions']
-      );
+      terms.push({
+        query: row['Query'],
+        campaign: row['CampaignName'],
+        adGroup: row['AdGroupName'],
+        impressions: parseInt(row['Impressions'].replace(/,/g, '')) || 0,
+        clicks: row['Clicks'],
+        ctr: parseFloat(row['Ctr']) || 0,
+        cpc: parseFloat(row['AverageCpc']) || 0,
+        cost: parseFloat(row['Cost']) || 0,
+        conv: row['Conversions']
+      });
     }
-    if (count === 0) lines.push('No search terms with impressions found for this period.');
+    // Sort highest impressions first
+    terms.sort(function(a, b) { return b.impressions - a.impressions; });
+    var top50 = terms.slice(0, 50);
+    top50.forEach(function(t, i) {
+      lines.push(
+        (i + 1) + '. "' + t.query + '"' +
+        ' [' + t.campaign + ' / ' + t.adGroup + ']' +
+        ' | Impr: ' + t.impressions +
+        ' | Clicks: ' + t.clicks +
+        ' | CTR: ' + (t.ctr * 100).toFixed(1) + '%' +
+        ' | CPC: $' + t.cpc.toFixed(2) +
+        ' | Cost: $' + t.cost.toFixed(2) +
+        ' | Conv: ' + t.conv
+      );
+    });
+    if (terms.length === 0) lines.push('No search terms with impressions found for this period.');
     lines.push('');
-    lines.push('Search terms shown: ' + count);
+    lines.push('Total unique search terms fetched: ' + terms.length);
+    lines.push('Shown above: top 50 by impressions');
   } catch(e) {
     lines.push('ERROR: ' + e.message);
   }

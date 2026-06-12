@@ -137,10 +137,11 @@ Set needs_approval true ONLY for image/video/graphic-design requests."""
 
     return plan
 
-def send_to_email(subject: str, body_html: str):
-    """Send execution result to monaempoweryou@gmail.com via Gmail SMTP."""
+def send_to_email(subject: str, body_html: str, to: str = None):
+    """Send email via Gmail SMTP. Defaults to monaempoweryou@gmail.com if no recipient given."""
     smtp_user = os.environ.get("GMAIL_USER", "monaempoweryou@gmail.com")
     smtp_pass = os.environ.get("GMAIL_APP_PASSWORD")
+    recipient = to or smtp_user
 
     if not smtp_pass:
         return False
@@ -148,13 +149,13 @@ def send_to_email(subject: str, body_html: str):
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = smtp_user
-    msg["To"] = smtp_user
+    msg["To"] = recipient
     msg.attach(MIMEText(body_html, "html"))
 
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=15) as server:
             server.login(smtp_user, smtp_pass)
-            server.sendmail(smtp_user, smtp_user, msg.as_string())
+            server.sendmail(smtp_user, recipient, msg.as_string())
         return True
     except Exception as e:
         print(f"Email error: {e}")
@@ -285,6 +286,32 @@ def chat():
             "Access-Control-Allow-Origin": "*",
         },
     )
+
+@app.route("/send-email", methods=["POST"])
+def send_email_endpoint():
+    """Direct email send endpoint — accepts to, subject, html_body."""
+    api_key = os.environ.get("SEND_EMAIL_API_KEY")
+    if api_key:
+        provided = request.headers.get("X-API-Key", "")
+        if provided != api_key:
+            return {"error": "Unauthorized"}, 401
+
+    data = request.get_json()
+    if not data:
+        return {"error": "No data"}, 400
+
+    subject = data.get("subject", "").strip()
+    html_body = data.get("html_body", "").strip()
+    to = data.get("to", "").strip() or None
+
+    if not subject or not html_body:
+        return {"error": "subject and html_body are required"}, 400
+
+    sent = send_to_email(subject, html_body, to=to)
+    if sent:
+        return {"sent": True, "to": to or os.environ.get("GMAIL_USER", "monaempoweryou@gmail.com")}
+    return {"sent": False, "error": "SMTP failed — check GMAIL_APP_PASSWORD"}, 500
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

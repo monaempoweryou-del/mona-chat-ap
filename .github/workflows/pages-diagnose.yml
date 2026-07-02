@@ -16,18 +16,21 @@ jobs:
   diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect unveiled.pro content
+      - name: Inspect dashboard app to find lead-site source
         run: |
-          echo "== Response headers for https://unveiled.pro/ =="
-          curl -sSI https://unveiled.pro/ || true
+          echo "== /dashboard/ HTML (script/link/api references) =="
+          curl -sS https://unveiled.pro/dashboard/ | grep -oE '(src|href)="[^"]+"' | sort -u | head -40 || true
           echo ""
-          echo "== First 300 lines of HTML at root =="
-          curl -sS https://unveiled.pro/ | head -300 || true
+          echo "== /app/ HTML (script/link/api references) =="
+          curl -sS https://unveiled.pro/app/ | grep -oE '(src|href)="[^"]+"' | sort -u | head -40 || true
           echo ""
-          echo "== Probe candidate paths =="
-          for p in platinum-pool platinum-pool/ sites leads app dashboard goldsmith goldsmith-financial demo sites/platinum-pool 404.html; do
-            curl -sS -o /dev/null -w "https://unveiled.pro/$p -> HTTP %{http_code} (final: %{url_effective})\n" -L "https://unveiled.pro/$p" || true
+          echo "== API / fetch endpoints referenced in dashboard page =="
+          curl -sS https://unveiled.pro/dashboard/ | grep -oE 'https?://[a-zA-Z0-9./_-]+' | sort -u | head -60 || true
+          echo ""
+          echo "== fetch() / API constants inside inline scripts =="
+          curl -sS https://unveiled.pro/dashboard/ | grep -oE "(fetch\(|API[_A-Z]*\s*=|onrender[a-z.-]*|supabase[a-zA-Z0-9.-]*|firebase[a-zA-Z0-9.-]*)[^,;)]{0,120}" | head -60 || true
+          echo ""
+          echo "== Common data files on the site =="
+          for p in leads.json data/leads.json sites.json data.json config.json app/config.json dashboard/config.json; do
+            curl -sS -o /dev/null -w "https://unveiled.pro/$p -> HTTP %{http_code}\n" "https://unveiled.pro/$p" || true
           done
-          echo ""
-          echo "== www redirect target =="
-          curl -sSI https://www.unveiled.pro/ | grep -i location || true

@@ -2,6 +2,11 @@ name: Pages Diagnose
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/code-review-1zskrw
+    paths:
+      - .github/workflows/pages-diagnose.yml
 
 permissions:
   pages: write

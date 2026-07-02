@@ -16,21 +16,18 @@ jobs:
   diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Query Pages configuration for this repo
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Inspect unveiled.pro content
         run: |
-          echo "== GET /repos/${GITHUB_REPOSITORY}/pages =="
-          curl -sS -o /tmp/pages.json -w "HTTP %{http_code}\n" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" || true
-          cat /tmp/pages.json
+          echo "== Response headers for https://unveiled.pro/ =="
+          curl -sSI https://unveiled.pro/ || true
           echo ""
-          echo "== DNS check for unveiled.pro =="
-          nslookup unveiled.pro || true
-          echo "== HTTP check for unveiled.pro =="
-          curl -sS -o /dev/null -w "https://unveiled.pro/ -> HTTP %{http_code}\n" https://unveiled.pro/ || true
-          curl -sS -o /dev/null -w "https://www.unveiled.pro/ -> HTTP %{http_code}\n" https://www.unveiled.pro/ || true
-          curl -sS -o /dev/null -w "https://monaempoweryou-del.github.io/ -> HTTP %{http_code}\n" https://monaempoweryou-del.github.io/ || true
-          curl -sS -o /dev/null -w "https://monaempoweryou-del.github.io/mona-chat-ap/ -> HTTP %{http_code}\n" https://monaempoweryou-del.github.io/mona-chat-ap/ || true
+          echo "== First 300 lines of HTML at root =="
+          curl -sS https://unveiled.pro/ | head -300 || true
+          echo ""
+          echo "== Probe candidate paths =="
+          for p in platinum-pool platinum-pool/ sites leads app dashboard goldsmith goldsmith-financial demo sites/platinum-pool 404.html; do
+            curl -sS -o /dev/null -w "https://unveiled.pro/$p -> HTTP %{http_code} (final: %{url_effective})\n" -L "https://unveiled.pro/$p" || true
+          done
+          echo ""
+          echo "== www redirect target =="
+          curl -sSI https://www.unveiled.pro/ | grep -i location || true

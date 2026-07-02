@@ -20,14 +20,20 @@ jobs:
         run: |
           HTML=$(curl -sS https://unveiled.pro/dashboard/)
           SB_URL=$(echo "$HTML" | grep -oE "https://[a-z0-9]+\.supabase\.co" | head -1)
-          SB_KEY=$(echo "$HTML" | grep -oE "eyJ[A-Za-z0-9_.-]+" | head -1)
+          SB_KEY=$(echo "$HTML" | grep -oE "(sb_publishable_[A-Za-z0-9_-]+|eyJ[A-Za-z0-9_.-]{40,})" | head -1)
           echo "Supabase URL: $SB_URL"
-          echo "Anon key present: $([ -n "$SB_KEY" ] && echo yes || echo no)"
+          echo "Key found: $([ -n "$SB_KEY" ] && echo yes || echo no)"
+          if [ -z "$SB_KEY" ]; then
+            echo "== CFG context in HTML =="
+            echo "$HTML" | grep -n -C2 "CFG" | head -40
+            echo "== any key-like strings =="
+            echo "$HTML" | grep -oE "key[\"']?\s*[:=]\s*[\"'][^\"']{20,}[\"']" | head -10
+          fi
           echo ""
-          echo "== Recent leads (name, slug, status, preview_url) =="
-          curl -sS "$SB_URL/rest/v1/leads?select=*&order=created_at.desc&limit=5" \
-            -H "apikey: $SB_KEY" -H "Authorization: Bearer $SB_KEY" | python3 -m json.tool | head -220 || true
+          echo "== Recent leads =="
+          curl -sS "$SB_URL/rest/v1/leads?select=id,business_name,slug,status,preview_url,created_at&order=created_at.desc&limit=6" \
+            -H "apikey: $SB_KEY" -H "Authorization: Bearer $SB_KEY" | python3 -m json.tool | head -120 || true
           echo ""
           echo "== Recent revisions =="
-          curl -sS "$SB_URL/rest/v1/revisions?select=*&order=created_at.desc&limit=5" \
-            -H "apikey: $SB_KEY" -H "Authorization: Bearer $SB_KEY" | python3 -m json.tool | head -80 || true
+          curl -sS "$SB_URL/rest/v1/revisions?select=*&order=created_at.desc&limit=4" \
+            -H "apikey: $SB_KEY" -H "Authorization: Bearer $SB_KEY" | python3 -m json.tool | head -60 || true

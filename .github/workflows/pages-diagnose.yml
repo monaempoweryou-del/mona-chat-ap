@@ -16,21 +16,18 @@ jobs:
   diagnose:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect dashboard app to find lead-site source
+      - name: Query leads and their preview URLs
         run: |
-          echo "== /dashboard/ HTML (script/link/api references) =="
-          curl -sS https://unveiled.pro/dashboard/ | grep -oE '(src|href)="[^"]+"' | sort -u | head -40 || true
+          HTML=$(curl -sS https://unveiled.pro/dashboard/)
+          SB_URL=$(echo "$HTML" | grep -oE "https://[a-z0-9]+\.supabase\.co" | head -1)
+          SB_KEY=$(echo "$HTML" | grep -oE "eyJ[A-Za-z0-9_.-]+" | head -1)
+          echo "Supabase URL: $SB_URL"
+          echo "Anon key present: $([ -n "$SB_KEY" ] && echo yes || echo no)"
           echo ""
-          echo "== /app/ HTML (script/link/api references) =="
-          curl -sS https://unveiled.pro/app/ | grep -oE '(src|href)="[^"]+"' | sort -u | head -40 || true
+          echo "== Recent leads (name, slug, status, preview_url) =="
+          curl -sS "$SB_URL/rest/v1/leads?select=*&order=created_at.desc&limit=5" \
+            -H "apikey: $SB_KEY" -H "Authorization: Bearer $SB_KEY" | python3 -m json.tool | head -220 || true
           echo ""
-          echo "== API / fetch endpoints referenced in dashboard page =="
-          curl -sS https://unveiled.pro/dashboard/ | grep -oE 'https?://[a-zA-Z0-9./_-]+' | sort -u | head -60 || true
-          echo ""
-          echo "== fetch() / API constants inside inline scripts =="
-          curl -sS https://unveiled.pro/dashboard/ | grep -oE "(fetch\(|API[_A-Z]*\s*=|onrender[a-z.-]*|supabase[a-zA-Z0-9.-]*|firebase[a-zA-Z0-9.-]*)[^,;)]{0,120}" | head -60 || true
-          echo ""
-          echo "== Common data files on the site =="
-          for p in leads.json data/leads.json sites.json data.json config.json app/config.json dashboard/config.json; do
-            curl -sS -o /dev/null -w "https://unveiled.pro/$p -> HTTP %{http_code}\n" "https://unveiled.pro/$p" || true
-          done
+          echo "== Recent revisions =="
+          curl -sS "$SB_URL/rest/v1/revisions?select=*&order=created_at.desc&limit=5" \
+            -H "apikey: $SB_KEY" -H "Authorization: Bearer $SB_KEY" | python3 -m json.tool | head -80 || true

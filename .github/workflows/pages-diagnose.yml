@@ -1,0 +1,31 @@
+name: Pages Diagnose
+
+on:
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Pages configuration for this repo
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "== GET /repos/${GITHUB_REPOSITORY}/pages =="
+          curl -sS -o /tmp/pages.json -w "HTTP %{http_code}\n" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" || true
+          cat /tmp/pages.json
+          echo ""
+          echo "== DNS check for unveiled.pro =="
+          nslookup unveiled.pro || true
+          echo "== HTTP check for unveiled.pro =="
+          curl -sS -o /dev/null -w "https://unveiled.pro/ -> HTTP %{http_code}\n" https://unveiled.pro/ || true
+          curl -sS -o /dev/null -w "https://www.unveiled.pro/ -> HTTP %{http_code}\n" https://www.unveiled.pro/ || true
+          curl -sS -o /dev/null -w "https://monaempoweryou-del.github.io/ -> HTTP %{http_code}\n" https://monaempoweryou-del.github.io/ || true
+          curl -sS -o /dev/null -w "https://monaempoweryou-del.github.io/mona-chat-ap/ -> HTTP %{http_code}\n" https://monaempoweryou-del.github.io/mona-chat-ap/ || true
